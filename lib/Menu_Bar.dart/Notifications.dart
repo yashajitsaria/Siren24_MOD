@@ -8,7 +8,7 @@ import 'MenuBar.dart';
 
 class Notifications extends StatefulWidget {
   const Notifications({Key? key}) : super(key: key);
-  static String id = 'splash_screen';
+  static String id = 'notifications';
 
   @override
   _NotificationsState createState() => _NotificationsState();
