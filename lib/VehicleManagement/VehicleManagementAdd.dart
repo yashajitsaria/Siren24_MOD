@@ -17,7 +17,7 @@ class _VehicleManagementAddState extends State<VehicleManagementAdd> {
       appBar: AppBar(
         title: Center(
           child: Text(
-            'Invite Friends',
+            'Add a new Ambulance',
             style: TextStyle(
               fontSize: 25,
             ),
