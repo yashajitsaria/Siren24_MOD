@@ -1,7 +1,10 @@
 // ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 
 import 'MenuBar.dart';
@@ -25,14 +28,17 @@ class _NotificationsState extends State<Notifications> {
           },
           icon: ImageIcon(
             AssetImage('UIAssets/menubar.png'),
+            color: Color(0xFFFFD428),
           ),
         ),
-        title: Center(
-          child: Text(
-            'Notifications',
-            style: TextStyle(
-              fontSize: 25,
-            ),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        shadowColor: Colors.transparent,
+        title: Text(
+          'Notifications',
+          style: TextStyle(
+            fontSize: 24,
+            color: Colors.black,
           ),
         ),
       ),
@@ -47,8 +53,39 @@ class _NotificationsState extends State<Notifications> {
               elevation: 0,
               child: Row(
                 children: [
-                  Center(
-                    child: Image.asset('UIAssets/time.png'),
+                  Stack(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Color(0xFF4252FF),
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Container(
+                              width: 30,
+                              height: 30,
+                              decoration: BoxDecoration(
+                                color: Color(0xFF4252FF),
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Image.asset(
+                                  'UIAssets/tick.png',
+                                  color: Colors.white,
+                                  scale: 1,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 15, bottom: 15),
@@ -77,17 +114,33 @@ class _NotificationsState extends State<Notifications> {
               ),
             ),
           ),
-          SizedBox(
-            height: 2,
-          ),
           GestureDetector(
             onTap: () {},
             child: Card(
               elevation: 0,
               child: Row(
                 children: [
-                  Center(
-                    child: Image.asset('UIAssets/time.png'),
+                  Stack(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFFFD428),
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Image.asset(
+                              'UIAssets/promo.png',
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 15, bottom: 15),
@@ -116,17 +169,33 @@ class _NotificationsState extends State<Notifications> {
               ),
             ),
           ),
-          SizedBox(
-            height: 2,
-          ),
           GestureDetector(
             onTap: () {},
             child: Card(
               elevation: 0,
               child: Row(
                 children: [
-                  Center(
-                    child: Image.asset('UIAssets/time.png'),
+                  Stack(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFFFD428),
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Image.asset(
+                              'UIAssets/promo.png',
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 15, bottom: 15),
@@ -155,17 +224,33 @@ class _NotificationsState extends State<Notifications> {
               ),
             ),
           ),
-          SizedBox(
-            height: 2,
-          ),
           GestureDetector(
             onTap: () {},
             child: Card(
               elevation: 0,
               child: Row(
                 children: [
-                  Center(
-                    child: Image.asset('UIAssets/time.png'),
+                  Stack(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Color(0xFF4CE5B1),
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Image.asset(
+                              'UIAssets/wallet.png',
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 15, bottom: 15),
@@ -194,17 +279,45 @@ class _NotificationsState extends State<Notifications> {
               ),
             ),
           ),
-          SizedBox(
-            height: 2,
-          ),
           GestureDetector(
             onTap: () {},
             child: Card(
               elevation: 0,
               child: Row(
                 children: [
-                  Center(
-                    child: Image.asset('UIAssets/time.png'),
+                  Stack(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFF52D56),
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Container(
+                              width: 30,
+                              height: 30,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Image.asset(
+                                  'UIAssets/close.png',
+                                  color: Color(0xFFF52D56),
+                                  scale: 1.5,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 15, bottom: 15),
@@ -220,7 +333,7 @@ class _NotificationsState extends State<Notifications> {
                           ),
                         ),
                         Text(
-                          'Booking #1234 has been success...',
+                          'Booking #1234 has been cancelled',
                           style: TextStyle(
                             fontSize: 15,
                             color: Colors.black,
@@ -233,95 +346,33 @@ class _NotificationsState extends State<Notifications> {
               ),
             ),
           ),
-          SizedBox(
-            height: 2,
-          ),
           GestureDetector(
             onTap: () {},
             child: Card(
               elevation: 0,
               child: Row(
                 children: [
-                  Center(
-                    child: Image.asset('UIAssets/time.png'),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15, bottom: 15),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Promotion',
-                          style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                  Stack(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFFFD428),
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Image.asset(
+                              'UIAssets/promo.png',
+                              color: Colors.black,
+                            ),
                           ),
                         ),
-                        Text(
-                          'Invite friends - Get 3 coupons each!',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 2,
-          ),
-          GestureDetector(
-            onTap: () {},
-            child: Card(
-              elevation: 0,
-              child: Row(
-                children: [
-                  Center(
-                    child: Image.asset('UIAssets/time.png'),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15, bottom: 15),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'System',
-                          style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        ),
-                        Text(
-                          'Thank you! Your transaction is com...',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 2,
-          ),
-          GestureDetector(
-            onTap: () {},
-            child: Card(
-              elevation: 0,
-              child: Row(
-                children: [
-                  Center(
-                    child: Image.asset('UIAssets/time.png'),
+                      ),
+                    ],
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 15, bottom: 15),

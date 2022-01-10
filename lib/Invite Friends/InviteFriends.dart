@@ -18,19 +18,26 @@ class _InviteFriendsState extends State<InviteFriends> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        shadowColor: Colors.transparent,
         leading: IconButton(
           onPressed: () {
             MenuBar();
           },
           icon: ImageIcon(
-            AssetImage('UIAssets/menubar.png'),
+            AssetImage(
+              'UIAssets/menubar.png',
+            ),
+            color: Color(0xFFFFD428),
           ),
         ),
-        title: Center(
+        title: Padding(
+          padding: EdgeInsets.only(left: 60),
           child: Text(
             'Invite Friends',
             style: TextStyle(
-              fontSize: 25,
+              fontSize: 20,
+              color: Colors.black,
             ),
           ),
         ),
@@ -38,28 +45,32 @@ class _InviteFriendsState extends State<InviteFriends> {
       body: Center(
         child: Column(
           children: [
-            SizedBox(
-              height: 25,
-            ),
             Stack(
               children: <Widget>[
                 Container(
-                  decoration: BoxDecoration(color: Colors.white),
                   alignment: Alignment.center,
                   height: 240,
-                  child: Image.asset('UIAssets/Oval.png', scale: 50),
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: Icon(
-                    Icons.people_alt_rounded,
-                    color: Color(0xFF333333),
+                  child: Container(
+                    width: 180,
+                    height: 180,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFFFD428),
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Icon(
+                        Icons.people_alt_rounded,
+                        color: Color(0xFF333333),
+                        size: 75,
+                      ),
+                    ),
                   ),
-                )
+                ),
               ],
             ),
             SizedBox(
-              height: 25,
+              height: 10,
             ),
             Column(
               children: [
@@ -110,22 +121,28 @@ class _InviteFriendsState extends State<InviteFriends> {
             SizedBox(
               height: 25,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Share Your Invite Code',
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Color(0xFFBEC2CE),
+            Padding(
+              padding: const EdgeInsets.only(left: 45),
+              child: Row(
+                // crossAxisAlignment: CrossAxisAlignment.start,
+                // mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    'SHARE YOUR INVITE CODE',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Color(0xFFBEC2CE),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             SizedBox(
-              height: 12,
+              height: 15,
             ),
             Container(
+              width: 275,
+              height: 45,
               decoration: BoxDecoration(
                 color: Color(0xFFF1F2F6),
                 borderRadius: BorderRadius.circular(12),
@@ -146,6 +163,8 @@ class _InviteFriendsState extends State<InviteFriends> {
             GestureDetector(
               onTap: () {},
               child: Container(
+                width: 275,
+                height: 45,
                 decoration: BoxDecoration(
                   color: Color(0xFFFFD428),
                   borderRadius: BorderRadius.circular(12),

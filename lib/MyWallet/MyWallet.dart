@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,68 +13,91 @@ class MyWallet extends StatefulWidget {
 }
 
 class _MyWalletState extends State<MyWallet> {
-  String? _selectedValue;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        fit: StackFit.expand,
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(color: Color(0xFFFFD428)),
+            decoration: BoxDecoration(
+              color: Color(0xFFFFD428),
+            ),
             alignment: Alignment.center,
-            height: 250,
+            height: 275,
             child: Center(
               child: Column(
                 children: [
+                  SizedBox(
+                    height: 45,
+                  ),
                   Text(
                     'My Wallet',
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 18,
+                      fontSize: 22,
                     ),
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 27,
                   ),
-                  CupertinoSegmentedControl(
-                    borderColor: Color(0xFF242A37),
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    selectedColor: Color(0xFFFFD428),
-                    unselectedColor: Color(0xFF242A37),
-                    children: {
-                      'a': Container(
-                        color: _selectedValue == 'a'
-                            ? Color(0xFF242A37)
-                            : Color(0xFFFFD428),
-                        padding: EdgeInsets.all(8),
-                        child: Text('Cash'),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Color(0xFFFFD428),
+                      border: Border.all(
+                        color: Color(0xFF242A37),
+                        width: 1,
                       ),
-                      'b': Container(
-                        color: _selectedValue == 'a'
-                            ? Color(0xFF242A37)
-                            : Color(0xFFFFD428),
-                        padding: EdgeInsets.all(8),
-                        child: Text('Discount'),
-                      ),
-                    },
-                    onValueChanged: (value) {},
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    width: 302,
+                    height: 30,
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 150,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(3),
+                            color: Color(0xFF242A37),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Cash',
+                              style: TextStyle(
+                                color: Color(0xFFFFD428),
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 150,
+                          child: Center(
+                            child: Text(
+                              'Discount',
+                              style: TextStyle(
+                                color: Color(0xFF242A37),
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 32,
                   ),
                   Text(
                     '\$325.00',
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25,
+                      fontSize: 36,
                     ),
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 5,
                   ),
                   Text(
                     'TOTAL EARN',
@@ -87,33 +110,47 @@ class _MyWalletState extends State<MyWallet> {
               ),
             ),
           ),
-          OverflowBox(
-            alignment: Alignment.bottomCenter,
-            child: Align(
-              alignment: Alignment.center,
+          Align(
+            alignment: Alignment(0, -0.176),
+            child: GestureDetector(
+              onTap: () {},
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 15),
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Card(
+                padding: const EdgeInsets.all(15.0),
+                child: Material(
+                  borderRadius: BorderRadius.circular(7),
+                  elevation: 1,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(7),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey,
+                        ),
+                      ],
+                      color: Colors.white,
+                    ),
                     child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Stack(
                           children: <Widget>[
-                            Container(
-                              decoration: BoxDecoration(color: Colors.white),
-                              // alignment: Alignment.center,
-                              // height: 240,
-                              child:
-                                  Image.asset('UIAssets/Oval.png', scale: 25),
-                            ),
-                            Align(
-                              alignment: Alignment.center,
-                              child: Image.asset(
-                                'UIAssets/money-2.png',
-                                color: Colors.white,
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Container(
+                                width: 50,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFFFD428),
+                                  borderRadius: BorderRadius.circular(100),
+                                ),
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Image.asset(
+                                    'UIAssets/money-2.png',
+                                    color: Colors.white,
+                                  ),
+                                ),
                               ),
                             ),
                           ],
@@ -122,8 +159,9 @@ class _MyWalletState extends State<MyWallet> {
                           'Payment method',
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 22,
+                            fontFamily: 'SF UI Display',
+                            letterSpacing: 1,
                           ),
                         ),
                         IconButton(
@@ -131,6 +169,7 @@ class _MyWalletState extends State<MyWallet> {
                           icon: Icon(
                             Icons.keyboard_arrow_right_rounded,
                             color: Colors.grey,
+                            size: 30,
                           ),
                         ),
                       ],
@@ -139,7 +178,382 @@ class _MyWalletState extends State<MyWallet> {
                 ),
               ),
             ),
-          )
+          ),
+          Align(
+            alignment: Alignment(-0.85, 0.019),
+            child: Text(
+              'PAYMENT HISTORY',
+              style: TextStyle(
+                color: Color(0xFFBEC2CE),
+                fontWeight: FontWeight.bold,
+                fontSize: 15,
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment(0, 0.9),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
+              child: Container(
+                height: 275,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 1,
+                      color: Color(0xFFF2F2F2),
+                    ),
+                    borderRadius: BorderRadius.circular(7),
+                  ),
+                  child: ListView(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Column(
+                                  children: [
+                                    Center(
+                                      child: Image.asset('UIAssets/dp.png'),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Elva Barnett',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    Text(
+                                      '#740136',
+                                      style: TextStyle(
+                                        color: Color(0xFFBEC2CE),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  '\$25.00',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 25),
+                        height: 1,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Center(
+                                  child: Image.asset('UIAssets/dp.png'),
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Elva Barnett',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    Text(
+                                      '#740136',
+                                      style: TextStyle(
+                                        color: Color(0xFFBEC2CE),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  '\$25.00',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 25),
+                        height: 1,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Center(
+                                  child: Image.asset('UIAssets/dp.png'),
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Elva Barnett',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    Text(
+                                      '#740136',
+                                      style: TextStyle(
+                                        color: Color(0xFFBEC2CE),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  '\$25.00',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 25),
+                        height: 1,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Center(
+                                  child: Image.asset('UIAssets/dp.png'),
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Elva Barnett',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    Text(
+                                      '#740136',
+                                      style: TextStyle(
+                                        color: Color(0xFFBEC2CE),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  '\$25.00',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 25),
+                        height: 1,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Center(
+                                  child: Image.asset('UIAssets/dp.png'),
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Elva Barnett',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    Text(
+                                      '#740136',
+                                      style: TextStyle(
+                                        color: Color(0xFFBEC2CE),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  '\$25.00',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 25),
+                        height: 1,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Center(
+                                  child: Image.asset('UIAssets/dp.png'),
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Elva Barnett',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    Text(
+                                      '#740136',
+                                      style: TextStyle(
+                                        color: Color(0xFFBEC2CE),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  '\$25.00',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
