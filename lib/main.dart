@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:siren24/Invite%20Friends/InviteFriends.dart';
 import 'package:siren24/Menu_Bar.dart/MenuBar.dart';
 import 'package:siren24/Menu_Bar.dart/Notifications.dart';
+import 'package:siren24/Menu_Bar.dart/Settings/Profile.dart';
 import 'package:siren24/Menu_Bar.dart/Settings/Settings.dart';
 import 'package:siren24/MyWallet/MyWallet.dart';
 

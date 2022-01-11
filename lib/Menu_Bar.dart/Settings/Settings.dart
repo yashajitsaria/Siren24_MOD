@@ -32,7 +32,9 @@ class _SettingsState extends State<Settings> {
         title: Text(
           'Settings',
           style: TextStyle(
-            fontSize: 25,
+            fontFamily: 'SF UI Display',
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
         ),
@@ -116,7 +118,7 @@ class _SettingsState extends State<Settings> {
                             Icon(
                               Icons.keyboard_arrow_right_rounded,
                               color: Colors.grey[400],
-                              size: 25,
+                              size: 30,
                             ),
                           ],
                         ),
@@ -201,7 +203,7 @@ class _SettingsState extends State<Settings> {
                             Icon(
                               Icons.keyboard_arrow_right_rounded,
                               color: Colors.grey[400],
-                              size: 25,
+                              size: 30,
                             ),
                           ],
                         ),
@@ -275,7 +277,7 @@ class _SettingsState extends State<Settings> {
                             Icon(
                               Icons.keyboard_arrow_right_rounded,
                               color: Colors.grey[400],
-                              size: 25,
+                              size: 30,
                             ),
                           ],
                         ),
@@ -349,7 +351,7 @@ class _SettingsState extends State<Settings> {
                             Icon(
                               Icons.keyboard_arrow_right_rounded,
                               color: Colors.grey[400],
-                              size: 25,
+                              size: 30,
                             ),
                           ],
                         ),
@@ -423,7 +425,7 @@ class _SettingsState extends State<Settings> {
                             Icon(
                               Icons.keyboard_arrow_right_rounded,
                               color: Colors.grey[400],
-                              size: 25,
+                              size: 30,
                             ),
                           ],
                         ),
@@ -508,7 +510,7 @@ class _SettingsState extends State<Settings> {
                             Icon(
                               Icons.keyboard_arrow_right_rounded,
                               color: Colors.grey[400],
-                              size: 25,
+                              size: 30,
                             ),
                           ],
                         ),
@@ -582,7 +584,7 @@ class _SettingsState extends State<Settings> {
                             Icon(
                               Icons.keyboard_arrow_right_rounded,
                               color: Colors.grey[400],
-                              size: 25,
+                              size: 30,
                             ),
                           ],
                         ),
@@ -656,7 +658,7 @@ class _SettingsState extends State<Settings> {
                             Icon(
                               Icons.keyboard_arrow_right_rounded,
                               color: Colors.grey[400],
-                              size: 25,
+                              size: 30,
                             ),
                           ],
                         ),
