@@ -61,7 +61,7 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
           GestureDetector(
             onTap: () {},
             child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 69),
+              margin: EdgeInsets.symmetric(horizontal: 75),
               padding:EdgeInsets.symmetric(vertical: 12),
               decoration: BoxDecoration(
                 color: Color(0xFFFFD428),
@@ -72,7 +72,7 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
                   'USE MY LOCATION',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 24,
+                    fontSize: 21,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

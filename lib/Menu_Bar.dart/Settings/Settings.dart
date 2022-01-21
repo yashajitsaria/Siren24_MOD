@@ -159,8 +159,8 @@ class _SettingsState extends State<Settings> {
                                     Padding(
                                       padding: const EdgeInsets.all(10.0),
                                       child: Container(
-                                        width: 25,
-                                        height: 25,
+                                        width: MediaQuery.of(context).size.width*0.04,
+                                        height: MediaQuery.of(context).size.height*0.04,
                                         decoration: BoxDecoration(
                                           color: Color(0xFFFF9100),
                                           borderRadius:
