@@ -7,6 +7,7 @@ import 'package:siren24/Menu_Bar.dart/Notifications.dart';
 import 'package:siren24/Menu_Bar.dart/Settings/Profile.dart';
 import 'package:siren24/Menu_Bar.dart/Settings/Settings.dart';
 import 'package:siren24/MyWallet/MyWallet.dart';
+import 'package:siren24/MyWallet/PaymentMethod.dart';
 import 'package:siren24/Onboarding%20Screens/OnboardingScreens.dart';
 import 'Onboarding Screens/SetupGPSLocations.dart';
 import 'SplashScreen.dart';
@@ -31,8 +32,8 @@ class Siren24 extends StatelessWidget {
       // routes: {
         
       // },
-      // home: OnboardingScreens(),
-      home: SetupGPSLocations(),
+      home: MyWallet(),
+      // home: PaymentMethod(),
     );
   }
 }

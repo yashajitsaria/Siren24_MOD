@@ -16,6 +16,7 @@ class _MyWalletState extends State<MyWallet> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFF2F2F2),
       body: Stack(
         children: <Widget>[
           Container(
@@ -28,7 +29,7 @@ class _MyWalletState extends State<MyWallet> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 45,
+                    height: 36,
                   ),
                   Text(
                     'My Wallet',
@@ -180,7 +181,7 @@ class _MyWalletState extends State<MyWallet> {
             ),
           ),
           Align(
-            alignment: Alignment(-0.85, 0.019),
+            alignment: Alignment(-0.85, 0.036),
             child: Text(
               'PAYMENT HISTORY',
               style: TextStyle(
@@ -191,13 +192,18 @@ class _MyWalletState extends State<MyWallet> {
             ),
           ),
           Align(
-            alignment: Alignment(0, 0.9),
+            alignment: Alignment(0, 1.1),
             child: Padding(
               padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
               child: Container(
-                height: 275,
+                height: 300,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(8),
+                  ),
+                  border: Border.all(
+                    color: Color(0xFFE0E0E0),
+                  ),
                 ),
                 child: Container(
                   decoration: BoxDecoration(
@@ -209,7 +215,7 @@ class _MyWalletState extends State<MyWallet> {
                   ),
                   child: ListView(
                     children: [
-                      Padding(
+                      Padding( 
                         padding: const EdgeInsets.only(left: 10, right: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
