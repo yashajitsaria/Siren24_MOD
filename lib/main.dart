@@ -9,8 +9,17 @@ import 'package:siren24/Menu_Bar.dart/Settings/Settings.dart';
 import 'package:siren24/MyWallet/MyWallet.dart';
 import 'package:siren24/MyWallet/PaymentMethod.dart';
 import 'package:siren24/Onboarding%20Screens/OnboardingScreens.dart';
+import 'package:siren24/bookingdetails/bookingdetails.dart';
+import 'package:siren24/home_swipeup/home_online_swipeup.dart';
+import 'package:siren24/optverification/otpverification.dart';
+import 'package:siren24/signup/signin.dart';
+import 'package:siren24/signup/signin1.dart';
+import 'package:siren24/signup/signup.dart';
+import 'package:siren24/vehicle_management/vehicle_management.dart';
 import 'Onboarding Screens/SetupGPSLocations.dart';
-import 'SplashScreen.dart';
+import 'package:siren24/splashscreen/splashscreen.dart';
+
+import 'history/history.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,16 +33,35 @@ class Siren24 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // theme: ThemeData(
-      //   primarySwatch: Colors.blue,
-      // ),
 
-      // initialRoute: InviteFriends.id,
-      // routes: {
-        
-      // },
-      home: MyWallet(),
-      // home: PaymentMethod(),
+        initialRoute: SplashScreen.id,
+        // initialRoute: HomeSwipeup.id,
+        //   initialRoute: History.id,
+        // initialRoute: Notifications.id,
+        // initialRoute: InviteFriends.id,
+        // initialRoute: Settings.id,
+        // initialRoute: Profile.id,
+        // initialRoute: VehicleManagement.id,
+        // initialRoute: MyWallet.id,
+      // initialRoute: OtpVerification.id,
+        routes: {
+          SplashScreen.id: (context) => SplashScreen(),
+          SignupPage.id: (context) => SignupPage(),
+          History.id: (context) => History(),
+          SignIn.id: (context) => SignIn(),
+          VehicleManagement.id: (context) => VehicleManagement(),
+          HomeSwipeup.id: (context) => HomeSwipeup(),
+          BookingDetails.id: (context) => BookingDetails(),
+          SignInn.id: (context) => SignInn(),
+          OnboardingScreens.id: (context) => OnboardingScreens(),
+          SetupGPSLocations.id: (context) => SetupGPSLocations(),
+          Notifications.id: (context) => Notifications(),
+          InviteFriends.id: (context) => InviteFriends(),
+          Settings.id: (context) => Settings(),
+          Profile.id: (context) => Profile(),
+          MyWallet.id: (context) => MyWallet(),
+          OtpVerification.id: (context) => OtpVerification(),
+        }
     );
   }
 }

@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:siren24/signup/signup.dart';
 
 class SetupGPSLocations extends StatefulWidget {
   const SetupGPSLocations({Key? key}) : super(key: key);
@@ -59,7 +60,14 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
             height: 42,
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              setState(() {
+                Navigator.pushReplacementNamed(
+                  context,
+                  SignupPage.id,
+                );
+              });
+            },
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 75),
               padding:EdgeInsets.symmetric(vertical: 12),
