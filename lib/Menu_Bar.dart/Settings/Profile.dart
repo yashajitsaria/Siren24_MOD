@@ -34,7 +34,7 @@ class _ProfileState extends State<Profile> {
                         'Edit',
                         style: TextStyle(
                           color: Color(0xFFFF8900),
-                          fontSize: 21,
+                          fontSize: MediaQuery.of(context).size.aspectRatio * 40,
                           fontFamily: 'SF UI Display',
                         ),
                       ),
@@ -59,7 +59,7 @@ class _ProfileState extends State<Profile> {
                         style: TextStyle(
                           fontFamily: 'SF UI Display',
                           fontWeight: FontWeight.bold,
-                          fontSize: 25,
+                          fontSize: MediaQuery.of(context).size.aspectRatio * 50,
                           color: Colors.black,
                         ),
                       ),
@@ -69,7 +69,8 @@ class _ProfileState extends State<Profile> {
                       Text(
                         'Gold Member',
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize:
+                              MediaQuery.of(context).size.aspectRatio * 36,
                           color: Color(0xFFBEC2CE),
                         ),
                       ),
@@ -97,7 +98,7 @@ class _ProfileState extends State<Profile> {
                   color: Color(0xFFBEC2CE),
                   fontWeight: FontWeight.bold,
                   fontFamily: 'SF UI Display',
-                  fontSize: 18,
+                  fontSize: MediaQuery.of(context).size.aspectRatio * 30,
                 ),
               ),
             ),
@@ -115,7 +116,11 @@ class _ProfileState extends State<Profile> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(
-                      left: 15, right: 10, top: 7, bottom: 7),
+                    left: 15,
+                    right: 10,
+                    top: 7,
+                    bottom: 7,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -133,7 +138,10 @@ class _ProfileState extends State<Profile> {
                                     'Username',
                                     style: TextStyle(
                                       fontFamily: 'SF UI Display',
-                                      fontSize: 18,
+                                      fontSize: MediaQuery.of(context)
+                                              .size
+                                              .aspectRatio *
+                                          36,
                                       color: Color(0xFF030303),
                                     ),
                                   ),
@@ -149,7 +157,8 @@ class _ProfileState extends State<Profile> {
                             'Martha Banks',
                             style: TextStyle(
                               fontFamily: 'SF UI Display',
-                              fontSize: 18,
+                              fontSize:
+                                  MediaQuery.of(context).size.aspectRatio * 36,
                               color: Color(0xFFBEC2CE),
                             ),
                           ),
@@ -196,7 +205,10 @@ class _ProfileState extends State<Profile> {
                                     'Phone number',
                                     style: TextStyle(
                                       fontFamily: 'SF UI Display',
-                                      fontSize: 18,
+                                      fontSize: MediaQuery.of(context)
+                                              .size
+                                              .aspectRatio *
+                                          36,
                                       color: Color(0xFF030303),
                                     ),
                                   ),
@@ -212,7 +224,8 @@ class _ProfileState extends State<Profile> {
                             '584-490-9153',
                             style: TextStyle(
                               fontFamily: 'SF UI Display',
-                              fontSize: 18,
+                              fontSize:
+                                  MediaQuery.of(context).size.aspectRatio * 36,
                               color: Color(0xFFBEC2CE),
                             ),
                           ),
@@ -259,7 +272,10 @@ class _ProfileState extends State<Profile> {
                                     'Email',
                                     style: TextStyle(
                                       fontFamily: 'SF UI Display',
-                                      fontSize: 18,
+                                      fontSize: MediaQuery.of(context)
+                                              .size
+                                              .aspectRatio *
+                                          36,
                                       color: Color(0xFF030303),
                                     ),
                                   ),
@@ -275,7 +291,8 @@ class _ProfileState extends State<Profile> {
                             'freeslab88@gmail.com',
                             style: TextStyle(
                               fontFamily: 'SF UI Display',
-                              fontSize: 18,
+                              fontSize:
+                                  MediaQuery.of(context).size.aspectRatio * 36,
                               color: Color(0xFFBEC2CE),
                             ),
                           ),
@@ -322,7 +339,10 @@ class _ProfileState extends State<Profile> {
                                     'Gender',
                                     style: TextStyle(
                                       fontFamily: 'SF UI Display',
-                                      fontSize: 18,
+                                      fontSize: MediaQuery.of(context)
+                                              .size
+                                              .aspectRatio *
+                                          36,
                                       color: Color(0xFF030303),
                                     ),
                                   ),
@@ -338,7 +358,8 @@ class _ProfileState extends State<Profile> {
                             'Female',
                             style: TextStyle(
                               fontFamily: 'SF UI Display',
-                              fontSize: 18,
+                              fontSize:
+                                  MediaQuery.of(context).size.aspectRatio * 36,
                               color: Color(0xFFBEC2CE),
                             ),
                           ),
@@ -385,7 +406,10 @@ class _ProfileState extends State<Profile> {
                                     'Birthday',
                                     style: TextStyle(
                                       fontFamily: 'SF UI Display',
-                                      fontSize: 18,
+                                      fontSize: MediaQuery.of(context)
+                                              .size
+                                              .aspectRatio *
+                                          36,
                                       color: Color(0xFF030303),
                                     ),
                                   ),
@@ -401,7 +425,8 @@ class _ProfileState extends State<Profile> {
                             'April 16, 1988',
                             style: TextStyle(
                               fontFamily: 'SF UI Display',
-                              fontSize: 18,
+                              fontSize:
+                                  MediaQuery.of(context).size.aspectRatio * 36,
                               color: Color(0xFFBEC2CE),
                             ),
                           ),

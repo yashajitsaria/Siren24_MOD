@@ -33,7 +33,7 @@ class _SettingsState extends State<Settings> {
           'Settings',
           style: TextStyle(
             fontFamily: 'SF UI Display',
-            fontSize: 20,
+            fontSize: MediaQuery.of(context).size.aspectRatio * 36,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
@@ -41,7 +41,7 @@ class _SettingsState extends State<Settings> {
       ),
       body: Container(
         color: Colors.grey[200],
-        height: 600,
+        height: MediaQuery.of(context).size.height * 5000,
         child: ListView(
           children: [
             Container(
@@ -68,7 +68,11 @@ class _SettingsState extends State<Settings> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(
-                        left: 18, right: 10, top: 12, bottom: 12),
+                      left: 18,
+                      right: 10,
+                      top: 12,
+                      bottom: 12,
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -80,7 +84,9 @@ class _SettingsState extends State<Settings> {
                               children: [
                                 Image.asset(
                                   'UIAssets/dp.png',
-                                  scale: 0.75,
+                                  scale:
+                                      MediaQuery.of(context).size.aspectRatio *
+                                          1.6,
                                 ),
                                 SizedBox(
                                   width: 15,
@@ -94,14 +100,20 @@ class _SettingsState extends State<Settings> {
                                       style: TextStyle(
                                         fontFamily: 'SF UI Display',
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 25,
+                                        fontSize: MediaQuery.of(context)
+                                                .size
+                                                .aspectRatio *
+                                            48,
                                         color: Colors.black,
                                       ),
                                     ),
                                     Text(
                                       'Gold Member',
                                       style: TextStyle(
-                                        fontSize: 18,
+                                        fontSize: MediaQuery.of(context)
+                                                .size
+                                                .aspectRatio *
+                                            32,
                                         color: Color(0xFFBEC2CE),
                                       ),
                                     ),
@@ -118,7 +130,8 @@ class _SettingsState extends State<Settings> {
                             Icon(
                               Icons.keyboard_arrow_right_rounded,
                               color: Colors.grey[400],
-                              size: 30,
+                              size:
+                                  MediaQuery.of(context).size.aspectRatio * 60,
                             ),
                           ],
                         ),
@@ -159,8 +172,12 @@ class _SettingsState extends State<Settings> {
                                     Padding(
                                       padding: const EdgeInsets.all(10.0),
                                       child: Container(
-                                        width: MediaQuery.of(context).size.width*0.04,
-                                        height: MediaQuery.of(context).size.height*0.04,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.069,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.04,
                                         decoration: BoxDecoration(
                                           color: Color(0xFFFF9100),
                                           borderRadius:
@@ -186,7 +203,10 @@ class _SettingsState extends State<Settings> {
                                       'Vehicle Management',
                                       style: TextStyle(
                                         fontFamily: 'SF Pro Text',
-                                        fontSize: 18,
+                                        fontSize: MediaQuery.of(context)
+                                                .size
+                                                .aspectRatio *
+                                            32,
                                         color: Colors.black,
                                       ),
                                     ),
@@ -203,7 +223,8 @@ class _SettingsState extends State<Settings> {
                             Icon(
                               Icons.keyboard_arrow_right_rounded,
                               color: Colors.grey[400],
-                              size: 30,
+                              size:
+                                  MediaQuery.of(context).size.aspectRatio * 60,
                             ),
                           ],
                         ),
@@ -233,8 +254,12 @@ class _SettingsState extends State<Settings> {
                                     Padding(
                                       padding: const EdgeInsets.all(10.0),
                                       child: Container(
-                                        width: 25,
-                                        height: 25,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.069,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.04,
                                         decoration: BoxDecoration(
                                           color: Color(0xFF4CD964),
                                           borderRadius:
@@ -260,7 +285,10 @@ class _SettingsState extends State<Settings> {
                                       'Document Management',
                                       style: TextStyle(
                                         fontFamily: 'SF Pro Text',
-                                        fontSize: 18,
+                                        fontSize: MediaQuery.of(context)
+                                                .size
+                                                .aspectRatio *
+                                            32,
                                         color: Colors.black,
                                       ),
                                     ),
@@ -277,7 +305,8 @@ class _SettingsState extends State<Settings> {
                             Icon(
                               Icons.keyboard_arrow_right_rounded,
                               color: Colors.grey[400],
-                              size: 30,
+                              size:
+                                  MediaQuery.of(context).size.aspectRatio * 60,
                             ),
                           ],
                         ),
@@ -307,8 +336,12 @@ class _SettingsState extends State<Settings> {
                                     Padding(
                                       padding: const EdgeInsets.all(10.0),
                                       child: Container(
-                                        width: 25,
-                                        height: 25,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.069,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.04,
                                         decoration: BoxDecoration(
                                           color: Color(0xFFFFCC00),
                                           borderRadius:
@@ -334,7 +367,10 @@ class _SettingsState extends State<Settings> {
                                       'Reviews',
                                       style: TextStyle(
                                         fontFamily: 'SF Pro Text',
-                                        fontSize: 18,
+                                        fontSize: MediaQuery.of(context)
+                                                .size
+                                                .aspectRatio *
+                                            32,
                                         color: Colors.black,
                                       ),
                                     ),
@@ -351,7 +387,8 @@ class _SettingsState extends State<Settings> {
                             Icon(
                               Icons.keyboard_arrow_right_rounded,
                               color: Colors.grey[400],
-                              size: 30,
+                              size:
+                                  MediaQuery.of(context).size.aspectRatio * 60,
                             ),
                           ],
                         ),
@@ -381,8 +418,12 @@ class _SettingsState extends State<Settings> {
                                     Padding(
                                       padding: const EdgeInsets.all(10.0),
                                       child: Container(
-                                        width: 25,
-                                        height: 25,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.069,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.04,
                                         decoration: BoxDecoration(
                                           color: Color(0xFF007AFF),
                                           borderRadius:
@@ -408,7 +449,10 @@ class _SettingsState extends State<Settings> {
                                       'Language',
                                       style: TextStyle(
                                         fontFamily: 'SF Pro Text',
-                                        fontSize: 18,
+                                        fontSize: MediaQuery.of(context)
+                                                .size
+                                                .aspectRatio *
+                                            32,
                                         color: Colors.black,
                                       ),
                                     ),
@@ -425,7 +469,8 @@ class _SettingsState extends State<Settings> {
                             Icon(
                               Icons.keyboard_arrow_right_rounded,
                               color: Colors.grey[400],
-                              size: 30,
+                              size:
+                                  MediaQuery.of(context).size.aspectRatio * 60,
                             ),
                           ],
                         ),
@@ -466,8 +511,12 @@ class _SettingsState extends State<Settings> {
                                     Padding(
                                       padding: const EdgeInsets.all(10.0),
                                       child: Container(
-                                        width: 25,
-                                        height: 25,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.069,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.04,
                                         decoration: BoxDecoration(
                                           color: Color(0xFF5AC8FA),
                                           borderRadius:
@@ -493,7 +542,10 @@ class _SettingsState extends State<Settings> {
                                       'Notifications',
                                       style: TextStyle(
                                         fontFamily: 'SF Pro Text',
-                                        fontSize: 18,
+                                        fontSize: MediaQuery.of(context)
+                                                .size
+                                                .aspectRatio *
+                                            32,
                                         color: Colors.black,
                                       ),
                                     ),
@@ -510,7 +562,8 @@ class _SettingsState extends State<Settings> {
                             Icon(
                               Icons.keyboard_arrow_right_rounded,
                               color: Colors.grey[400],
-                              size: 30,
+                              size:
+                                  MediaQuery.of(context).size.aspectRatio * 60,
                             ),
                           ],
                         ),
@@ -540,8 +593,12 @@ class _SettingsState extends State<Settings> {
                                     Padding(
                                       padding: const EdgeInsets.all(10.0),
                                       child: Container(
-                                        width: 25,
-                                        height: 25,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.069,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.04,
                                         decoration: BoxDecoration(
                                           color: Color(0xFF8F8E94),
                                           borderRadius:
@@ -567,7 +624,10 @@ class _SettingsState extends State<Settings> {
                                       'Terms & Privacy Policy',
                                       style: TextStyle(
                                         fontFamily: 'SF Pro Text',
-                                        fontSize: 18,
+                                        fontSize: MediaQuery.of(context)
+                                                .size
+                                                .aspectRatio *
+                                            32,
                                         color: Colors.black,
                                       ),
                                     ),
@@ -584,7 +644,8 @@ class _SettingsState extends State<Settings> {
                             Icon(
                               Icons.keyboard_arrow_right_rounded,
                               color: Colors.grey[400],
-                              size: 30,
+                              size:
+                                  MediaQuery.of(context).size.aspectRatio * 60,
                             ),
                           ],
                         ),
@@ -614,8 +675,12 @@ class _SettingsState extends State<Settings> {
                                     Padding(
                                       padding: const EdgeInsets.all(10.0),
                                       child: Container(
-                                        width: 25,
-                                        height: 25,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.069,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.04,
                                         decoration: BoxDecoration(
                                           color: Color(0xFFFF2D55),
                                           borderRadius:
@@ -640,7 +705,10 @@ class _SettingsState extends State<Settings> {
                                     Text(
                                       'Contact us',
                                       style: TextStyle(
-                                        fontSize: 18,
+                                        fontSize: MediaQuery.of(context)
+                                                .size
+                                                .aspectRatio *
+                                            32,
                                         fontFamily: 'SF Pro Text',
                                         color: Colors.black,
                                       ),
@@ -658,7 +726,8 @@ class _SettingsState extends State<Settings> {
                             Icon(
                               Icons.keyboard_arrow_right_rounded,
                               color: Colors.grey[400],
-                              size: 30,
+                              size:
+                                  MediaQuery.of(context).size.aspectRatio * 60,
                             ),
                           ],
                         ),
