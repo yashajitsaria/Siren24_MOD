@@ -1,4 +1,4 @@
-import 'package:siren24/history/history.dart';
+
 import 'package:siren24/signup/signup.dart';
 import 'package:flutter/material.dart';
 
@@ -30,6 +30,11 @@ class _SignInState extends State<SignIn> {
               clipBehavior: Clip.none,
               children: [
 
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  color: Colors.white,
+                ),
                 //background stack
                 Container(
                   width: MediaQuery.of(context).size.width,
@@ -145,14 +150,9 @@ class _SignInState extends State<SignIn> {
                             child: InkWell(
                               onTap: (){
                                 setState(() {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>SignupPage()));
+                                  Navigator.pushReplacementNamed(context, SignupPage.id);
                                 });
                               },
-                              // onLongPress: (){
-                              //   setState(() {
-                              //     Navigator.push(context, MaterialPageRoute(builder: (context)=>SignupPage()));
-                              //   });
-                              // },
                               child: Container(
                                 decoration: const BoxDecoration(
                                   color: Color(0xff242A37),
