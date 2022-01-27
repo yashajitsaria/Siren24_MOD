@@ -1,5 +1,5 @@
+import 'package:siren24/optverification/otpverification.dart';
 import 'package:siren24/signup/signin.dart';
-import 'package:siren24/signup/signin1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -211,7 +211,7 @@ class _SignupPageState extends State<SignupPage> {
                                       child: GestureDetector(
                                         onTap: () {
                                           setState(() {
-                                            Navigator.push(context, MaterialPageRoute(builder: (context)=>SignIn()));
+                                            Navigator.pushReplacementNamed(context, OtpVerification.id);
                                           });
                                         },
                                         child: Container(

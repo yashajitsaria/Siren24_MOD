@@ -34,7 +34,8 @@ class Siren24 extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
 
-        initialRoute: InviteFriends.id,
+          initialRoute: SplashScreen.id,
+        // initialRoute: PaymentMethod.id,
         // initialRoute: HomeSwipeup.id,
         //   initialRoute: History.id,
         // initialRoute: Notifications.id,
@@ -43,7 +44,7 @@ class Siren24 extends StatelessWidget {
         // initialRoute: Profile.id,
         // initialRoute: VehicleManagement.id,
         // initialRoute: MyWallet.id,
-      // initialRoute: OtpVerification.id,
+        // initialRoute: OtpVerification.id,
         routes: {
           SplashScreen.id: (context) => SplashScreen(),
           OnboardingScreens.id: (context) => OnboardingScreens(),
