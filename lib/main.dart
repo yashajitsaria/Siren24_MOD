@@ -34,7 +34,7 @@ class Siren24 extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
 
-        initialRoute: SplashScreen.id,
+        initialRoute: PaymentMethod.id,
         // initialRoute: HomeSwipeup.id,
         //   initialRoute: History.id,
         // initialRoute: Notifications.id,
@@ -46,21 +46,22 @@ class Siren24 extends StatelessWidget {
       // initialRoute: OtpVerification.id,
         routes: {
           SplashScreen.id: (context) => SplashScreen(),
-          SignupPage.id: (context) => SignupPage(),
-          History.id: (context) => History(),
-          SignIn.id: (context) => SignIn(),
-          VehicleManagement.id: (context) => VehicleManagement(),
-          HomeSwipeup.id: (context) => HomeSwipeup(),
-          BookingDetails.id: (context) => BookingDetails(),
-          SignInn.id: (context) => SignInn(),
           OnboardingScreens.id: (context) => OnboardingScreens(),
           SetupGPSLocations.id: (context) => SetupGPSLocations(),
+          SignIn.id: (context) => SignIn(),
+          OtpVerification.id: (context) => OtpVerification(),
+          SignInn.id: (context) => SignInn(),
+          SignupPage.id: (context) => SignupPage(),
+          HomeSwipeup.id: (context) => HomeSwipeup(),
+          History.id: (context) => History(),
+          BookingDetails.id: (context) => BookingDetails(),
+          Settings.id: (context) => Settings(),
+          VehicleManagement.id: (context) => VehicleManagement(),
           Notifications.id: (context) => Notifications(),
           InviteFriends.id: (context) => InviteFriends(),
-          Settings.id: (context) => Settings(),
           Profile.id: (context) => Profile(),
           MyWallet.id: (context) => MyWallet(),
-          OtpVerification.id: (context) => OtpVerification(),
+          PaymentMethod.id: (context) => PaymentMethod(),
         }
     );
   }
