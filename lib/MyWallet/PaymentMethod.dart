@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -143,250 +143,270 @@ class _PaymentMethodState extends State<PaymentMethod> {
               vertical: 12,
             ),
             child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(7),
-                border: Border.all(
-                  color: Color(0xFFE0E0E0),
-                  width: 1,
-                ),
-              ),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: Row(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              SizedBox(
-                                width:
-                                    MediaQuery.of(context).size.width * 0.025,
-                              ),
-                              Stack(
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 10,
-                                    ),
-                                    child: Container(
-                                      width: 50,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFF1F2F6),
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                      ),
-                                      child: Align(
-                                        alignment: Alignment.center,
-                                        child: Image.asset(
-                                          'UIAssets/cc-visa.png',
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.05,
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    '**** **** **** 3765',
-                                    style: TextStyle(
-                                      fontSize: MediaQuery.of(context)
-                                              .size
-                                              .aspectRatio *
-                                          32,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  Text(
-                                    'VISA',
-                                    style: TextStyle(
-                                      color: Color(0xFFBEC2CE),
-                                      fontSize: MediaQuery.of(context)
-                                              .size
-                                              .aspectRatio *
-                                          28,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 18),
-                    height: 1,
+              height: 375,
+              child: ListView.builder(
+                itemCount: 2,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: Row(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              SizedBox(
-                                width:
-                                    MediaQuery.of(context).size.width * 0.025,
-                              ),
-                              Stack(
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 10,
-                                    ),
-                                    child: Container(
-                                      width: 50,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFF1F2F6),
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                      ),
-                                      child: Align(
-                                        alignment: Alignment.center,
-                                        child: Image.asset(
-                                          'UIAssets/cc-paypal.png',
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.05,
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'pfeffer_ellen@balistreri.net',
-                                    style: TextStyle(
-                                      fontSize: MediaQuery.of(context)
-                                              .size
-                                              .aspectRatio *
-                                          32,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  Text(
-                                    'Paypal',
-                                    style: TextStyle(
-                                      color: Color(0xFFBEC2CE),
-                                      fontSize: MediaQuery.of(context)
-                                              .size
-                                              .aspectRatio *
-                                          28,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(7),
+                      border: Border.all(
+                        color: Color(0xFFE0E0E0),
+                        width: 1,
                       ),
                     ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 18),
-                    height: 1,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: Row(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              SizedBox(
-                                width:
-                                    MediaQuery.of(context).size.width * 0.025,
-                              ),
-                              Stack(
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 10,
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(10),
+                          child: GestureDetector(
+                            onTap: () {},
+                            child: Row(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.025,
                                     ),
-                                    child: Container(
-                                      width: 50,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFF1F2F6),
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                      ),
-                                      child: Align(
-                                        alignment: Alignment.center,
-                                        child: Image.asset(
-                                          'UIAssets/cc-mastercard.png',
-                                          color: Colors.black,
+                                    Stack(
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: 10,
+                                          ),
+                                          child: Container(
+                                            width: 50,
+                                            height: 50,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFFF1F2F6),
+                                              borderRadius:
+                                                  BorderRadius.circular(100),
+                                            ),
+                                            child: Align(
+                                              alignment: Alignment.center,
+                                              child: Image.asset(
+                                                'UIAssets/cc-visa.png',
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                          ),
                                         ),
-                                      ),
+                                      ],
                                     ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.05,
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    '**** **** **** 8562',
-                                    style: TextStyle(
-                                      fontSize: MediaQuery.of(context)
-                                              .size
-                                              .aspectRatio *
-                                          32,
-                                      color: Colors.black,
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.05,
                                     ),
-                                  ),
-                                  Text(
-                                    'Master Card',
-                                    style: TextStyle(
-                                      color: Color(0xFFBEC2CE),
-                                      fontSize: MediaQuery.of(context)
-                                              .size
-                                              .aspectRatio *
-                                          28,
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          '**** **** **** 3765',
+                                          style: TextStyle(
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .aspectRatio *
+                                                32,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                        Text(
+                                          'VISA',
+                                          style: TextStyle(
+                                            color: Color(0xFFBEC2CE),
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .aspectRatio *
+                                                28,
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ],
-                      ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 18),
+                          height: 1,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(10),
+                          child: GestureDetector(
+                            onTap: () {},
+                            child: Row(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.025,
+                                    ),
+                                    Stack(
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: 10,
+                                          ),
+                                          child: Container(
+                                            width: 50,
+                                            height: 50,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFFF1F2F6),
+                                              borderRadius:
+                                                  BorderRadius.circular(100),
+                                            ),
+                                            child: Align(
+                                              alignment: Alignment.center,
+                                              child: Image.asset(
+                                                'UIAssets/cc-paypal.png',
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.05,
+                                    ),
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'pfeffer_ellen@balistreri.net',
+                                          style: TextStyle(
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .aspectRatio *
+                                                32,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                        Text(
+                                          'Paypal',
+                                          style: TextStyle(
+                                            color: Color(0xFFBEC2CE),
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .aspectRatio *
+                                                28,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 18),
+                          height: 1,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(10),
+                          child: GestureDetector(
+                            onTap: () {},
+                            child: Row(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.025,
+                                    ),
+                                    Stack(
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: 10,
+                                          ),
+                                          child: Container(
+                                            width: 50,
+                                            height: 50,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFFF1F2F6),
+                                              borderRadius:
+                                                  BorderRadius.circular(100),
+                                            ),
+                                            child: Align(
+                                              alignment: Alignment.center,
+                                              child: Image.asset(
+                                                'UIAssets/cc-mastercard.png',
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.05,
+                                    ),
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          '**** **** **** 8562',
+                                          style: TextStyle(
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .aspectRatio *
+                                                32,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                        Text(
+                                          'Master Card',
+                                          style: TextStyle(
+                                            color: Color(0xFFBEC2CE),
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .aspectRatio *
+                                                28,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
+                  );
+                },
               ),
             ),
           ),

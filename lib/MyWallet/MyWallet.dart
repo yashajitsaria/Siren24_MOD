@@ -25,7 +25,7 @@ class _MyWalletState extends State<MyWallet> {
               color: Color(0xFFFFD428),
             ),
             alignment: Alignment.center,
-            height: 275,
+            height: MediaQuery.of(context).size.height*0.42,
             child: Center(
               child: Column(
                 children: [
@@ -52,12 +52,12 @@ class _MyWalletState extends State<MyWallet> {
                       ),
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    width: 302,
-                    height: 30,
+                    width: MediaQuery.of(context).size.aspectRatio*720,
+                    height: MediaQuery.of(context).size.aspectRatio*60,
                     child: Row(
                       children: [
                         Container(
-                          width: 150,
+                          width: MediaQuery.of(context).size.aspectRatio*300,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(3),
                             color: Color(0xFF242A37),
@@ -73,7 +73,7 @@ class _MyWalletState extends State<MyWallet> {
                           ),
                         ),
                         Container(
-                          width: 150,
+                          width: MediaQuery.of(context).size.aspectRatio*300,
                           child: Center(
                             child: Text(
                               'Discount',
