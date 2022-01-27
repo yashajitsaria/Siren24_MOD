@@ -33,7 +33,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
           style: TextStyle(
             fontFamily: 'SF UI Display',
             fontSize: MediaQuery.of(context).size.aspectRatio * 36,
-            fontWeight: FontWeight.bold,
+            // fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
         ),
