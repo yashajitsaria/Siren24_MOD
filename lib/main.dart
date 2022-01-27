@@ -61,6 +61,7 @@ class Siren24 extends StatelessWidget {
           InviteFriends.id: (context) => InviteFriends(),
           Profile.id: (context) => Profile(),
           MyWallet.id: (context) => MyWallet(),
+          PaymentMethod.id: (context) => PaymentMethod(),
         }
     );
   }
