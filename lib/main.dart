@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'; 
 import 'package:siren24/Invite%20Friends/InviteFriends.dart';
 import 'package:siren24/Menu_Bar.dart/MenuBar.dart';
 import 'package:siren24/Menu_Bar.dart/Notifications.dart';
@@ -34,7 +34,7 @@ class Siren24 extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
 
-          initialRoute: Notifications.id,
+          initialRoute: Settings.id,
         // initialRoute: PaymentMethod.id,
         // initialRoute: HomeSwipeup.id,
         //   initialRoute: History.id,
