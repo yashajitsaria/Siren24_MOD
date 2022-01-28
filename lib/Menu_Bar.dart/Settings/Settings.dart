@@ -16,16 +16,8 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MenuBar(),
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            MenuBar();
-          },
-          icon: ImageIcon(
-            AssetImage('UIAssets/menubar.png'),
-            color: Color(0xFFFFCC00),
-          ),
-        ),
         backgroundColor: Colors.white,
         shadowColor: Colors.transparent,
         centerTitle: true,

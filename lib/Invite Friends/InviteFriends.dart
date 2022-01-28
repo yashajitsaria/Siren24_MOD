@@ -28,7 +28,7 @@ class _InviteFriendsState extends State<InviteFriends> {
             bottom: 25,
             left: 100,
             right: 100,
-            top: MediaQuery.of(context).size.aspectRatio*1000,
+            top: MediaQuery.of(context).size.aspectRatio * 1000,
           ),
           behavior: SnackBarBehavior.floating,
           content: Center(
@@ -47,20 +47,10 @@ class _InviteFriendsState extends State<InviteFriends> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MenuBar(),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
-        leading: IconButton(
-          onPressed: () {
-            MenuBar();
-          },
-          icon: ImageIcon(
-            AssetImage(
-              'UIAssets/menubar.png',
-            ),
-            color: Color(0xFFFFD428),
-          ),
-        ),
         title: Padding(
           padding: EdgeInsets.only(left: 60),
           child: Text(

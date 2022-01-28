@@ -2,8 +2,14 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:siren24/Invite%20Friends/InviteFriends.dart';
+import 'package:siren24/Menu_Bar.dart/Notifications.dart';
+import 'package:siren24/MyWallet/MyWallet.dart';
+
+import 'Settings/Settings.dart';
 
 class MenuBar extends StatefulWidget {
+  static String id = 'menu_bar';
   const MenuBar({
     Key? key,
   }) : super(key: key);
@@ -24,60 +30,87 @@ class _MenuBarState extends State<MenuBar> {
             ),
             child: Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Row(
-                    children: [
-                      Center(
-                        child: Image.asset('UIAssets/dp.png'),
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            'Martha Banks',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25,
-                              color: Colors.black,
+                  Padding(
+                    padding: EdgeInsets.only(
+                      bottom: 5,
+                      top: 5,
+                      left: 5,
+                      right: 5,
+                    ),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Image.asset(
+                          'UIAssets/dp.png',
+                          scale: 0.7,
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Martha Banks',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 21,
+                                color: Colors.black,
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(12),
-                            child: Container(
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Container(
                               decoration: BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(25)),
+                                color: Colors.white,
                               ),
-                              color: Colors.white,
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.star_rounded,
-                                    color: Color(0xFFFFD428),
-                                    size: 12,
-                                  ),
-                                  Text(
-                                    'Gold Member',
-                                    style: TextStyle(
+                              child: Padding(
+                                padding: const EdgeInsets.all(7),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Icon(
+                                      Icons.star_rounded,
                                       color: Color(0xFFFFD428),
-                                      fontSize: 12,
+                                      size: 15,
                                     ),
-                                  )
-                                ],
+                                    Text(
+                                      'Gold Member',
+                                      style: TextStyle(
+                                        color: Color(0xFFFFD428),
+                                        fontSize: 15,
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                        SizedBox(
+                          width: 50,
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Center(
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            // Image.asset('UIAssets/time.png',),
                             Icon(
                               Icons.access_time,
                               color: Colors.black,
@@ -85,7 +118,9 @@ class _MenuBarState extends State<MenuBar> {
                             Text(
                               '10.2',
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize:
+                                    MediaQuery.of(context).size.aspectRatio *
+                                        30,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -93,19 +128,21 @@ class _MenuBarState extends State<MenuBar> {
                               'Hours online',
                               style: TextStyle(
                                 color: Color(0xFF242E42),
-                                fontSize: 12,
+                                fontSize:
+                                    MediaQuery.of(context).size.aspectRatio *
+                                        24,
                               ),
                             ),
                           ],
                         ),
                       ),
+                      SizedBox(
+                        width: 7,
+                      ),
                       Center(
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Image.asset(
-                              'UIAssets/speed.png',
-                              color: Colors.white,
-                            ),
                             Icon(
                               Icons.speed,
                               color: Colors.black,
@@ -113,7 +150,9 @@ class _MenuBarState extends State<MenuBar> {
                             Text(
                               '30 KM',
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize:
+                                    MediaQuery.of(context).size.aspectRatio *
+                                        30,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -121,23 +160,31 @@ class _MenuBarState extends State<MenuBar> {
                               'Total Distance',
                               style: TextStyle(
                                 color: Color(0xFF242E42),
-                                fontSize: 12,
+                                fontSize:
+                                    MediaQuery.of(context).size.aspectRatio *
+                                        24,
                               ),
                             ),
                           ],
                         ),
                       ),
+                      SizedBox(
+                        width: 7,
+                      ),
                       Center(
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Image.asset(
-                              'UIAssets/blacklist.png',
+                            Icon(
+                              Icons.speed,
                               color: Colors.black,
                             ),
                             Text(
                               '20',
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize:
+                                    MediaQuery.of(context).size.aspectRatio *
+                                        30,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -145,7 +192,9 @@ class _MenuBarState extends State<MenuBar> {
                               'Total Jobs',
                               style: TextStyle(
                                 color: Color(0xFF242E42),
-                                fontSize: 12,
+                                fontSize:
+                                    MediaQuery.of(context).size.aspectRatio *
+                                        24,
                               ),
                             ),
                           ],
@@ -158,20 +207,26 @@ class _MenuBarState extends State<MenuBar> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 25, top: 25),
+            padding: const EdgeInsets.only(left: 15, top: 15),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ListTile(
                   title: Row(
                     children: [
-                      Image.asset('UIAssets/home.png'),
+                      Image.asset(
+                        'UIAssets/home.png',
+                        color: Color(0xFFD8D8D8),
+                        scale: 0.9,
+                      ),
                       SizedBox(
                         width: 15,
                       ),
                       Text(
                         'Home',
-                        style: TextStyle(),
+                        style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.aspectRatio*35,
+                        ),
                       ),
                     ],
                   ),
@@ -180,28 +235,45 @@ class _MenuBarState extends State<MenuBar> {
                 ListTile(
                   title: Row(
                     children: [
-                      Image.asset('UIAssets/wallet.png'),
+                      Image.asset(
+                        'UIAssets/wallet.png',
+                        color: Color(0xFFD8D8D8),
+                        scale: 0.9,
+                      ),
                       SizedBox(
                         width: 15,
                       ),
                       Text(
                         'My Wallet',
-                        style: TextStyle(),
+                        style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.aspectRatio*35,
+                        ),
                       ),
                     ],
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    setState(() {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => MyWallet()));
+                    });
+                  },
                 ),
                 ListTile(
                   title: Row(
                     children: [
-                      Image.asset('UIAssets/History.png'),
+                      Image.asset(
+                        'UIAssets/History.png',
+                        color: Color(0xFFD8D8D8),
+                        scale: 0.9,
+                      ),
                       SizedBox(
                         width: 15,
                       ),
                       Text(
                         'History',
-                        style: TextStyle(),
+                        style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.aspectRatio*35,
+                        ),
                       ),
                     ],
                   ),
@@ -210,58 +282,101 @@ class _MenuBarState extends State<MenuBar> {
                 ListTile(
                   title: Row(
                     children: [
-                      Image.asset('UIAssets/notification.png'),
+                      Image.asset(
+                        'UIAssets/notification.png',
+                        color: Color(0xFFD8D8D8),
+                        scale: 0.9,
+                      ),
                       SizedBox(
                         width: 15,
                       ),
                       Text(
                         'Notifications',
-                        style: TextStyle(),
+                        style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.aspectRatio*35,
+                        ),
                       ),
                     ],
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    setState(() {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Notifications()));
+                    });
+                  },
                 ),
                 ListTile(
                   title: Row(
                     children: [
-                      Image.asset('UIAssets/gift.png'),
+                      Image.asset(
+                        'UIAssets/gift.png',
+                        color: Color(0xFFD8D8D8),
+                        scale: 0.9,
+                      ),
                       SizedBox(
                         width: 15,
                       ),
                       Text(
                         'Invite Friends',
-                        style: TextStyle(),
+                        style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.aspectRatio*35,
+                        ),
                       ),
                     ],
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    setState(() {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => InviteFriends()));
+                    });
+                  },
                 ),
                 ListTile(
                   title: Row(
                     children: [
-                      Image.asset('UIAssets/settings.png'),
+                      Image.asset(
+                        'UIAssets/settings.png',
+                        color: Color(0xFFD8D8D8),
+                        scale: 0.9,
+                      ),
                       SizedBox(
                         width: 15,
                       ),
                       Text(
                         'Settings',
-                        style: TextStyle(),
+                        style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.aspectRatio*35,
+                        ),
                       ),
                     ],
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    setState(() {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Settings()));
+                    });
+                  },
                 ),
                 ListTile(
                   title: Row(
                     children: [
-                      Image.asset('UIAssets/logout.png'),
+                      Image.asset(
+                        'UIAssets/logout.png',
+                        color: Color(0xFFD8D8D8),
+                        scale: 0.9,
+                      ),
                       SizedBox(
                         width: 15,
                       ),
                       Text(
                         'Logout',
-                        style: TextStyle(),
+                        style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.aspectRatio*35,
+                        ),
                       ),
                     ],
                   ),
