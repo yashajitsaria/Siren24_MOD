@@ -1,12 +1,12 @@
-// ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables, empty_catches, unused_local_variable
+// ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables, empty_catches, unused_local_variable, unused_import, avoid_print, unused_element, unused_field
 
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/src/provider.dart';
-import 'package:location/location.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:siren24/State/location.dart';
 import 'package:siren24/signup/signup.dart';
+import 'package:geolocator/geolocator.dart';
 
 class SetupGPSLocations extends StatefulWidget {
   const SetupGPSLocations({Key? key}) : super(key: key);
@@ -17,19 +17,10 @@ class SetupGPSLocations extends StatefulWidget {
 }
 
 class _SetupGPSLocationsState extends State<SetupGPSLocations> {
-  late String address;
-  late double userLongitude;
-  late double userLatitude;
-  // late Coordinates userCoordinates;
 
-  // Address useradd;
-  // Future<Address> getAddress(Coordinates coordinates) async {
-  //   final uA = await Geocoder.local.findAddressesFromCoordinates(coordinates);
-
-  //   useradd = uA.first;
-
-  //   return useradd;
-  // }
+  Future<void> _updatePosition() async{
+    Position pos = await determinePosition();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,12 +71,7 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
           ),
           GestureDetector(
             onTap: () {
-              setState(() {
-                Navigator.pushReplacementNamed(
-                  context,
-                  SignupPage.id,
-                );
-              });
+              _updatePosition();
             },
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 75),
@@ -118,7 +104,14 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
                   color: Color(0xFFBEC2CE),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  Navigator.pushReplacementNamed(
+                    context,
+                    SignupPage.id,
+                  );
+                });
+              },
               // onPressed: () async {
               //   try {
               //     // final location = await context.read(locationProvider.future);

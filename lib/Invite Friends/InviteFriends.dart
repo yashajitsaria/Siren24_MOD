@@ -3,7 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+// import 'package:share_plus/share_plus.dart';
 import '../Menu_Bar.dart/MenuBar.dart';
 
 class InviteFriends extends StatefulWidget {
@@ -43,6 +43,16 @@ class _InviteFriendsState extends State<InviteFriends> {
       ),
     );
   }
+
+  // void share(BuildContext context) {
+  //   String inviteCode = '0905070017';
+  //   RenderBox box = context.findRenderObject() as RenderBox;
+  //   Share.share(
+  //     inviteCode,
+  //     subject: 'Invite Code',
+  //     sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size,
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -182,7 +192,9 @@ class _InviteFriendsState extends State<InviteFriends> {
               height: 15,
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                // share(context);
+              },
               child: Container(
                 width: 275,
                 height: 45,
