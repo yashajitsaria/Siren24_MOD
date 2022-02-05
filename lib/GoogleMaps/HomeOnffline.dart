@@ -4,6 +4,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:siren24/GoogleMaps/GMaps_HomePickUp.dart';
 import 'package:siren24/Menu_Bar.dart/MenuBar.dart';
 import 'package:flutter_switch/flutter_switch.dart';
@@ -23,63 +24,66 @@ class _HomeOfflineState extends State<HomeOffline> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Scaffold(
-        extendBodyBehindAppBar: true,
-        drawer: MenuBar(),
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(120),
-          child: ClipRRect(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
-              child: AppBar(
-                iconTheme: IconThemeData(color: Colors.black),
-                bottom: PreferredSize(
-                  child: OfflineNotif(),
-                  preferredSize: Size.fromHeight(48),
+    return ScreenUtilInit(
+      designSize: Size(375, 812),
+      builder: () => Scaffold(
+        body: Scaffold(
+          extendBodyBehindAppBar: true,
+          drawer: MenuBar(),
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(120),
+            child: ClipRRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+                child: AppBar(
+                  iconTheme: IconThemeData(color: Colors.black),
+                  bottom: PreferredSize(
+                    child: OfflineNotif(),
+                    preferredSize: Size.fromHeight(48),
+                  ),
+                  elevation: 0,
+                  backgroundColor: Colors.transparent,
+                  shadowColor: Colors.white,
+                  centerTitle: true,
+                  title: Text(
+                    'Offline',
+                    style: TextStyle(
+                      fontFamily: 'SF UI Display',
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  actions: [
+                    FlutterSwitch(
+                      activeColor: Color(0xFFFF8900),
+                      inactiveToggleColor: Colors.white,
+                      activeToggleColor: Colors.white,
+                      width: 62.w,
+                      height: 42.h,
+                      valueFontSize: 25.0,
+                      toggleSize: 30,
+                      value: status,
+                      borderRadius: 30.0,
+                      padding: 3,
+                      showOnOff: false,
+                      onToggle: (val) {
+                        setState(() {
+                          status = val;
+                        });
+                      },
+                    ),
+                    SizedBox(
+                      width: 25,
+                    ),
+                  ],
                 ),
-                elevation: 0,
-                backgroundColor: Colors.transparent,
-                shadowColor: Colors.white,
-                centerTitle: true,
-                title: Text(
-                  'Offline',
-                  style: TextStyle(
-                    fontFamily: 'SF UI Display',
-                    fontSize: MediaQuery.of(context).size.aspectRatio * 45,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-                actions: [
-                  FlutterSwitch(
-                    activeColor: Color(0xFFFF8900),
-                    inactiveToggleColor: Colors.white,
-                    activeToggleColor: Colors.white,
-                    width: 60,
-                    height: 32,
-                    valueFontSize: 25.0,
-                    toggleSize: 30,
-                    value: status,
-                    borderRadius: 30.0,
-                    padding: 3,
-                    showOnOff: false,
-                    onToggle: (val) {
-                      setState(() {
-                        status = val;
-                      });
-                    },
-                  ),
-                  SizedBox(
-                    width: 25,
-                  ),
-                ],
               ),
             ),
           ),
-        ),
-        body: SlidingPanelHomeOffline(
-          child: GMapsHomeOffline(),
+          body: SlidingPanelHomeOffline(
+            child: GMapsHomeOffline(),
+          ),
         ),
       ),
     );
@@ -138,13 +142,14 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                           'Jeremiah Curtis',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 18,
+                            fontSize: 20.sp,
                             color: Colors.black,
                           ),
                         ),
                         Text(
                           'ALC AMB',
                           style: TextStyle(
+                            fontSize: 16.sp,
                             color: Color(0xFFBEC2CE),
                           ),
                         ),
@@ -161,7 +166,7 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                     'Earned',
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 18,
+                      fontSize: 16.sp,
                     ),
                   ),
                 ),
@@ -191,8 +196,7 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                           Text(
                             '10.2',
                             style: TextStyle(
-                              fontSize:
-                                  MediaQuery.of(context).size.aspectRatio * 30,
+                              fontSize: 21.sp,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -200,8 +204,7 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                             'Hours online',
                             style: TextStyle(
                               color: Color(0xFF242E42),
-                              fontSize:
-                                  MediaQuery.of(context).size.aspectRatio * 24,
+                              fontSize: 14.sp,
                             ),
                           ),
                         ],
@@ -221,8 +224,7 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                           Text(
                             '30 KM',
                             style: TextStyle(
-                              fontSize:
-                                  MediaQuery.of(context).size.aspectRatio * 30,
+                              fontSize: 21.sp,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -230,8 +232,7 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                             'Total Distance',
                             style: TextStyle(
                               color: Color(0xFF242E42),
-                              fontSize:
-                                  MediaQuery.of(context).size.aspectRatio * 24,
+                              fontSize: 14.sp,
                             ),
                           ),
                         ],
@@ -251,8 +252,7 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                           Text(
                             '20',
                             style: TextStyle(
-                              fontSize:
-                                  MediaQuery.of(context).size.aspectRatio * 30,
+                              fontSize: 21.sp,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -260,8 +260,7 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                             'Total Jobs',
                             style: TextStyle(
                               color: Color(0xFF242E42),
-                              fontSize:
-                                  MediaQuery.of(context).size.aspectRatio * 24,
+                              fontSize: 14.sp,
                             ),
                           ),
                         ],
@@ -288,7 +287,7 @@ class OfflineNotif extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       child: Container(
-        height: 62,
+        height: 76.h,
         decoration: BoxDecoration(
           color: Color(0xFFFF8900),
           borderRadius: BorderRadius.circular(12),

@@ -1,14 +1,17 @@
 // ignore_for_file: file_names, duplicate_ignore, prefer_const_literals_to_create_immutables
 // ignore_for_file: prefer_const_constructors, unused_import, file_names
 
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:siren24/GoogleMaps/GMaps_HomePickUp.dart';
 import 'package:siren24/Menu_Bar.dart/MenuBar.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:geolocator/geolocator.dart';
 import 'GMaps_HomeOffline.dart';
 
 class HomePickUp extends StatefulWidget {
@@ -21,13 +24,25 @@ class HomePickUp extends StatefulWidget {
 class _HomePickUpState extends State<HomePickUp> {
   bool status = false;
 
+  // static Stream<Position> getPositionStream({
+  //   LocationSettings? locationSettings,
+  // }) =>
+  //     GeolocatorPlatform.instance.getPositionStream(
+  //       locationSettings: locationSettings,
+  //     );
+
   @override
   Widget build(BuildContext context) {
+    // StreamSubscription<Position> positionStream =
+    //     getPositionStream().listen((Position position) {
+    //   // Handle position changes
+    // });
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       drawer: MenuBar(),
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(120),
+        preferredSize: Size.fromHeight(110),
         child: ClipRRect(
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
@@ -73,7 +88,7 @@ class SlidingPanelHomePickUp extends StatelessWidget {
     return SlidingUpPanel(
       boxShadow: [BoxShadow(blurRadius: 0)],
       borderRadius: BorderRadius.circular(15),
-      minHeight: 75,
+      minHeight: 15,
       maxHeight: 500,
       body: child,
       panel: Column(
@@ -236,7 +251,9 @@ class SlidingPanelHomePickUp extends StatelessWidget {
             height: 15,
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              // positionStream.cancel();
+            },
             child: Container(
               width: 275,
               height: 45,

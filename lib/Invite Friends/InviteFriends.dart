@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 // import 'package:share_plus/share_plus.dart';
 import '../Menu_Bar.dart/MenuBar.dart';
 
@@ -56,164 +57,175 @@ class _InviteFriendsState extends State<InviteFriends> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: MenuBar(),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        shadowColor: Colors.transparent,
-        title: Padding(
-          padding: EdgeInsets.only(left: 60),
-          child: Text(
-            'Invite Friends',
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.black,
+    return ScreenUtilInit(
+      designSize: Size(375, 812),
+      builder: () => Scaffold(
+        drawer: MenuBar(),
+        appBar: AppBar(
+          iconTheme: IconThemeData(color: Color(0xFFFFD428)),
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          title: Padding(
+            padding: EdgeInsets.only(left: 60),
+            child: Text(
+              'Invite Friends',
+              style: TextStyle(
+                fontSize: 24.sp,
+                color: Colors.black,
+              ),
             ),
           ),
         ),
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            Stack(
-              children: <Widget>[
-                Container(
-                  alignment: Alignment.center,
-                  height: 240,
-                  child: Container(
-                    width: 180,
-                    height: 180,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFFD428),
-                      borderRadius: BorderRadius.circular(100),
+        body: Center(
+          child: ListView(
+            children: [
+              Column(
+                children: [
+                  Stack(
+                    children: <Widget>[
+                      Container(
+                        alignment: Alignment.center,
+                        height: 240,
+                        child: Container(
+                          width: 180,
+                          height: 180,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFFFD428),
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Align(
+                            child: Image.asset(
+                              'UIAssets/teamwork.png',
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 40.h,
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        'Invite Friends',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 36.sp,
+                        ),
+                      ),
+                      Text(
+                        'Earn up to \$150 a day',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 36.sp,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 32.h,
+                  ),
+                  Center(
+                    child: Column(
+                      children: [
+                        Text(
+                          'When your friend sign up with your',
+                          style: TextStyle(
+                            fontSize: 20.sp,
+                          ),
+                        ),
+                        Text(
+                          'referral code, you can receive up to',
+                          style: TextStyle(
+                            fontSize: 20.sp,
+                          ),
+                        ),
+                        Text(
+                          '\$150 a day.',
+                          style: TextStyle(
+                            fontSize: 20.sp,
+                          ),
+                        ),
+                      ],
                     ),
-                    child: Align(
-                      child: Image.asset(
-                        'UIAssets/teamwork.png',
-                        color: Colors.black,
+                  ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 45),
+                    child: Row(
+                      children: [
+                        Text(
+                          'SHARE YOUR INVITE CODE',
+                          style: TextStyle(
+                            fontSize: 15.sp,
+                            color: Color(0xFFBEC2CE),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      _copyToClipboard();
+                    },
+                    child: Container(
+                      width: 300.w,
+                      height: 54.h,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFF1F2F6),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Center(
+                        child: Text(
+                          invitecode,
+                          style: TextStyle(
+                            fontSize: 20.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Column(
-              children: [
-                Text(
-                  'Invite Friends',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
+                  SizedBox(
+                    height: 15,
                   ),
-                ),
-                Text(
-                  'Earn up to \$150 a day',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 25,
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 25,
-            ),
-            Center(
-              child: Column(
-                children: [
-                  Text(
-                    'When your friend sign up with your',
-                    style: TextStyle(
-                      fontSize: 15,
+                  GestureDetector(
+                    onTap: () {
+                      // share(context);
+                    },
+                    child: Container(
+                      width: 300.w,
+                      height: 54.h,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFD428),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'INVITE',
+                          style: TextStyle(
+                            fontSize: 20.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                  Text(
-                    'referral code, you can receive up to',
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
-                  ),
-                  Text(
-                    '\$150 a day.',
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
+                  SizedBox(
+                    height: 18.h,
                   ),
                 ],
               ),
-            ),
-            SizedBox(
-              height: 25,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 45),
-              child: Row(
-                children: [
-                  Text(
-                    'SHARE YOUR INVITE CODE',
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Color(0xFFBEC2CE),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            GestureDetector(
-              onTap: () {
-                _copyToClipboard();
-              },
-              child: Container(
-                width: 275,
-                height: 45,
-                decoration: BoxDecoration(
-                  color: Color(0xFFF1F2F6),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Center(
-                  child: Text(
-                    invitecode,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            GestureDetector(
-              onTap: () {
-                // share(context);
-              },
-              child: Container(
-                width: 275,
-                height: 45,
-                decoration: BoxDecoration(
-                  color: Color(0xFFFFD428),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Center(
-                  child: Text(
-                    'INVITE',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

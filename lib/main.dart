@@ -6,6 +6,7 @@ import 'package:siren24/Invite%20Friends/InviteFriends.dart';
 import 'package:siren24/Menu_Bar.dart/MenuBar.dart';
 import 'package:siren24/Menu_Bar.dart/Notifications.dart';
 import 'package:siren24/Menu_Bar.dart/Settings/Profile.dart';
+import 'package:siren24/Menu_Bar.dart/Settings/ProfileEdit.dart';
 import 'package:siren24/Menu_Bar.dart/Settings/Settings.dart';
 import 'package:siren24/MyWallet/MyWallet.dart';
 import 'package:siren24/MyWallet/PaymentMethod.dart';
@@ -48,7 +49,7 @@ class Siren24 extends StatelessWidget {
         // initialRoute: VehicleManagement.id,
         // initialRoute: MyWallet.id,
         // initialRoute: OtpVerification.id,
-        initialRoute: SetupGPSLocations.id,
+        initialRoute: HistoryDetails.id,
         routes: {
           SplashScreen.id: (context) => SplashScreen(),
           OnboardingScreens.id: (context) => OnboardingScreens(),
@@ -65,6 +66,7 @@ class Siren24 extends StatelessWidget {
           Notifications.id: (context) => Notifications(),
           InviteFriends.id: (context) => InviteFriends(),
           Profile.id: (context) => Profile(),
+          ProfileEdit.id: (context) => ProfileEdit(),
           MyWallet.id: (context) => MyWallet(),
           PaymentMethod.id: (context) => PaymentMethod(),
           MenuBar.id: (context) => MenuBar(),
