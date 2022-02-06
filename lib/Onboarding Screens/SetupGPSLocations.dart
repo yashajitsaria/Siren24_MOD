@@ -1,12 +1,13 @@
-// ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables, empty_catches, unused_local_variable
+// ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables, empty_catches, unused_local_variable, unused_import, avoid_print, unused_element, unused_field, implementation_imports
 
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/src/provider.dart';
-import 'package:location/location.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:siren24/State/location.dart';
 import 'package:siren24/signup/signup.dart';
+import 'package:geolocator/geolocator.dart';
 
 class SetupGPSLocations extends StatefulWidget {
   const SetupGPSLocations({Key? key}) : super(key: key);
@@ -17,129 +18,139 @@ class SetupGPSLocations extends StatefulWidget {
 }
 
 class _SetupGPSLocationsState extends State<SetupGPSLocations> {
-  late String address;
-  late double userLongitude;
-  late double userLatitude;
-  // late Coordinates userCoordinates;
-
-  // Address useradd;
-  // Future<Address> getAddress(Coordinates coordinates) async {
-  //   final uA = await Geocoder.local.findAddressesFromCoordinates(coordinates);
-
-  //   useradd = uA.first;
-
-  //   return useradd;
-  // }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(
-            height: 90,
-          ),
-          Image.asset(
-            'UIAssets/enable your location.png',
-            scale: 1.1,
-          ),
-          SizedBox(
-            height: 54,
-          ),
-          Text(
-            'Enable Your Location',
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 30,
+    return ScreenUtilInit(
+      designSize: Size(375, 812),
+      builder: () => Scaffold(
+        body: Column(
+          children: [
+            SizedBox(
+              height: 90.h,
             ),
-          ),
-          SizedBox(
-            height: 27,
-          ),
-          Center(
-            child: Column(
-              children: [
-                Text(
-                  'Choose your location to start find the',
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
-                ),
-                Text(
-                  'request around you.',
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
-                ),
-              ],
+            Image.asset(
+              'UIAssets/enable your location.png',
+              scale: 1.1,
             ),
-          ),
-          SizedBox(
-            height: 42,
-          ),
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                Navigator.pushReplacementNamed(
-                  context,
-                  SignupPage.id,
-                );
-              });
-            },
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 75),
-              padding: EdgeInsets.symmetric(vertical: 12),
-              decoration: BoxDecoration(
-                color: Color(0xFFFFD428),
-                borderRadius: BorderRadius.all(Radius.circular(10)),
+            SizedBox(
+              height: 69.h,
+            ),
+            Text(
+              'Enable Your Location',
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 36.sp,
               ),
-              child: Center(
+            ),
+            SizedBox(
+              height: 36.h,
+            ),
+            Center(
+              child: Column(
+                children: [
+                  Text(
+                    'Choose your location to start find the',
+                    style: TextStyle(
+                      fontSize: 20.sp,
+                    ),
+                  ),
+                  Text(
+                    'request around you.',
+                    style: TextStyle(
+                      fontSize: 20.sp,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 54.h,
+            ),
+            GestureDetector(
+              onTap: () async {
+                // LocationPermission permission;
+
+                // permission = await Geolocator.checkPermission();
+                // if (permission == LocationPermission.deniedForever) {
+                //   await Geolocator.openAppSettings();
+                //   await Geolocator.openLocationSettings();
+                // }
+
+                // bool isLocationServiceEnabled =
+                //     await Geolocator.isLocationServiceEnabled();
+
+                // if (!isLocationServiceEnabled) {
+                //   permission = await Geolocator.requestPermission();
+                // }
+
+                bool serviceEnabled;
+                LocationPermission permission;
+
+                serviceEnabled = await Geolocator.isLocationServiceEnabled();
+                if (!serviceEnabled) {
+                  permission = await Geolocator.requestPermission();
+                }
+
+                permission = await Geolocator.checkPermission();
+                if (permission == LocationPermission.denied) {
+                  permission = await Geolocator.requestPermission();
+                  if (permission == LocationPermission.denied) {
+                    return Future.error('Location permissions are denied');
+                  }
+                }
+
+                if (permission == LocationPermission.deniedForever) {
+                  await Geolocator.openAppSettings();
+                  await Geolocator.openLocationSettings();
+                }
+              },
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 75),
+                padding: EdgeInsets.symmetric(vertical: 12),
+                decoration: BoxDecoration(
+                  color: Color(0xFFFFD428),
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+                child: Center(
+                  child: Text(
+                    'USE MY LOCATION',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 48.h,
+            ),
+            Center(
+              child: TextButton(
                 child: Text(
-                  'USE MY LOCATION',
+                  'Skip for now',
                   style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 21,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 20.sp,
+                    color: Color(0xFFBEC2CE),
                   ),
                 ),
+                onPressed: () {
+                  setState(() {
+                    Navigator.pushReplacementNamed(
+                      context,
+                      SignupPage.id,
+                    );
+                  });
+                },
               ),
             ),
-          ),
-          SizedBox(
-            height: 36,
-          ),
-          Center(
-            child: TextButton(
-              child: Text(
-                'Skip for now',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Color(0xFFBEC2CE),
-                ),
-              ),
-              onPressed: () {},
-              // onPressed: () async {
-              //   try {
-              //     // final location = await context.read(locationProvider.future);
-              //     LocationData userLocation = await location.getLocation();
-              //     // userCoordinates = Coordinates(
-              //     //     userLocation.latitude, userLocation.longitude);
-              //     // useradd = await getAddress(userCoordinates);
-              //   } catch (e) {
-              //     ScaffoldMessenger.of(context).showSnackBar(
-              //       SnackBar(
-              //         content: Text('e'),
-              //       ),
-              //     );
-              //   }
-              // },
+            SizedBox(
+              height: 18.h,
             ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
