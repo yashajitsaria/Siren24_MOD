@@ -45,7 +45,7 @@ class Siren24 extends StatelessWidget {
       //     initialRoute: SplashScreen.id,
         // initialRoute: HomeSwipeup.id,
       // initialRoute: SignupPage.id,
-      // initialRoute: SignIn.id,
+      initialRoute: SignIn.id,
       // initialRoute: OtpVerification.id,
         //   initialRoute: History.id,
         // initialRoute: Notifications.id,
@@ -58,7 +58,7 @@ class Siren24 extends StatelessWidget {
         // initialRoute: OtpVerification.id,
         // initialRoute: MapSample.id,
         // initialRoute: HomeOffline.id,
-      initialRoute: SetupGPSLocations.id,
+      // initialRoute: SetupGPSLocations.id,
       // initialRoute: OnboardingScreens.id,
 
         routes: {

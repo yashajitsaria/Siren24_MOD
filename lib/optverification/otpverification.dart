@@ -164,10 +164,10 @@ class _OtpVerificationState extends State<OtpVerification> {
                                     setState(() {
                                       var _otp =int.parse(_currentText) ;
                                       ApiCaller().verifyOtp(_otp) ;
-                                      print("11") ;
-                                      Future <String> x = ApiCaller().updatelocation(21.3244593, 72.0000101) ;
-                                      print(x) ;
-                                      print("2") ;
+                                      // print("11") ;
+                                      // Future <String> x = ApiCaller().updatelocation(21.3244593, 72.0000101) ;
+                                      // print(x) ;
+                                      // print("2") ;
                                       // if ( x == '1')
                                       // {
                                       //   print("success") ;
