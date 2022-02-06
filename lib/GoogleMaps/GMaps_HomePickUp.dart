@@ -13,14 +13,10 @@ import 'package:geocoding/geocoding.dart';
 // import 'package:google_directions_api/google_directions_api.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 
-// const double CAMERA_ZOOM = 16;
-// const double CAMERA_TILT = 80;
-// const double CAMERA_BEARING = 30;
-// const LatLng SOURCE_LOCATION = LatLng(42.747932, -71.167889);
-// const LatLng DEST_LOCATION = LatLng(37.335685, -122.0605916);
-
 class GMapsHomePickUp extends StatefulWidget {
-  const GMapsHomePickUp({Key? key}) : super(key: key);
+  const GMapsHomePickUp({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _GMapsHomePickUpState createState() => _GMapsHomePickUpState();
@@ -42,6 +38,8 @@ class _GMapsHomePickUpState extends State<GMapsHomePickUp> {
 
   String googleAPIKey = 'AIzaSyASODipwXRfzJNuFRN8lCaQeMnxLXSOvgQ';
 
+  Position? _position;
+
   // late Location location;
 
   @override
@@ -55,21 +53,18 @@ class _GMapsHomePickUpState extends State<GMapsHomePickUp> {
     //   updatePinOnMap();
     // });
 
+    Geolocator.getPositionStream().listen((p) {
+      setState(() {
+        _position = p;
+      });
+    });
+
     _getCurrentLocation();
 
     setCustomMarker();
     // setSourceAndDestinationIcons();
     // setInitialLocation();
   }
-
-  // static Stream<Position> getPositionStream(
-  //         {LocationSettings? locationSettings}) =>
-  //     GeolocatorPlatform.instance
-  //         .getPositionStream(locationSettings: locationSettings);
-
-  // StreamSubscription<Position> positionStream =
-  //     getPositionStream().listen((Position position) {
-  // });
 
   final startAddressController = TextEditingController();
 
@@ -97,15 +92,6 @@ class _GMapsHomePickUpState extends State<GMapsHomePickUp> {
   //     print(e);
   //   }
   // }
-
-  final CameraPosition _initialCameraPosition = CameraPosition(
-    target: LatLng(25.54056999934392, 84.85095395488331),
-    zoom: 14,
-    // zoom: CAMERA_ZOOM,
-    // tilt: CAMERA_TILT,
-    // bearing: CAMERA_BEARING,
-    // target: SOURCE_LOCATION,
-  );
 
   late Position _currentPosition;
 
@@ -257,18 +243,6 @@ class _GMapsHomePickUpState extends State<GMapsHomePickUp> {
 
   @override
   Widget build(BuildContext context) {
-    // if (currentLocation != null) {
-    //   _initialCameraPosition = CameraPosition(
-    //     target: LatLng(
-    //       currentLocation.latitude,
-    //       currentLocation.longitude,
-    //     ),
-    //     zoom: CAMERA_ZOOM,
-    //     tilt: CAMERA_TILT,
-    //     bearing: CAMERA_BEARING,
-    //   );
-    // }
-
     return Scaffold(
       body: GoogleMap(
         mapType: MapType.normal,
@@ -276,12 +250,40 @@ class _GMapsHomePickUpState extends State<GMapsHomePickUp> {
         compassEnabled: true,
         tiltGesturesEnabled: false,
         polylines: _polylines,
-        initialCameraPosition: _initialCameraPosition,
+        initialCameraPosition: CameraPosition(
+          target: LatLng(
+            _position?.latitude ?? 0,
+            _position?.longitude ?? 0,
+          ),
+          zoom: 14,
+        ),
         onMapCreated: (GoogleMapController controller) {
           _controller;
-          // showPinsOnMap();
         },
-        markers: _markers,
+        markers: {
+          Marker(
+            markerId: MarkerId('driver'),
+            position: LatLng(
+              _position?.latitude ?? 0,
+              _position?.longitude ?? 0,
+            ),
+          )
+        },
+      ),
+      floatingActionButton: Align(
+        alignment: Alignment(0.96, -0.48),
+        child: FloatingActionButton.small(
+          onPressed: () {
+            CameraPosition(
+              target: LatLng(
+                _position?.latitude ?? 0,
+                _position?.longitude ?? 0,
+              ),
+              zoom: 16,
+            );
+          },
+          child: Icon(Icons.gps_fixed_rounded),
+        ),
       ),
     );
   }

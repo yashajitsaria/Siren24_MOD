@@ -24,20 +24,8 @@ class HomePickUp extends StatefulWidget {
 class _HomePickUpState extends State<HomePickUp> {
   bool status = false;
 
-  // static Stream<Position> getPositionStream({
-  //   LocationSettings? locationSettings,
-  // }) =>
-  //     GeolocatorPlatform.instance.getPositionStream(
-  //       locationSettings: locationSettings,
-  //     );
-
   @override
   Widget build(BuildContext context) {
-    // StreamSubscription<Position> positionStream =
-    //     getPositionStream().listen((Position position) {
-    //   // Handle position changes
-    // });
-
     return Scaffold(
       extendBodyBehindAppBar: true,
       drawer: MenuBar(),
@@ -252,7 +240,6 @@ class SlidingPanelHomePickUp extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              // positionStream.cancel();
             },
             child: Container(
               width: 275,

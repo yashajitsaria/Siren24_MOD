@@ -25,6 +25,7 @@ class _GMapsHomeOfflineState extends State<GMapsHomeOffline> {
   late BitmapDescriptor mapMarker;
 
   late LatLng _currentposition;
+  Position? _position;
 
   void _getCurrentLocation() async {
     Position position = await Geolocator.getCurrentPosition(
@@ -54,6 +55,11 @@ class _GMapsHomeOfflineState extends State<GMapsHomeOffline> {
   void initState() {
     setCustomMarker();
     super.initState();
+    Geolocator.getPositionStream().listen((p) {
+      setState(() {
+        _position = p;
+      });
+    });
   }
 
   void setCustomMarker() async {
@@ -111,9 +117,23 @@ class _GMapsHomeOfflineState extends State<GMapsHomeOffline> {
         mapType: MapType.normal,
         myLocationButtonEnabled: false,
         zoomControlsEnabled: false,
-        initialCameraPosition: _initialCameraPosition,
+        initialCameraPosition: CameraPosition(
+          target: LatLng(
+            _position?.latitude ?? 0,
+            _position?.longitude ?? 0,
+          ),
+          zoom: 14,
+        ),
         onMapCreated: _onMapCreated,
-        markers: _marker,
+        markers: {
+          Marker(
+            markerId: MarkerId('driver'),
+            position: LatLng(
+              _position?.latitude ?? 0,
+              _position?.longitude ?? 0,
+            ),
+          )
+        },
         polylines: {},
       ),
     );

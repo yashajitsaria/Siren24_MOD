@@ -19,7 +19,7 @@ import 'package:siren24/signup/signin.dart';
 import 'package:siren24/signup/signin1.dart';
 import 'package:siren24/signup/signup.dart';
 import 'package:siren24/vehicle_management/vehicle_management.dart';
-import 'GoogleMaps/HomeOnffline.dart';
+import 'GoogleMaps/HomeOffline.dart';
 import 'Onboarding Screens/SetupGPSLocations.dart';
 import 'package:siren24/splashscreen/splashscreen.dart';
 
@@ -49,7 +49,7 @@ class Siren24 extends StatelessWidget {
         // initialRoute: VehicleManagement.id,
         // initialRoute: MyWallet.id,
         // initialRoute: OtpVerification.id,
-        initialRoute: HistoryDetails.id,
+        initialRoute: HomePickUp.id,
         routes: {
           SplashScreen.id: (context) => SplashScreen(),
           OnboardingScreens.id: (context) => OnboardingScreens(),
