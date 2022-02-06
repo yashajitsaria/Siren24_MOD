@@ -1,7 +1,8 @@
-// ignore_for_file: unused_import, file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: unused_import, file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_element
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../Menu_Bar.dart/MenuBar.dart';
 
@@ -14,23 +15,42 @@ class InviteFriends extends StatefulWidget {
 }
 
 class _InviteFriendsState extends State<InviteFriends> {
+  String invitecode = "0905070017";
+
+  Future<void> _copyToClipboard() async {
+    await Clipboard.setData(ClipboardData(text: invitecode)).then(
+      (value) => ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.grey[100],
+          duration: Duration(milliseconds: 1000),
+          elevation: 5,
+          margin: EdgeInsets.only(
+            bottom: 25,
+            left: 100,
+            right: 100,
+            top: MediaQuery.of(context).size.aspectRatio * 1000,
+          ),
+          behavior: SnackBarBehavior.floating,
+          content: Center(
+            child: Text(
+              'Copied to clipboard',
+              style: TextStyle(
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MenuBar(),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
-        leading: IconButton(
-          onPressed: () {
-            MenuBar();
-          },
-          icon: ImageIcon(
-            AssetImage(
-              'UIAssets/menubar.png',
-            ),
-            color: Color(0xFFFFD428),
-          ),
-        ),
         title: Padding(
           padding: EdgeInsets.only(left: 60),
           child: Text(
@@ -58,11 +78,9 @@ class _InviteFriendsState extends State<InviteFriends> {
                       borderRadius: BorderRadius.circular(100),
                     ),
                     child: Align(
-                      alignment: Alignment.center,
-                      child: Icon(
-                        Icons.people_alt_rounded,
-                        color: Color(0xFF333333),
-                        size: 75,
+                      child: Image.asset(
+                        'UIAssets/teamwork.png',
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -124,8 +142,6 @@ class _InviteFriendsState extends State<InviteFriends> {
             Padding(
               padding: const EdgeInsets.only(left: 45),
               child: Row(
-                // crossAxisAlignment: CrossAxisAlignment.start,
-                // mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
                     'SHARE YOUR INVITE CODE',
@@ -140,19 +156,24 @@ class _InviteFriendsState extends State<InviteFriends> {
             SizedBox(
               height: 15,
             ),
-            Container(
-              width: 275,
-              height: 45,
-              decoration: BoxDecoration(
-                color: Color(0xFFF1F2F6),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Center(
-                child: Text(
-                  '0905070017',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+            GestureDetector(
+              onTap: () {
+                _copyToClipboard();
+              },
+              child: Container(
+                width: 275,
+                height: 45,
+                decoration: BoxDecoration(
+                  color: Color(0xFFF1F2F6),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Center(
+                  child: Text(
+                    invitecode,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),

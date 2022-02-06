@@ -1,6 +1,12 @@
-// ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables, empty_catches, unused_local_variable
+
+import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/src/provider.dart';
+import 'package:location/location.dart';
+import 'package:siren24/State/location.dart';
+import 'package:siren24/signup/signup.dart';
 
 class SetupGPSLocations extends StatefulWidget {
   const SetupGPSLocations({Key? key}) : super(key: key);
@@ -11,6 +17,20 @@ class SetupGPSLocations extends StatefulWidget {
 }
 
 class _SetupGPSLocationsState extends State<SetupGPSLocations> {
+  late String address;
+  late double userLongitude;
+  late double userLatitude;
+  // late Coordinates userCoordinates;
+
+  // Address useradd;
+  // Future<Address> getAddress(Coordinates coordinates) async {
+  //   final uA = await Geocoder.local.findAddressesFromCoordinates(coordinates);
+
+  //   useradd = uA.first;
+
+  //   return useradd;
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,10 +79,17 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
             height: 42,
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              setState(() {
+                Navigator.pushReplacementNamed(
+                  context,
+                  SignupPage.id,
+                );
+              });
+            },
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 75),
-              padding:EdgeInsets.symmetric(vertical: 12),
+              padding: EdgeInsets.symmetric(vertical: 12),
               decoration: BoxDecoration(
                 color: Color(0xFFFFD428),
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -82,7 +109,7 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
           SizedBox(
             height: 36,
           ),
-          Center( 
+          Center(
             child: TextButton(
               child: Text(
                 'Skip for now',
@@ -92,6 +119,21 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
                 ),
               ),
               onPressed: () {},
+              // onPressed: () async {
+              //   try {
+              //     // final location = await context.read(locationProvider.future);
+              //     LocationData userLocation = await location.getLocation();
+              //     // userCoordinates = Coordinates(
+              //     //     userLocation.latitude, userLocation.longitude);
+              //     // useradd = await getAddress(userCoordinates);
+              //   } catch (e) {
+              //     ScaffoldMessenger.of(context).showSnackBar(
+              //       SnackBar(
+              //         content: Text('e'),
+              //       ),
+              //     );
+              //   }
+              // },
             ),
           ),
           SizedBox(

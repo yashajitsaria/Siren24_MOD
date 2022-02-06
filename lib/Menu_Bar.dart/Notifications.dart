@@ -21,16 +21,17 @@ class _NotificationsState extends State<Notifications> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MenuBar(),
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            MenuBar();
-          },
-          icon: ImageIcon(
-            AssetImage('UIAssets/menubar.png'),
-            color: Color(0xFFFFD428),
-          ),
-        ),
+        // leading: IconButton(
+        //   onPressed: () {
+        //     MenuBar();
+        //   },
+        //   icon: ImageIcon(
+        //     AssetImage('UIAssets/menubar.png'),
+        //     color: Color(0xFFFFD428),
+        //   ),
+        // ),
         centerTitle: true,
         backgroundColor: Colors.white,
         shadowColor: Colors.transparent,
@@ -95,15 +96,16 @@ class _NotificationsState extends State<Notifications> {
                         Text(
                           'System',
                           style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
+                            fontSize:
+                                MediaQuery.of(context).size.aspectRatio * 45,
                             color: Colors.black,
                           ),
                         ),
                         Text(
                           'Booking #1234 has been success...',
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize:
+                                MediaQuery.of(context).size.aspectRatio * 30,
                             color: Colors.black,
                           ),
                         ),
@@ -150,15 +152,16 @@ class _NotificationsState extends State<Notifications> {
                         Text(
                           'Promotion',
                           style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
+                            fontSize:
+                                MediaQuery.of(context).size.aspectRatio * 45,
                             color: Colors.black,
                           ),
                         ),
                         Text(
                           'Invite friends - Get 3 coupons each!',
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize:
+                                MediaQuery.of(context).size.aspectRatio * 30,
                             color: Colors.black,
                           ),
                         ),
@@ -205,15 +208,16 @@ class _NotificationsState extends State<Notifications> {
                         Text(
                           'Promotion',
                           style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
+                            fontSize:
+                                MediaQuery.of(context).size.aspectRatio * 45,
                             color: Colors.black,
                           ),
                         ),
                         Text(
                           'Invite friends - Get 3 coupons each!',
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize:
+                                MediaQuery.of(context).size.aspectRatio * 30,
                             color: Colors.black,
                           ),
                         ),
@@ -260,15 +264,16 @@ class _NotificationsState extends State<Notifications> {
                         Text(
                           'System',
                           style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
+                            fontSize:
+                                MediaQuery.of(context).size.aspectRatio * 45,
                             color: Colors.black,
                           ),
                         ),
                         Text(
                           'Thank you! Your transaction is com...',
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize:
+                                MediaQuery.of(context).size.aspectRatio * 30,
                             color: Colors.black,
                           ),
                         ),
@@ -327,15 +332,16 @@ class _NotificationsState extends State<Notifications> {
                         Text(
                           'System',
                           style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
+                            fontSize:
+                                MediaQuery.of(context).size.aspectRatio * 45,
                             color: Colors.black,
                           ),
                         ),
                         Text(
                           'Booking #1234 has been cancelled',
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize:
+                                MediaQuery.of(context).size.aspectRatio * 30,
                             color: Colors.black,
                           ),
                         ),
@@ -382,15 +388,16 @@ class _NotificationsState extends State<Notifications> {
                         Text(
                           'Promotion',
                           style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
+                            fontSize:
+                                MediaQuery.of(context).size.aspectRatio * 45,
                             color: Colors.black,
                           ),
                         ),
                         Text(
                           'Invite friends - Get 3 coupons each!',
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize:
+                                MediaQuery.of(context).size.aspectRatio * 30,
                             color: Colors.black,
                           ),
                         ),
