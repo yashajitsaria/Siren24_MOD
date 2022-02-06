@@ -25,7 +25,7 @@ class _MyWalletState extends State<MyWallet> {
               color: Color(0xFFFFD428),
             ),
             alignment: Alignment.center,
-            height: 275,
+            height: MediaQuery.of(context).size.height*0.42,
             child: Center(
               child: Column(
                 children: [
@@ -52,8 +52,8 @@ class _MyWalletState extends State<MyWallet> {
                       ),
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    width: 302,
-                    height: 30,
+                    width: MediaQuery.of(context).size.aspectRatio * 540,
+                    height: MediaQuery.of(context).size.aspectRatio * 60,
                     child: Row(
                       children: [
                         Container(

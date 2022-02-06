@@ -59,11 +59,12 @@ class _InviteFriendsState extends State<InviteFriends> {
                     ),
                     child: Align(
                       alignment: Alignment.center,
-                      child: Icon(
-                        Icons.people_alt_rounded,
-                        color: Color(0xFF333333),
-                        size: 75,
-                      ),
+                      // child: Icon(
+                      //   Icons.people_alt_rounded,
+                      //   color: Color(0xFF333333),
+                      //   size: 75,
+                      // ),
+                      child: Image.asset('images/teamwork1.png'),
                     ),
                   ),
                 ),

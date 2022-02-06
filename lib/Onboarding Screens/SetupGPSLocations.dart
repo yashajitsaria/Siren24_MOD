@@ -1,7 +1,9 @@
 // ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:siren24/ForAPI/apicalling.dart';
 import 'package:siren24/signup/signup.dart';
+import 'package:siren24/signup/signupmod.dart';
 
 class SetupGPSLocations extends StatefulWidget {
   const SetupGPSLocations({Key? key}) : super(key: key);
@@ -12,13 +14,15 @@ class SetupGPSLocations extends StatefulWidget {
 }
 
 class _SetupGPSLocationsState extends State<SetupGPSLocations> {
+  String name = " " ;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
           SizedBox(
-            height: 90,
+            height: MediaQuery.of(context).size.height*0.15,
           ),
           Image.asset(
             'UIAssets/enable your location.png',
@@ -59,13 +63,26 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
           SizedBox(
             height: 42,
           ),
-          GestureDetector(
-            onTap: () {
+          GestureDetector (
+            onTap: () async {
+              final String names = await ApiCaller().user_profile();
+
               setState(() {
-                Navigator.pushReplacementNamed(
-                  context,
-                  SignupPage.id,
-                );
+
+                name = names ;
+                print(name) ;
+                //Update Ambulance
+                // Future<String> x = ApiCaller().updatelocation(21.3244593, 72.0000101);
+                // print(x.toString()) ;
+
+                //getprofile
+                // ApiCaller().addambulance("TR01 KK 9999", "61e2b1e569a5c49180d4ee7c", "ALS", "cooc", "nice", "oxygen");
+                // ApiCaller().user_profile();
+
+                // Navigator.pushReplacementNamed(
+                //   context,
+                //   SignupPage.id,
+                // );
               });
             },
             child: Container(

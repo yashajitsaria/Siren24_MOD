@@ -141,7 +141,8 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                           ),
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                          },
                           child: Text(
                             'Skip',
                             style: TextStyle(

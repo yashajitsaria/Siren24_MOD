@@ -33,6 +33,15 @@ dependencies:
   flutter_riverpod: ^0.14.0+3
   introduction_screen: ^2.1.0
   pin_code_fields: ^7.3.0
+  flutter_switch: ^0.3.2
+  google_maps_flutter: ^2.1.1
+  logger: ^1.1.0
+  dio: ^4.0.4
+  json_annotation: ^4.4.0
+  flutter_screenutil: ^5.1.1
+  flutter_polyline_points: ^1.0.0
+  geolocator: ^8.0.5
+  google_maps_routes: ^1.1.2
 #  connectivity: ^0.4.8+2
 
   # The following adds the Cupertino Icons font to your application.

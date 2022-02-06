@@ -15,7 +15,7 @@ class _ListViewvmState extends State<ListViewvm> {
   List<String> nameofvehicle = ['Mazda','Mitsubishi Outlander','Mitsubishi Outlander','Mazda','Mitsubishi Outlander','Mazda','Mitsubishi Outlander','Mazda','Mitsubishi Outlander','Mazda','Mitsubishi Outlander'] ;
   List<String> liscenseplatenumber = ['43A 235.70','43A 125.84','43A 235.70','43A 125.84','43A 235.70','43A 125.84','43A 125.84','43A 125.84','43A 125.84','43A 125.84','43A 125.84'] ;
   List<int> counter = [0,0,0,0,0,0,0,0,0,0,0];
-
+  int number = 0 ;
 
   @override
   Widget build(BuildContext context) {
@@ -96,6 +96,8 @@ class _ListViewvmState extends State<ListViewvm> {
                           if (counter[index] == 0 )
                             {
                               counter[index] = 1 ;
+                              counter[number] = 0 ;
+                              number = index ;
                             }
                           else
                             {
