@@ -16,11 +16,9 @@ import 'package:siren24/MyWallet/MyWallet.dart';
 import 'package:siren24/MyWallet/PaymentMethod.dart';
 import 'package:siren24/Onboarding%20Screens/OnboardingScreens.dart';
 import 'package:siren24/bookingdetails/bookingdetails.dart';
-import 'package:siren24/home_swipeup/home_online_swipeup.dart';
 import 'package:siren24/optverification/otpverification.dart';
 import 'package:siren24/signup/signin.dart';
-import 'package:siren24/signup/signup.dart';
-import 'package:siren24/vehicle_management/addvehicle.dart';
+import 'package:siren24/vehicle_management/addvehiclebutton.dart';
 import 'package:siren24/vehicle_management/addvehiclepage.dart';
 import 'package:siren24/vehicle_management/vehicle_management.dart';
 import 'Onboarding Screens/SetupGPSLocations.dart';
@@ -73,7 +71,6 @@ class Siren24 extends StatelessWidget {
           SignIn.id: (context) => SignIn(),
           OtpVerification.id: (context) => OtpVerification(),
           SignupPage.id: (context) => SignupPage(),
-          HomeSwipeup.id: (context) => HomeSwipeup(),
           History.id: (context) => History(),
           BookingDetails.id: (context) => BookingDetails(),
           Settings.id: (context) => Settings(),

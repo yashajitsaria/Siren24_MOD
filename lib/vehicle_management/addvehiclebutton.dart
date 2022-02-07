@@ -1,14 +1,14 @@
 
 import 'package:flutter/material.dart';
 
-class AddVehicle extends StatefulWidget {
-  const AddVehicle({Key? key}) : super(key: key);
+class AddVehicleButton extends StatefulWidget {
+  const AddVehicleButton({Key? key}) : super(key: key);
 
   @override
-  _AddVehicleState createState() => _AddVehicleState();
+  _AddVehicleButtonState createState() => _AddVehicleButtonState();
 }
 
-class _AddVehicleState extends State<AddVehicle> {
+class _AddVehicleButtonState extends State<AddVehicleButton> {
   @override
   Widget build(BuildContext context) {
     return Positioned(
