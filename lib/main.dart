@@ -10,6 +10,7 @@ import 'package:siren24/Menu_Bar.dart/MenuBar.dart';
 import 'package:siren24/Menu_Bar.dart/Notifications.dart';
 import 'package:siren24/Menu_Bar.dart/Settings/Profile.dart';
 import 'package:siren24/Menu_Bar.dart/Settings/ProfileEdit.dart';
+import 'package:siren24/Menu_Bar.dart/Settings/profileeditpage.dart';
 import 'package:siren24/Menu_Bar.dart/Settings/Settings.dart';
 import 'package:siren24/MyWallet/MyWallet.dart';
 import 'package:siren24/MyWallet/PaymentMethod.dart';
@@ -46,9 +47,9 @@ class Siren24 extends StatelessWidget {
       //     initialRoute: SplashScreen.id,
         // initialRoute: HomeSwipeup.id,
       // initialRoute: SignupPage.id,
-      initialRoute: SignIn.id,
+      // initialRoute: SignIn.id,
       // initialRoute: OtpVerification.id,
-        //   initialRoute: History.id,
+      //     initialRoute: History.id,
         // initialRoute: Notifications.id,
         // initialRoute: InviteFriends.id,
         // initialRoute: Notifications.id,
@@ -59,9 +60,11 @@ class Siren24 extends StatelessWidget {
         // initialRoute: OtpVerification.id,
         // initialRoute: MapSample.id,
         // initialRoute: HomeOffline.id,
-      // initialRoute: SetupGPSLocations.id,
+      initialRoute: SetupGPSLocations.id,
       // initialRoute: OnboardingScreens.id,
+      // initialRoute: AddVehicleDetails.id,
       //   initialRoute: ProfileEdit.id,
+      //   initialRoute: ProfileEditPage.id,
 
         routes: {
           SplashScreen.id: (context) => SplashScreen(),
@@ -85,6 +88,8 @@ class Siren24 extends StatelessWidget {
           Path_Navigate.id: (context) => Path_Navigate( currentlocation: LatLng(19.032499, 73.066484),
             destinationlocation: LatLng(19.0508,73.0684),),
           ProfileEdit.id: (context) => ProfileEdit(),
+          ProfileEditPage.id: (context) => ProfileEditPage(),
+          // AddVehicleDetails.id: (context) => AddVehicleDetails(),
         }
     );
   }

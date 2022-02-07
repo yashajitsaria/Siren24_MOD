@@ -94,11 +94,12 @@ class ApiCaller {
 
   //Add Ambulance
   Future<String> addambulance(String car_no, String ownerid, String type,
-      String brand, String model, String addons) async {
+      String brand, String model, List addons) async {
     var res = await post(
-      Uri.parse('http://$ip:4000/api/ambulance/update'),
+      Uri.parse('http://$ip:4000/api/ambulance/add'),
       headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
+        // "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
         "authtoken": authToken,
       },
       body: jsonEncode({
@@ -113,9 +114,26 @@ class ApiCaller {
     handleError(res);
     Logger().d(res.body) ;
     var response = UpdateApi.fromJson(jsonDecode(res.body));
-    return response.toString() ;
+    return response.message.toString() ;
   }
 
+  //*********************************************************************************//
+
+  //Get Ambulance
+  Future<List> get_ambulance() async {
+    var res = await get(Uri.parse('http://$ip:4000/api/ambulance/find'),
+    headers: {
+      HttpHeaders.contentTypeHeader: 'application/json',
+      // "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
+      "authtoken": authToken,
+    },
+    );
+    handleError(res);
+    Logger().d(res.body) ;
+
+    return jsonDecode(res.body) ;
+  }
+  
   //*********************************************************************************//
 
   //User Profile
@@ -131,14 +149,15 @@ class ApiCaller {
     handleError(res);
     Logger().d(res.body) ;
 
-    var response = Profile.fromJson(jsonDecode(res.body));
-    Map value = {
-      "name": response.name ,
-      "dob": response.dob,
-      "phonenumber": response.phonenumber,
-      "profileimg": response.profileimg,
-      "gender": response.gender
-    } ;
+    // var response = Profile.fromJson(jsonDecode(res.body));
+    var value = jsonDecode(res.body) ;
+    // Map value = {
+    //   "name": response.name ,
+    //   "dob": response.dob,
+    //   "phonenumber": response.phonenumber,
+    //   "profileimg": response.profileimg,
+    //   "gender": response.gender
+    // } ;
     // name = await response.name ;
     // print(name) ;
     // return name ;
@@ -156,7 +175,8 @@ class ApiCaller {
       Uri.parse('http://$ip:4000/api/location/vehical/update'),
       headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
-        "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
+        // "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
+        "authtoken": authToken,
       },
       body: jsonEncode({"lat": lat, "lng": lng}),
     );
@@ -201,6 +221,25 @@ class ApiCaller {
   }
 
   //*********************************************************************************//
+
+  //History
+  Future <List> historydata() async {
+    var res = await post(
+      Uri.parse('http://$ip:4000/api/order/user/get'),
+      headers: {
+        HttpHeaders.contentTypeHeader: 'application/json',
+        "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
+        // "authtoken": authToken,
+      },
+    );
+    handleError(res) ;
+    Logger().d(res.body) ;
+    var response = jsonDecode(res.body) ;
+    return response ;
+  }
+
+  //*********************************************************************************//
+
 
   //Handle error
   handleError(Response response) {

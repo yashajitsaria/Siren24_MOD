@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:siren24/Menu_Bar.dart/Settings/Profile.dart';
 import 'package:siren24/Menu_Bar.dart/Settings/ProfileEdit.dart';
+import 'package:siren24/Menu_Bar.dart/Settings/profileeditpage.dart';
 import 'package:siren24/global/globalvariables.dart';
 import 'package:siren24/ForAPI/apicalling.dart';
 
@@ -167,7 +168,7 @@ class _OtpVerificationState extends State<OtpVerification> {
                                       ApiCaller().verifyOtp(_otp) ;
                                       if ( firsttimechecker == 0 )
                                         {
-                                          Navigator.pushReplacementNamed(context, ProfileEdit.id);
+                                          Navigator.pushReplacementNamed(context, ProfileEditPage.id);
                                           firsttimechecker = 1 ;
                                         }
                                       else

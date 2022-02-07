@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:siren24/Menu_Bar.dart/Settings/profileeditpage.dart';
 import 'package:siren24/global/globalvariables.dart';
 
 class Profile extends StatefulWidget {
@@ -31,7 +32,11 @@ class _ProfileState extends State<Profile> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            Navigator.pushReplacementNamed(context, ProfileEditPage.id);
+                          });
+                        },
                         child: Text(
                           'Edit',
                           style: TextStyle(
@@ -49,9 +54,13 @@ class _ProfileState extends State<Profile> {
                   Center(
                     child: Column(
                       children: [
-                        Image.asset(
-                          'UIAssets/dp.png',
-                          scale: 0.45,
+                        Container(
+                          child: Image.network(
+                            userdata['profile_img'],
+                            fit: BoxFit.fill,
+                          ),
+                          height: 50,
+                          width: 50,
                         ),
                         SizedBox(
                           height: 15,
@@ -223,7 +232,7 @@ class _ProfileState extends State<Profile> {
                         Row(
                           children: [
                             Text(
-                              userdata['phonenumber'],
+                              userdata['phoneno'].toString(),
                               style: TextStyle(
                                 fontFamily: 'SF UI Display',
                                 fontSize:

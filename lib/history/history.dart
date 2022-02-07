@@ -1,4 +1,5 @@
 
+import 'package:siren24/global/globalvariables.dart';
 import 'package:siren24/history/listviewforhistory.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -62,7 +63,7 @@ class History extends StatelessWidget {
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
+                          children: [
                             Padding(
                               padding: EdgeInsets.fromLTRB(0,25,0,0),
                               child: Text(
@@ -76,7 +77,7 @@ class History extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.fromLTRB(0,2.5,0,5),
                               child: Text(
-                                '10',
+                                history_data.length.toString(),
                                 style: TextStyle(
                                   fontSize: 30,
                                   color: Color(0xff242A37),

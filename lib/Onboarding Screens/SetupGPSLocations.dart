@@ -2,7 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:siren24/ForAPI/apicalling.dart';
+import 'package:siren24/MyWallet/MyWallet.dart';
+import 'package:siren24/global/globalvariables.dart';
+import 'package:siren24/history/history.dart';
 import 'package:siren24/signup/signupmod.dart';
+import 'package:siren24/vehicle_management/vehicle_management.dart';
 
 class SetupGPSLocations extends StatefulWidget {
   const SetupGPSLocations({Key? key}) : super(key: key);
@@ -65,9 +69,20 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
           GestureDetector (
             onTap: () async {
               // final String names = await ApiCaller().user_profile();
-
+              // String x = await ApiCaller().addambulance("TR01 KK 9999", "61e2b1e569a5c49180d4ee7c", "ALS", "cooc", "nice", ["oxygen","monitoring"]);
+              // ambulance_details = await ApiCaller().get_ambulance() ;
+              history_data = await ApiCaller().historydata() ;
               setState(() {
-
+                Navigator.pushReplacementNamed(context,MyWallet.id) ;
+                // if ( x == "ambulance added")
+                //   {
+                //     print("done") ;
+                //   }
+                // else
+                //   {
+                //     print(x) ;
+                //     print("wrong") ;
+                //   }
                 // name = names ;
                 // print(name) ;
                 //Update Ambulance
@@ -77,11 +92,12 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
                 //getprofile
                 // ApiCaller().addambulance("TR01 KK 9999", "61e2b1e569a5c49180d4ee7c", "ALS", "cooc", "nice", "oxygen");
                 // ApiCaller().user_profile();
-
-                Navigator.pushReplacementNamed(
-                  context,
-                  SignupPage.id,
-                );
+                // Navigator.pushReplacementNamed(context, VehicleManagement.id) ;
+                
+                // Navigator.pushReplacementNamed(
+                //   context,
+                //   SignupPage.id,
+                // );
               });
             },
             child: Container(
