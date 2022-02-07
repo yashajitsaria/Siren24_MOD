@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:siren24/GoogleMaps/HomeOffline.dart';
 import 'package:siren24/Invite%20Friends/InviteFriends.dart';
 import 'package:siren24/Menu_Bar.dart/Notifications.dart';
 import 'package:siren24/MyWallet/MyWallet.dart';
@@ -221,7 +222,16 @@ class _MenuBarState extends State<MenuBar> {
                         ),
                       ],
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      setState(() {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomeOffline(),
+                          ),
+                        );
+                      });
+                    },
                   ),
                   ListTile(
                     title: Row(
