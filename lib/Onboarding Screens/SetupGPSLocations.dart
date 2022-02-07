@@ -2,12 +2,14 @@
 
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/src/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:siren24/State/location.dart';
-import 'package:siren24/signup/signup.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:siren24/ForAPI/apicalling.dart';
+import 'package:siren24/MyWallet/MyWallet.dart';
+import 'package:siren24/global/globalvariables.dart';
+import 'package:siren24/history/history.dart';
+import 'package:siren24/signup/signupmod.dart';
+import 'package:siren24/vehicle_management/vehicle_management.dart';
 
 class SetupGPSLocations extends StatefulWidget {
   const SetupGPSLocations({Key? key}) : super(key: key);
@@ -18,6 +20,8 @@ class SetupGPSLocations extends StatefulWidget {
 }
 
 class _SetupGPSLocationsState extends State<SetupGPSLocations> {
+  String name = " ";
+
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -125,29 +129,83 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
               ),
             ),
             SizedBox(
-              height: 48.h,
+              height: 42,
             ),
-            Center(
-              child: TextButton(
-                child: Text(
-                  'Skip for now',
-                  style: TextStyle(
-                    fontSize: 20.sp,
-                    color: Color(0xFFBEC2CE),
+            GestureDetector(
+              onTap: () async {
+                // final String names = await ApiCaller().user_profile();
+                // String x = await ApiCaller().addambulance("TR01 KK 9999", "61e2b1e569a5c49180d4ee7c", "ALS", "cooc", "nice", ["oxygen","monitoring"]);
+                // ambulance_details = await ApiCaller().get_ambulance() ;
+                history_data = await ApiCaller().historydata();
+                setState(
+                  () {
+                    Navigator.pushReplacementNamed(context, MyWallet.id);
+                    // if ( x == "ambulance added")
+                    //   {
+                    //     print("done") ;
+                    //   }
+                    // else
+                    //   {
+                    //     print(x) ;
+                    //     print("wrong") ;
+                    //   }
+                    // name = names ;
+                    // print(name) ;
+                    //Update Ambulance
+                    // Future<String> x = ApiCaller().updatelocation(21.3244593, 72.0000101);
+                    // print(x.toString()) ;
+
+                    //getprofile
+                    // ApiCaller().addambulance("TR01 KK 9999", "61e2b1e569a5c49180d4ee7c", "ALS", "cooc", "nice", "oxygen");
+                    // ApiCaller().user_profile();
+                    // Navigator.pushReplacementNamed(context, VehicleManagement.id) ;
+
+                    // Navigator.pushReplacementNamed(
+                    //   context,
+                    //   SignupPage.id,
+                    // );
+                  },
+                );
+              },
+              child: Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 75),
+                    padding: EdgeInsets.symmetric(vertical: 12),
+                    decoration: BoxDecoration(
+                      color: Color(0xFFFFD428),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
                   ),
-                ),
-                onPressed: () {
-                  setState(() {
-                    Navigator.pushReplacementNamed(
-                      context,
-                      SignupPage.id,
-                    );
-                  });
-                },
+                  SizedBox(
+                    height: 48.h,
+                  ),
+                  Center(
+                    child: TextButton(
+                      child: Text(
+                        'Skip for now',
+                        style: TextStyle(
+                          fontSize: 20.sp,
+                          color: Color(0xFFBEC2CE),
+                        ),
+                      ),
+                      onPressed: () {
+                        setState(
+                          () {
+                            Navigator.pushReplacementNamed(
+                              context,
+                              SignupPage.id,
+                            );
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    height: 18.h,
+                  ),
+                ],
               ),
-            ),
-            SizedBox(
-              height: 18.h,
             ),
           ],
         ),

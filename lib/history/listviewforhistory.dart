@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:siren24/bookingdetails/bookingdetails.dart';
+import 'package:siren24/global/globalvariables.dart';
 
 class ListViewHistory extends StatefulWidget {
   const ListViewHistory({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class _ListViewHistoryState extends State<ListViewHistory> {
         height: MediaQuery.of(context).size.height * 0.60,
         color: const Color(0xffF7F8FA),
         child: ListView.builder(
-          itemCount: 5,
+          itemCount: history_data.length,
           itemBuilder: (BuildContext context, int index) {
             return Padding(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 15),
@@ -87,11 +88,11 @@ class _ListViewHistoryState extends State<ListViewHistory> {
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
-                              children: const [
+                              children: [
                                 Padding(
                                   padding: EdgeInsets.fromLTRB(10, 15, 0, 0),
                                   child: Text(
-                                    '\$25.00',
+                                    '₹'+ history_data[index]["order_amount"].toString(),
                                     style: TextStyle(
                                       color: Color(0xff242E42),
                                       fontSize: 25,
@@ -102,7 +103,7 @@ class _ListViewHistoryState extends State<ListViewHistory> {
                                 Padding(
                                   padding: EdgeInsets.fromLTRB(10, 0, 0, 20),
                                   child: Text(
-                                    '2.2 km',
+                                    history_data[index]["order_distance"].toString()+' km',
                                     style: TextStyle(
                                       fontSize: 20,
                                       color: Color(0xffBEC2CE),

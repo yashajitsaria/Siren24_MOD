@@ -5,15 +5,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
 import 'package:siren24/Menu_Bar.dart/MenuBar.dart';
 
-class AddVehicle extends StatefulWidget {
-  const AddVehicle({Key? key}) : super(key: key);
-  static String id = 'add vehicle';
+class AddVehicleButton extends StatefulWidget {
+  const AddVehicleButton({Key? key}) : super(key: key);
 
   @override
-  _AddVehicleState createState() => _AddVehicleState();
+  _AddVehicleButtonState createState() => _AddVehicleButtonState();
 }
 
-class _AddVehicleState extends State<AddVehicle> {
+class _AddVehicleButtonState extends State<AddVehicleButton> {
   String? ambulanceBrand;
   List<String> brand = [
     'Maruti Suzuki',

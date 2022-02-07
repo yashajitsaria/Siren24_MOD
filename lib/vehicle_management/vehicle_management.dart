@@ -1,6 +1,6 @@
-// ignore_for_file: prefer_const_constructors, duplicate_ignore, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'package:siren24/vehicle_management/addvehicle.dart';
+import 'package:siren24/vehicle_management/addvehiclebutton.dart';
 import 'package:siren24/vehicle_management/listviewbuilder.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +26,12 @@ class VehicleManagement extends StatelessWidget {
           ),
         ),
       ),
-      body: ListViewvm(),
+      body: Stack(
+        children: [
+          ListViewvm(),
+          AddVehicleButton(),
+        ],
+      ),
     );
   }
 }

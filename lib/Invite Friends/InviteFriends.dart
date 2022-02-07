@@ -198,9 +198,7 @@ class _InviteFriendsState extends State<InviteFriends> {
                     height: 15,
                   ),
                   GestureDetector(
-                    onTap: () {
-                      // share(context);
-                    },
+                    onTap: () {},
                     child: Container(
                       width: 300.w,
                       height: 54.h,

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:siren24/global/globalvariables.dart';
 
 class ListViewvm extends StatefulWidget {
   const ListViewvm({Key? key}) : super(key: key);
@@ -15,12 +16,13 @@ class _ListViewvmState extends State<ListViewvm> {
   List<String> nameofvehicle = ['Mazda','Mitsubishi Outlander','Mitsubishi Outlander','Mazda','Mitsubishi Outlander','Mazda','Mitsubishi Outlander','Mazda','Mitsubishi Outlander','Mazda','Mitsubishi Outlander'] ;
   List<String> liscenseplatenumber = ['43A 235.70','43A 125.84','43A 235.70','43A 125.84','43A 235.70','43A 125.84','43A 125.84','43A 125.84','43A 125.84','43A 125.84','43A 125.84'] ;
   List<int> counter = [0,0,0,0,0,0,0,0,0,0,0];
-
+  List<int> zeros = List.filled(ambulance_details.length, 0) ;
+  int number = 0 ;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: nameofvehicle.length,
+      itemCount: ambulance_details.length,
       itemBuilder: (BuildContext context, int index)
       {
         return GestureDetector(
@@ -64,7 +66,7 @@ class _ListViewvmState extends State<ListViewvm> {
                             Padding(
                               padding: const EdgeInsets.fromLTRB(0,5,0,5),
                               child: Text(
-                                nameofvehicle[index],
+                                ambulance_details[index]['model'],
                                 overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(
                                   color: Color(0xff242E42),
@@ -76,7 +78,7 @@ class _ListViewvmState extends State<ListViewvm> {
                             Padding(
                               padding: const EdgeInsets.fromLTRB(0,5,0,5),
                               child: Text(
-                                liscenseplatenumber[index],
+                                ambulance_details[index]['car_no'],
                                 style: const TextStyle(
                                   color: Color(0xffC8C7CC),
                                   fontSize: 18,
@@ -93,13 +95,15 @@ class _ListViewvmState extends State<ListViewvm> {
                       onTap: ()
                       {
                         setState(() {
-                          if (counter[index] == 0 )
+                          if (zeros[index] == 0 )
                             {
-                              counter[index] = 1 ;
+                              zeros[index] = 1 ;
+                              zeros[number] = 0 ;
+                              number = index ;
                             }
                           else
                             {
-                              counter[index] = 0 ;
+                              zeros[index] = 0 ;
                             }
                         });
                       },

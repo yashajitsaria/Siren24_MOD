@@ -2,7 +2,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:siren24/Onboarding%20Screens/OnboardingScreens.dart';
-import 'package:siren24/signup/signup.dart';
 
 class SplashScreen extends StatefulWidget {
   static String id = 'Splash_Screen';
