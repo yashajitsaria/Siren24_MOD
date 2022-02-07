@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:siren24/MyWallet/PaymentMethod.dart';
 
 class MyWallet extends StatefulWidget {
   const MyWallet({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class _MyWalletState extends State<MyWallet> {
               color: Color(0xFFFFD428),
             ),
             alignment: Alignment.center,
-            height: 275,
+            height: MediaQuery.of(context).size.height*0.42,
             child: Center(
               child: Column(
                 children: [
@@ -51,12 +52,12 @@ class _MyWalletState extends State<MyWallet> {
                       ),
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    width: 302,
-                    height: 30,
+                    width: MediaQuery.of(context).size.aspectRatio*720,
+                    height: MediaQuery.of(context).size.aspectRatio*60,
                     child: Row(
                       children: [
                         Container(
-                          width: 150,
+                          width: MediaQuery.of(context).size.aspectRatio*300,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(3),
                             color: Color(0xFF242A37),
@@ -72,7 +73,7 @@ class _MyWalletState extends State<MyWallet> {
                           ),
                         ),
                         Container(
-                          width: 150,
+                          width: MediaQuery.of(context).size.aspectRatio*300,
                           child: Center(
                             child: Text(
                               'Discount',
@@ -114,7 +115,12 @@ class _MyWalletState extends State<MyWallet> {
           Align(
             alignment: Alignment(0, -0.176),
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                setState(() {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => PaymentMethod()));
+                });
+              },
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Material(
@@ -215,20 +221,21 @@ class _MyWalletState extends State<MyWallet> {
                   ),
                   child: ListView(
                     children: [
-                      Padding( 
-                        padding: const EdgeInsets.only(left: 10, right: 10),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          bottom: 10,
+                        ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Column(
-                                  children: [
-                                    Center(
-                                      child: Image.asset('UIAssets/dp.png'),
-                                    ),
-                                  ],
+                                SizedBox(
+                                  width: 7,
+                                ),
+                                Image.asset('UIAssets/dp.png'),
+                                SizedBox(
+                                  width: 24,
                                 ),
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -252,40 +259,46 @@ class _MyWalletState extends State<MyWallet> {
                                 ),
                               ],
                             ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  '\$25.00',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                            SizedBox(
+                              width: 100,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 25),
+                              child: Text(
+                                '\$25.00',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                              ],
+                              ),
                             ),
                           ],
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.symmetric(horizontal: 25),
+                        margin: EdgeInsets.symmetric(horizontal: 18),
                         height: 1,
                         decoration: BoxDecoration(
                           color: Colors.grey[300],
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(10.0),
+                        padding: EdgeInsets.only(
+                          bottom: 10,
+                          top: 10,
+                        ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Center(
-                                  child: Image.asset('UIAssets/dp.png'),
+                                SizedBox(
+                                  width: 7,
+                                ),
+                                Image.asset('UIAssets/dp.png'),
+                                SizedBox(
+                                  width: 24,
                                 ),
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -309,40 +322,46 @@ class _MyWalletState extends State<MyWallet> {
                                 ),
                               ],
                             ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  '\$25.00',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                            SizedBox(
+                              width: 100,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 25),
+                              child: Text(
+                                '\$25.00',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                              ],
+                              ),
                             ),
                           ],
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.symmetric(horizontal: 25),
+                        margin: EdgeInsets.symmetric(horizontal: 18),
                         height: 1,
                         decoration: BoxDecoration(
                           color: Colors.grey[300],
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.only(
+                          bottom: 10,
+                          top: 10,
+                        ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Center(
-                                  child: Image.asset('UIAssets/dp.png'),
+                                SizedBox(
+                                  width: 7,
+                                ),
+                                Image.asset('UIAssets/dp.png'),
+                                SizedBox(
+                                  width: 24,
                                 ),
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -366,40 +385,46 @@ class _MyWalletState extends State<MyWallet> {
                                 ),
                               ],
                             ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  '\$25.00',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                            SizedBox(
+                              width: 100,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 25),
+                              child: Text(
+                                '\$25.00',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                              ],
+                              ),
                             ),
                           ],
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.symmetric(horizontal: 25),
+                        margin: EdgeInsets.symmetric(horizontal: 18),
                         height: 1,
                         decoration: BoxDecoration(
                           color: Colors.grey[300],
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.only(
+                          bottom: 10,
+                          top: 10,
+                        ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Center(
-                                  child: Image.asset('UIAssets/dp.png'),
+                                SizedBox(
+                                  width: 7,
+                                ),
+                                Image.asset('UIAssets/dp.png'),
+                                SizedBox(
+                                  width: 24,
                                 ),
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -423,40 +448,46 @@ class _MyWalletState extends State<MyWallet> {
                                 ),
                               ],
                             ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  '\$25.00',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                            SizedBox(
+                              width: 100,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 25),
+                              child: Text(
+                                '\$25.00',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                              ],
+                              ),
                             ),
                           ],
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.symmetric(horizontal: 25),
+                        margin: EdgeInsets.symmetric(horizontal: 18),
                         height: 1,
                         decoration: BoxDecoration(
                           color: Colors.grey[300],
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.only(
+                          bottom: 10,
+                          top: 10,
+                        ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Center(
-                                  child: Image.asset('UIAssets/dp.png'),
+                                SizedBox(
+                                  width: 7,
+                                ),
+                                Image.asset('UIAssets/dp.png'),
+                                SizedBox(
+                                  width: 24,
                                 ),
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -480,40 +511,46 @@ class _MyWalletState extends State<MyWallet> {
                                 ),
                               ],
                             ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  '\$25.00',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                            SizedBox(
+                              width: 100,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 25),
+                              child: Text(
+                                '\$25.00',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                              ],
+                              ),
                             ),
                           ],
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.symmetric(horizontal: 25),
+                        margin: EdgeInsets.symmetric(horizontal: 18),
                         height: 1,
                         decoration: BoxDecoration(
                           color: Colors.grey[300],
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.only(
+                          bottom: 10,
+                          top: 10,
+                        ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Center(
-                                  child: Image.asset('UIAssets/dp.png'),
+                                SizedBox(
+                                  width: 7,
+                                ),
+                                Image.asset('UIAssets/dp.png'),
+                                SizedBox(
+                                  width: 24,
                                 ),
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -537,19 +574,19 @@ class _MyWalletState extends State<MyWallet> {
                                 ),
                               ],
                             ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  '\$25.00',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                            SizedBox(
+                              width: 100,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 25),
+                              child: Text(
+                                '\$25.00',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                              ],
+                              ),
                             ),
                           ],
                         ),
