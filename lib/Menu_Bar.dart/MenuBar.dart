@@ -7,6 +7,7 @@ import 'package:siren24/GoogleMaps/HomeOffline.dart';
 import 'package:siren24/Invite%20Friends/InviteFriends.dart';
 import 'package:siren24/Menu_Bar.dart/Notifications.dart';
 import 'package:siren24/MyWallet/MyWallet.dart';
+import 'package:siren24/vehicle_management/vehicle_management.dart';
 
 import 'Settings/Settings.dart';
 
@@ -223,14 +224,16 @@ class _MenuBarState extends State<MenuBar> {
                       ],
                     ),
                     onTap: () {
-                      setState(() {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HomeOffline(),
-                          ),
-                        );
-                      });
+                      setState(
+                        () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomeOffline(),
+                            ),
+                          );
+                        },
+                      );
                     },
                   ),
                   ListTile(
@@ -253,12 +256,16 @@ class _MenuBarState extends State<MenuBar> {
                       ],
                     ),
                     onTap: () {
-                      setState(() {
-                        Navigator.push(
+                      setState(
+                        () {
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => MyWallet()));
-                      });
+                              builder: (context) => MyWallet(),
+                            ),
+                          );
+                        },
+                      );
                     },
                   ),
                   ListTile(
@@ -302,12 +309,48 @@ class _MenuBarState extends State<MenuBar> {
                       ],
                     ),
                     onTap: () {
-                      setState(() {
-                        Navigator.push(
+                      setState(
+                        () {
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Notifications()));
-                      });
+                              builder: (context) => Notifications(),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: Row(
+                      children: [
+                        Image.asset(
+                          'UIAssets/Vehicle.png',
+                          color: Color(0xFFD8D8D8),
+                          scale: 1,
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Text(
+                          'Vehicle Management',
+                          style: TextStyle(
+                            fontSize: 20.sp,
+                          ),
+                        ),
+                      ],
+                    ),
+                    onTap: () {
+                      setState(
+                        () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => VehicleManagement(),
+                            ),
+                          );
+                        },
+                      );
                     },
                   ),
                   ListTile(
@@ -330,12 +373,16 @@ class _MenuBarState extends State<MenuBar> {
                       ],
                     ),
                     onTap: () {
-                      setState(() {
-                        Navigator.push(
+                      setState(
+                        () {
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => InviteFriends()));
-                      });
+                              builder: (context) => InviteFriends(),
+                            ),
+                          );
+                        },
+                      );
                     },
                   ),
                   ListTile(
@@ -358,12 +405,16 @@ class _MenuBarState extends State<MenuBar> {
                       ],
                     ),
                     onTap: () {
-                      setState(() {
-                        Navigator.push(
+                      setState(
+                        () {
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Settings()));
-                      });
+                              builder: (context) => Settings(),
+                            ),
+                          );
+                        },
+                      );
                     },
                   ),
                   ListTile(
