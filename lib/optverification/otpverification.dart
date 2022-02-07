@@ -4,9 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:siren24/signup/signup.dart';
+import 'package:siren24/Menu_Bar.dart/Settings/Profile.dart';
+import 'package:siren24/Menu_Bar.dart/Settings/ProfileEdit.dart';
+import 'package:siren24/global/globalvariables.dart';
 import 'package:siren24/ForAPI/apicalling.dart';
-import 'package:siren24/signup/signupmod.dart';
 
 class OtpVerification extends StatefulWidget {
   const OtpVerification({Key? key}) : super(key: key);
@@ -161,22 +162,19 @@ class _OtpVerificationState extends State<OtpVerification> {
                               onTap: () {
                                 if ( _currentText.length == 6)
                                   {
-                                    setState(() {
+                                    setState(() async{
                                       var _otp =int.parse(_currentText) ;
                                       ApiCaller().verifyOtp(_otp) ;
-                                      // print("11") ;
-                                      // Future <String> x = ApiCaller().updatelocation(21.3244593, 72.0000101) ;
-                                      // print(x) ;
-                                      // print("2") ;
-                                      // if ( x == '1')
-                                      // {
-                                      //   print("success") ;
-                                      // }
-                                      // else{
-                                      //   print(x) ;
-                                      //   print("error") ;
-                                      // }
-                                      Navigator.pushReplacementNamed(context, SignupPage.id);
+                                      if ( firsttimechecker == 0 )
+                                        {
+                                          Navigator.pushReplacementNamed(context, ProfileEdit.id);
+                                          firsttimechecker = 1 ;
+                                        }
+                                      else
+                                        {
+                                          userdata = await ApiCaller().user_profile() as Map;
+                                          Navigator.pushReplacementNamed(context, Profile.id);
+                                        }
                                     });
                                   }
                               },

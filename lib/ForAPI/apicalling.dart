@@ -11,8 +11,6 @@ String otpToken = " ";
 String authToken = " ";
 String userid = " ";
 String ip = "65.2.132.175" ;
-String name = " 2" ;
-String phonenumberr = " 1" ;
 
 class ApiCaller {
   // late int otp;
@@ -114,31 +112,40 @@ class ApiCaller {
     );
     handleError(res);
     Logger().d(res.body) ;
-    var response = UpdateAmbulanceLocation.fromJson(jsonDecode(res.body));
+    var response = UpdateApi.fromJson(jsonDecode(res.body));
     return response.toString() ;
   }
 
   //*********************************************************************************//
 
   //User Profile
-  Future<String> user_profile() async{
+  Future<Map> user_profile() async{
     var res = await get(
       Uri.parse('http://$ip:4000/api/profile/view'),
       headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
-        "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
+        // "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
+        "authtoken": authToken,
       },
     );
     handleError(res);
     Logger().d(res.body) ;
 
     var response = Profile.fromJson(jsonDecode(res.body));
-    name = await response.name ;
+    Map value = {
+      "name": response.name ,
+      "dob": response.dob,
+      "phonenumber": response.phonenumber,
+      "profileimg": response.profileimg,
+      "gender": response.gender
+    } ;
+    // name = await response.name ;
     // print(name) ;
-    return name ;
+    // return name ;
     // name = response.name ;
     // phonenumberr = response.phonenumber ;
     // return response.toString() ;
+    return value ;
   }
 
   //*********************************************************************************//
@@ -156,8 +163,41 @@ class ApiCaller {
     handleError(res) ;
     
     Logger().d(res.body) ;
-    var response = UpdateAmbulanceLocation.fromJson(jsonDecode(res.body));
+    var response = UpdateApi.fromJson(jsonDecode(res.body));
     return response.toString() ;
+  }
+
+  //*********************************************************************************//
+
+  //Edit/Register
+  Future<String> editProfile(
+      String updatename,
+      String updatedob,
+      String updategender,
+      // int updatephonenumber,
+      String updateimg,
+      int updateage) async {
+    var res = await post(
+      Uri.parse('http://$ip:4000/api/profile/edit'),
+      headers: {
+        HttpHeaders.contentTypeHeader: 'application/json',
+        // "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
+        "authtoken": authToken,
+      },
+      body: jsonEncode({
+        "name": updatename ,
+        "dob": updatedob,
+        "gender": updategender,
+        // "phoneno": updatephonenumber,
+        "profile_img": updateimg,
+        "age": updateage,
+      }),
+    );
+    handleError(res);
+
+    Logger().d(res.body);
+    var response = UpdateApi.fromJson(jsonDecode(res.body));
+    return response.message.toString();
   }
 
   //*********************************************************************************//
@@ -169,4 +209,8 @@ class ApiCaller {
           jsonDecode(response.body)['message'] ?? "Unexpected error occurred");
     }
   }
+
+  //*********************************************************************************//
+
+
 }

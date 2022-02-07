@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:siren24/ForAPI/apicalling.dart';
-import 'package:siren24/signup/signup.dart';
 import 'package:siren24/signup/signupmod.dart';
 
 class SetupGPSLocations extends StatefulWidget {
@@ -65,12 +64,12 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
           ),
           GestureDetector (
             onTap: () async {
-              final String names = await ApiCaller().user_profile();
+              // final String names = await ApiCaller().user_profile();
 
               setState(() {
 
-                name = names ;
-                print(name) ;
+                // name = names ;
+                // print(name) ;
                 //Update Ambulance
                 // Future<String> x = ApiCaller().updatelocation(21.3244593, 72.0000101);
                 // print(x.toString()) ;
@@ -79,10 +78,10 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
                 // ApiCaller().addambulance("TR01 KK 9999", "61e2b1e569a5c49180d4ee7c", "ALS", "cooc", "nice", "oxygen");
                 // ApiCaller().user_profile();
 
-                // Navigator.pushReplacementNamed(
-                //   context,
-                //   SignupPage.id,
-                // );
+                Navigator.pushReplacementNamed(
+                  context,
+                  SignupPage.id,
+                );
               });
             },
             child: Container(

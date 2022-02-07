@@ -1,11 +1,9 @@
+import 'package:siren24/global/globalvariables.dart';
 import 'package:siren24/optverification/otpverification.dart';
 import 'package:siren24/signup/signin.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'package:dio/dio.dart';
 import 'package:siren24/ForAPI/apicalling.dart';
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignupPage extends StatefulWidget {
@@ -192,6 +190,7 @@ class _SignupPageState extends State<SignupPage> {
                                             onChanged: (value) {
                                               setState(() {
                                                 _phoneNumber = value;
+                                                phonenumber = value ;
                                               });
                                               print(_phoneNumber);
                                             },
@@ -257,6 +256,7 @@ class _SignupPageState extends State<SignupPage> {
                                                   int.parse(_phoneNumber);
                                               ApiCaller().sendOtpToPhone(
                                                   pnumber, 2);
+                                              firsttimechecker = 0;
                                               Navigator.pushReplacementNamed(
                                                   context, OtpVerification.id);
                                             });

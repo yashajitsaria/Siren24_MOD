@@ -2,7 +2,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:siren24/ForAPI/apicalling.dart';
 import 'package:siren24/global/globalvariables.dart';
 import 'package:siren24/optverification/otpverification.dart';
-import 'package:siren24/signup/signup.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -194,6 +193,7 @@ class _SignInState extends State<SignIn> {
                                   setState(() {
                                     if (_phonenumber.length == 10) {
                                       var pnumber = int.parse(_phonenumber);
+                                      phonenumber = _phonenumber ;
                                       ApiCaller()
                                           .sendOtpToPhone(pnumber, 2);
                                       // print(name);

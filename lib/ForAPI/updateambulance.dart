@@ -1,8 +1,8 @@
-class UpdateAmbulanceLocation {
+class UpdateApi {
   late String message ;
 
-  UpdateAmbulanceLocation({required this.message});
-  UpdateAmbulanceLocation.fromJson(Map<String, dynamic> json) {
+  UpdateApi({required this.message});
+  UpdateApi.fromJson(Map<String, dynamic> json) {
     message = json['message'] ;
   }
   Map<String, dynamic> toJson() {
@@ -11,3 +11,4 @@ class UpdateAmbulanceLocation {
     return data ;
   }
 }
+

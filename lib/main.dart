@@ -9,6 +9,7 @@ import 'package:siren24/Invite%20Friends/InviteFriends.dart';
 import 'package:siren24/Menu_Bar.dart/MenuBar.dart';
 import 'package:siren24/Menu_Bar.dart/Notifications.dart';
 import 'package:siren24/Menu_Bar.dart/Settings/Profile.dart';
+import 'package:siren24/Menu_Bar.dart/Settings/ProfileEdit.dart';
 import 'package:siren24/Menu_Bar.dart/Settings/Settings.dart';
 import 'package:siren24/MyWallet/MyWallet.dart';
 import 'package:siren24/MyWallet/PaymentMethod.dart';
@@ -60,6 +61,7 @@ class Siren24 extends StatelessWidget {
         // initialRoute: HomeOffline.id,
       // initialRoute: SetupGPSLocations.id,
       // initialRoute: OnboardingScreens.id,
+      //   initialRoute: ProfileEdit.id,
 
         routes: {
           SplashScreen.id: (context) => SplashScreen(),
@@ -82,6 +84,7 @@ class Siren24 extends StatelessWidget {
           HomeOffline.id: (context) => HomeOffline(),
           Path_Navigate.id: (context) => Path_Navigate( currentlocation: LatLng(19.032499, 73.066484),
             destinationlocation: LatLng(19.0508,73.0684),),
+          ProfileEdit.id: (context) => ProfileEdit(),
         }
     );
   }
