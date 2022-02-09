@@ -5,13 +5,13 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+// import 'package:flutter_html/flutter_html.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:siren24/GoogleMaps/GMaps_HomePickUp.dart';
 import 'package:siren24/Menu_Bar.dart/MenuBar.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
-import 'package:geolocator/geolocator.dart';
 import 'GMaps_HomeOffline.dart';
 
 class HomePickUp extends StatefulWidget {
@@ -64,12 +64,28 @@ class _HomePickUpState extends State<HomePickUp> {
   }
 }
 
-class SlidingPanelHomePickUp extends StatelessWidget {
+class SlidingPanelHomePickUp extends StatefulWidget {
   final Widget child;
   const SlidingPanelHomePickUp({
     Key? key,
     required this.child,
   }) : super(key: key);
+
+  @override
+  State<SlidingPanelHomePickUp> createState() => _SlidingPanelHomePickUpState();
+}
+
+class _SlidingPanelHomePickUpState extends State<SlidingPanelHomePickUp> {
+  // // late HtmlDocument htmlDirections;
+  // static const htmlData =
+  //     """Head <b>south</b> on <b>S Federal St</b> toward <b>W Van Buren St</b>""";
+
+  // dom.Document document = htmlparser.parse(htmlData);
+
+  // /// sanitize or query document here
+  // // Widget html = Html(
+  // //   document: document, data: '',
+  // // );
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +94,7 @@ class SlidingPanelHomePickUp extends StatelessWidget {
       borderRadius: BorderRadius.circular(15),
       minHeight: 15,
       maxHeight: 500,
-      body: child,
+      body: widget.child,
       panel: Column(
         children: [
           Center(
@@ -239,10 +255,9 @@ class SlidingPanelHomePickUp extends StatelessWidget {
             height: 15,
           ),
           GestureDetector(
-            onTap: () {
-            },
+            onTap: () {},
             child: Container(
-              width: 275,
+              width: 325,
               height: 45,
               decoration: BoxDecoration(
                 color: Color(0xFFFFD428),
@@ -266,6 +281,7 @@ class SlidingPanelHomePickUp extends StatelessWidget {
             width: 1,
             color: Color(0xFFEFEFF4),
           ),
+          // Html(data: htmlData),
         ],
       ),
     );

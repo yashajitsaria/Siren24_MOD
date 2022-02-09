@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 // import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:siren24/Onboarding%20Screens/SetupGPSLocations.dart';
+import 'package:siren24/global/globalvariables.dart';
+import 'package:siren24/ForAPI/apicalling.dart';
 
 class OnboardingScreens extends StatefulWidget {
   const OnboardingScreens({Key? key}) : super(key: key);
@@ -96,12 +98,14 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                           ),
                           TextButton(
                             onPressed: () {
-                              setState(() {
-                                Navigator.pushReplacementNamed(
-                                  context,
-                                  SetupGPSLocations.id,
-                                );
-                              });
+                              setState(
+                                () {
+                                  Navigator.pushReplacementNamed(
+                                    context,
+                                    SetupGPSLocations.id,
+                                  );
+                                },
+                              );
                             },
                             child: Text(
                               'Skip',
@@ -151,12 +155,14 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                           ),
                           TextButton(
                             onPressed: () {
-                              setState(() {
-                                Navigator.pushReplacementNamed(
-                                  context,
-                                  SetupGPSLocations.id,
-                                );
-                              });
+                              setState(
+                                () {
+                                  Navigator.pushReplacementNamed(
+                                    context,
+                                    SetupGPSLocations.id,
+                                  );
+                                },
+                              );
                             },
                             child: Text(
                               'Skip',
@@ -209,12 +215,15 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              setState(() {
-                                Navigator.pushReplacementNamed(
-                                  context,
-                                  SetupGPSLocations.id,
-                                );
-                              });
+                              // userdata = ApiCaller().user_profile;
+                              setState(
+                                () {
+                                  Navigator.pushReplacementNamed(
+                                    context,
+                                    SetupGPSLocations.id,
+                                  );
+                                },
+                              );
                             },
                             child: Container(
                               margin: EdgeInsets.symmetric(horizontal: 92),

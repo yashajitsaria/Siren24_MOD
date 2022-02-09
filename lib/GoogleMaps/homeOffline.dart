@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, duplicate_ignore, prefer_const_literals_to_create_immutables
+// ignore_for_file: file_names, duplicate_ignore, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
 // ignore_for_file: prefer_const_constructors, unused_import, file_names
 
 import 'dart:ui';
@@ -9,6 +9,7 @@ import 'package:siren24/GoogleMaps/GMaps_HomePickUp.dart';
 import 'package:siren24/Menu_Bar.dart/MenuBar.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:siren24/global/globalvariables.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'GMaps_HomeOffline.dart';
 
@@ -31,12 +32,14 @@ class _HomeOfflineState extends State<HomeOffline> {
           extendBodyBehindAppBar: true,
           drawer: MenuBar(),
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(120),
+            preferredSize: Size.fromHeight(110),
             child: ClipRRect(
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
                 child: AppBar(
-                  iconTheme: IconThemeData(color: Colors.black),
+                  iconTheme: IconThemeData(
+                    color: Color(0xFFFFD428),
+                  ),
                   bottom: PreferredSize(
                     child: OfflineNotif(),
                     preferredSize: Size.fromHeight(48),
@@ -100,7 +103,11 @@ class SlidingPanelHomeOffline extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SlidingUpPanel(
-      boxShadow: [BoxShadow(blurRadius: 0)],
+      boxShadow: [
+        BoxShadow(
+          blurRadius: 0,
+        ),
+      ],
       borderRadius: BorderRadius.circular(15),
       minHeight: 100,
       maxHeight: 200,
@@ -130,7 +137,15 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                     SizedBox(
                       width: 7,
                     ),
-                    Image.asset('UIAssets/dp.png'),
+                    // Image.asset('UIAssets/dp.png'),
+                    Container(
+                      height: 50.h,
+                      width: 45.w,
+                      child: Image.network(
+                        userdata['profile_img'],
+                        fit: BoxFit.fill,
+                      ),
+                    ),
                     SizedBox(
                       width: 24,
                     ),
@@ -139,7 +154,8 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Jeremiah Curtis',
+                          // 'Jeremiah Curtis',
+                          userdata['name'],
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20.sp,
@@ -194,7 +210,7 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                             color: Colors.black,
                           ),
                           Text(
-                            '10.2',
+                            '00',
                             style: TextStyle(
                               fontSize: 21.sp,
                               fontWeight: FontWeight.bold,
@@ -222,7 +238,7 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                             color: Colors.black,
                           ),
                           Text(
-                            '30 KM',
+                            '00 KM',
                             style: TextStyle(
                               fontSize: 21.sp,
                               fontWeight: FontWeight.bold,
@@ -250,7 +266,7 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                             color: Colors.black,
                           ),
                           Text(
-                            '20',
+                            '00',
                             style: TextStyle(
                               fontSize: 21.sp,
                               fontWeight: FontWeight.bold,
@@ -285,9 +301,9 @@ class OfflineNotif extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
       child: Container(
-        height: 76.h,
+        height: 68.h,
         decoration: BoxDecoration(
           color: Color(0xFFFF8900),
           borderRadius: BorderRadius.circular(12),
@@ -306,6 +322,7 @@ class OfflineNotif extends StatelessWidget {
                       ),
                       Image.asset(
                         'UIAssets/ic_moon.png',
+                        scale: 1.1,
                       ),
                       SizedBox(
                         width: 20,
@@ -318,14 +335,14 @@ class OfflineNotif extends StatelessWidget {
                             'You are offline !',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 21,
+                              fontSize: 20.sp,
                               color: Colors.black,
                             ),
                           ),
                           Text(
                             'Go online to start accepting jobs.',
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 15.sp,
                               color: Colors.black45,
                             ),
                           ),

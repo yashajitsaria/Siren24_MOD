@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
 import 'package:siren24/Menu_Bar.dart/MenuBar.dart';
+import 'package:siren24/vehicle_management/vehicle_management.dart';
 
 class AddVehicleButton extends StatefulWidget {
   const AddVehicleButton({Key? key}) : super(key: key);
+  static String id = 'add_vehicle_page';
 
   @override
   _AddVehicleButtonState createState() => _AddVehicleButtonState();
@@ -335,7 +337,16 @@ class _AddVehicleButtonState extends State<AddVehicleButton> {
                 bottom: 20,
               ),
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  setState(
+                    () {
+                      Navigator.pushReplacementNamed(
+                        context,
+                        VehicleManagement.id,
+                      );
+                    },
+                  );
+                },
                 child: Container(
                   height: 54.h,
                   decoration: BoxDecoration(

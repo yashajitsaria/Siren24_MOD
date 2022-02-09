@@ -236,38 +236,38 @@ class _MenuBarState extends State<MenuBar> {
                       );
                     },
                   ),
-                  ListTile(
-                    title: Row(
-                      children: [
-                        Image.asset(
-                          'UIAssets/wallet.png',
-                          color: Color(0xFFD8D8D8),
-                          scale: 1,
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        Text(
-                          'My Wallet',
-                          style: TextStyle(
-                            fontSize: 20.sp,
-                          ),
-                        ),
-                      ],
-                    ),
-                    onTap: () {
-                      setState(
-                        () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => MyWallet(),
-                            ),
-                          );
-                        },
-                      );
-                    },
-                  ),
+                  // ListTile(
+                  //   title: Row(
+                  //     children: [
+                  //       Image.asset(
+                  //         'UIAssets/wallet.png',
+                  //         color: Color(0xFFD8D8D8),
+                  //         scale: 1,
+                  //       ),
+                  //       SizedBox(
+                  //         width: 15,
+                  //       ),
+                  //       Text(
+                  //         'My Wallet',
+                  //         style: TextStyle(
+                  //           fontSize: 20.sp,
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  //   onTap: () {
+                  //     setState(
+                  //       () {
+                  //         Navigator.push(
+                  //           context,
+                  //           MaterialPageRoute(
+                  //             builder: (context) => MyWallet(),
+                  //           ),
+                  //         );
+                  //       },
+                  //     );
+                  //   },
+                  // ),
                   ListTile(
                     title: Row(
                       children: [
@@ -289,38 +289,38 @@ class _MenuBarState extends State<MenuBar> {
                     ),
                     onTap: () {},
                   ),
-                  ListTile(
-                    title: Row(
-                      children: [
-                        Image.asset(
-                          'UIAssets/notification.png',
-                          color: Color(0xFFD8D8D8),
-                          scale: 1,
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        Text(
-                          'Notifications',
-                          style: TextStyle(
-                            fontSize: 20.sp,
-                          ),
-                        ),
-                      ],
-                    ),
-                    onTap: () {
-                      setState(
-                        () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Notifications(),
-                            ),
-                          );
-                        },
-                      );
-                    },
-                  ),
+                  // ListTile(
+                  //   title: Row(
+                  //     children: [
+                  //       Image.asset(
+                  //         'UIAssets/notification.png',
+                  //         color: Color(0xFFD8D8D8),
+                  //         scale: 1,
+                  //       ),
+                  //       SizedBox(
+                  //         width: 15,
+                  //       ),
+                  //       Text(
+                  //         'Notifications',
+                  //         style: TextStyle(
+                  //           fontSize: 20.sp,
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  //   onTap: () {
+                  //     setState(
+                  //       () {
+                  //         Navigator.push(
+                  //           context,
+                  //           MaterialPageRoute(
+                  //             builder: (context) => Notifications(),
+                  //           ),
+                  //         );
+                  //       },
+                  //     );
+                  //   },
+                  // ),
                   ListTile(
                     title: Row(
                       children: [
@@ -353,38 +353,38 @@ class _MenuBarState extends State<MenuBar> {
                       );
                     },
                   ),
-                  ListTile(
-                    title: Row(
-                      children: [
-                        Image.asset(
-                          'UIAssets/gift.png',
-                          color: Color(0xFFD8D8D8),
-                          scale: 1,
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        Text(
-                          'Invite Friends',
-                          style: TextStyle(
-                            fontSize: 20.sp,
-                          ),
-                        ),
-                      ],
-                    ),
-                    onTap: () {
-                      setState(
-                        () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => InviteFriends(),
-                            ),
-                          );
-                        },
-                      );
-                    },
-                  ),
+                  // ListTile(
+                  //   title: Row(
+                  //     children: [
+                  //       Image.asset(
+                  //         'UIAssets/gift.png',
+                  //         color: Color(0xFFD8D8D8),
+                  //         scale: 1,
+                  //       ),
+                  //       SizedBox(
+                  //         width: 15,
+                  //       ),
+                  //       Text(
+                  //         'Invite Friends',
+                  //         style: TextStyle(
+                  //           fontSize: 20.sp,
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  //   onTap: () {
+                  //     setState(
+                  //       () {
+                  //         Navigator.push(
+                  //           context,
+                  //           MaterialPageRoute(
+                  //             builder: (context) => InviteFriends(),
+                  //           ),
+                  //         );
+                  //       },
+                  //     );
+                  //   },
+                  // ),
                   ListTile(
                     title: Row(
                       children: [

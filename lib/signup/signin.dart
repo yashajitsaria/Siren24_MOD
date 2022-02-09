@@ -17,7 +17,7 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      builder: ()=> GestureDetector(
+      builder: () => GestureDetector(
         onTap: () {
           FocusScopeNode currentFocus = FocusScope.of(context);
 
@@ -79,34 +79,37 @@ class _SignInState extends State<SignIn> {
                     top: 210.h,
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
-                          15.w,
-                          10.h,
-                          15.w,
-                          10.h),
+                        15.w,
+                        10.h,
+                        15.w,
+                        10.h,
+                      ),
 
                       //Decoration for login card
                       child: Container(
                         width: 345.w,
                         height: 320.h,
                         decoration: const BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey,
-                                blurRadius: 15.0,
-                              ),
-                            ]),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 15.0,
+                            ),
+                          ],
+                        ),
                         child: Column(
                           children: [
                             //Text
                             Padding(
-                              padding: EdgeInsets.fromLTRB(30.w, 30.h, 30.w, 30.h),
+                              padding:
+                                  EdgeInsets.fromLTRB(30.w, 30.h, 30.w, 30.h),
                               child: RichText(
                                 text: TextSpan(
                                   style: TextStyle(
                                     fontSize: 34.sp,
-                                    color: Color(0xff242A37),
+                                    color: const Color(0xff242A37),
                                   ),
                                   children: const [
                                     TextSpan(
@@ -117,8 +120,8 @@ class _SignInState extends State<SignIn> {
                                     ),
                                     TextSpan(
                                       text: 'with your phone number',
-                                      style:
-                                          TextStyle(fontWeight: FontWeight.w300),
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w300),
                                     ),
                                   ],
                                 ),
@@ -127,16 +130,19 @@ class _SignInState extends State<SignIn> {
 
                             //Phone Number text form field
                             Padding(
-                              padding: EdgeInsets.fromLTRB(20.w, 10.h, 20.w, 20.h),
+                              padding:
+                                  EdgeInsets.fromLTRB(20.w, 10.h, 20.w, 20.h),
                               child: SizedBox(
                                 width: 305.w,
                                 height: 45.h,
                                 child: TextField(
                                   keyboardType: TextInputType.number,
                                   onChanged: (value) {
-                                    setState(() {
-                                      _phonenumber = value;
-                                    });
+                                    setState(
+                                      () {
+                                        _phonenumber = value;
+                                      },
+                                    );
                                   },
                                   style: TextStyle(
                                     fontSize: 17.sp,
@@ -146,22 +152,24 @@ class _SignInState extends State<SignIn> {
                                   cursorColor: const Color(0xffFFD428),
                                   decoration: InputDecoration(
                                     prefixIcon: Padding(
-                                      padding: EdgeInsets.only(right: 5,left: 20, top: 4),
-                                      child: Text('+91 ',
+                                      padding: const EdgeInsets.only(
+                                          right: 5, left: 20, top: 4),
+                                      child: Text(
+                                        '+91 ',
                                         style: TextStyle(
                                           fontSize: 17.sp,
                                           height: 1.5,
-                                          fontWeight: FontWeight.bold,),
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ),
                                     hintText: "Enter your phone number",
                                     hintStyle: TextStyle(
                                       fontSize: 17.sp,
                                       fontWeight: FontWeight.normal,
-                                      color: Color(0xffBEC2CE),
+                                      color: const Color(0xffBEC2CE),
                                     ),
-                                    contentPadding:
-                                    const EdgeInsets.only(
+                                    contentPadding: const EdgeInsets.only(
                                         left: 30,
                                         right: 20,
                                         top: 20,
@@ -187,35 +195,40 @@ class _SignInState extends State<SignIn> {
 
                             //Next Button
                             Padding(
-                              padding: EdgeInsets.fromLTRB(20.w, 20.h, 20.w, 30.h),
+                              padding:
+                                  EdgeInsets.fromLTRB(20.w, 20.h, 20.w, 30.h),
                               child: InkWell(
                                 onTap: () {
-                                  setState(() {
-                                    if (_phonenumber.length == 10) {
-                                      var pnumber = int.parse(_phonenumber);
-                                      phonenumber = _phonenumber ;
-                                      ApiCaller()
-                                          .sendOtpToPhone(pnumber, 2);
-                                      // print(name);
-                                      // print(dob);
-                                      Navigator.pushReplacementNamed(
-                                          context, OtpVerification.id);
-                                    }
-                                  });
+                                  setState(
+                                    () {
+                                      if (_phonenumber.length == 10) {
+                                        var pnumber = int.parse(_phonenumber);
+                                        phonenumber = _phonenumber;
+                                        ApiCaller().sendOtpToPhone(pnumber, 2);
+                                        // print(name);
+                                        // print(dob);
+                                        Navigator.pushReplacementNamed(
+                                          context,
+                                          OtpVerification.id,
+                                        );
+                                      }
+                                    },
+                                  );
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
                                     color: _phonenumber.length != 10
-                                        ? Color(0x80242A37)
-                                        : Color(0xff242A37),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
+                                        ? const Color(0x80242A37)
+                                        : const Color(0xff242A37),
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(10),
+                                    ),
                                   ),
                                   width: 305.w,
                                   height: 45.h,
                                   child: Center(
                                     child: Padding(
-                                      padding: EdgeInsets.all(8.0),
+                                      padding: const EdgeInsets.all(8.0),
                                       child: Text(
                                         'NEXT',
                                         style: TextStyle(
@@ -240,7 +253,7 @@ class _SignInState extends State<SignIn> {
           ),
         ),
       ),
-      designSize: const Size(375,812),
+      designSize: const Size(375, 812),
     );
   }
 }

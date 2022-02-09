@@ -17,7 +17,7 @@ class GMapsHomeOffline extends StatefulWidget {
 class _GMapsHomeOfflineState extends State<GMapsHomeOffline> {
   static const _initialCameraPosition = CameraPosition(
     target: LatLng(25.540539431310854, 84.85082954594253),
-    zoom: 17,
+    zoom: 16,
   );
 
   late GoogleMapController _googleMapController;
@@ -93,25 +93,32 @@ class _GMapsHomeOfflineState extends State<GMapsHomeOffline> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          _googleMapController.animateCamera(
-            CameraUpdate.newCameraPosition(_initialCameraPosition),
-          );
-          // try {
-          //   final location = await context.read(locationProvider.future);
-          //   LocationData userLocation = await location.getLocation();
-          //   // driverCoordinates =
-          //   //     Coordinates(userLocation.latitude, userLocation.longitude);
-          // } catch (e) {
-          //   ScaffoldMessenger.of(context).showSnackBar(
-          //     SnackBar(
-          //       content: Text('error'),
-          //     ),
-          //   );
-          // }
-        },
-        child: Icon(Icons.near_me_outlined),
+      floatingActionButton: Align(
+        alignment: Alignment(1, -0.48),
+        child: FloatingActionButton.small(
+          backgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          onPressed: () async {
+            _googleMapController.animateCamera(
+              CameraUpdate.newCameraPosition(_initialCameraPosition),
+            );
+            // try {
+            //   final location = await context.read(locationProvider.future);
+            //   LocationData userLocation = await location.getLocation();
+            //   // driverCoordinates =
+            //   //     Coordinates(userLocation.latitude, userLocation.longitude);
+            // } catch (e) {
+            //   ScaffoldMessenger.of(context).showSnackBar(
+            //     SnackBar(
+            //       content: Text('error'),
+            //     ),
+            //   );
+            // }
+          },
+          child: Icon(Icons.near_me_outlined,color: Colors.grey,),
+        ),
       ),
       body: GoogleMap(
         mapType: MapType.normal,

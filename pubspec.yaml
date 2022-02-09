@@ -48,6 +48,7 @@ dependencies:
   sliding_up_panel: ^2.0.0+1
   geocoding: ^2.0.2
   multiselect_formfield: ^0.1.7
+  # flutter_html: ^2.2.1
 #  connectivity: ^0.4.8+2
 
   # The following adds the Cupertino Icons font to your application.

@@ -20,7 +20,31 @@ class SetupGPSLocations extends StatefulWidget {
 }
 
 class _SetupGPSLocationsState extends State<SetupGPSLocations> {
-  String name = " ";
+  Future<Position> _determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      permission = await Geolocator.requestPermission();
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+        'Location permissions are permanently denied, we cannot request permissions.',
+      );
+    }
+
+    return await Geolocator.getCurrentPosition();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +58,7 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
             ),
             Image.asset(
               'UIAssets/enable your location.png',
-              scale: 1.1,
+              scale: 1.5,
             ),
             SizedBox(
               height: 69.h,
@@ -73,41 +97,7 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
             ),
             GestureDetector(
               onTap: () async {
-                // LocationPermission permission;
-
-                // permission = await Geolocator.checkPermission();
-                // if (permission == LocationPermission.deniedForever) {
-                //   await Geolocator.openAppSettings();
-                //   await Geolocator.openLocationSettings();
-                // }
-
-                // bool isLocationServiceEnabled =
-                //     await Geolocator.isLocationServiceEnabled();
-
-                // if (!isLocationServiceEnabled) {
-                //   permission = await Geolocator.requestPermission();
-                // }
-
-                bool serviceEnabled;
-                LocationPermission permission;
-
-                serviceEnabled = await Geolocator.isLocationServiceEnabled();
-                if (!serviceEnabled) {
-                  permission = await Geolocator.requestPermission();
-                }
-
-                permission = await Geolocator.checkPermission();
-                if (permission == LocationPermission.denied) {
-                  permission = await Geolocator.requestPermission();
-                  if (permission == LocationPermission.denied) {
-                    return Future.error('Location permissions are denied');
-                  }
-                }
-
-                if (permission == LocationPermission.deniedForever) {
-                  await Geolocator.openAppSettings();
-                  await Geolocator.openLocationSettings();
-                }
+                _determinePosition();
               },
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 75),
@@ -131,82 +121,82 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
             SizedBox(
               height: 42,
             ),
-            GestureDetector(
-              onTap: () async {
-                // final String names = await ApiCaller().user_profile();
-                // String x = await ApiCaller().addambulance("TR01 KK 9999", "61e2b1e569a5c49180d4ee7c", "ALS", "cooc", "nice", ["oxygen","monitoring"]);
-                // ambulance_details = await ApiCaller().get_ambulance() ;
-                history_data = await ApiCaller().historydata();
-                setState(
-                  () {
-                    Navigator.pushReplacementNamed(context, MyWallet.id);
-                    // if ( x == "ambulance added")
-                    //   {
-                    //     print("done") ;
-                    //   }
-                    // else
-                    //   {
-                    //     print(x) ;
-                    //     print("wrong") ;
-                    //   }
-                    // name = names ;
-                    // print(name) ;
-                    //Update Ambulance
-                    // Future<String> x = ApiCaller().updatelocation(21.3244593, 72.0000101);
-                    // print(x.toString()) ;
+            // GestureDetector(
+            // onTap: () async {
+            //   // final String names = await ApiCaller().user_profile();
+            //   // String x = await ApiCaller().addambulance("TR01 KK 9999", "61e2b1e569a5c49180d4ee7c", "ALS", "cooc", "nice", ["oxygen","monitoring"]);
+            //   // ambulance_details = await ApiCaller().get_ambulance() ;
+            //   history_data = await ApiCaller().historydata();
+            //   setState(
+            //     () {
+            //       Navigator.pushReplacementNamed(context, SignupPage.id);
+            //       // if ( x == "ambulance added")
+            //       //   {
+            //       //     print("done") ;
+            //       //   }
+            //       // else
+            //       //   {
+            //       //     print(x) ;
+            //       //     print("wrong") ;
+            //       //   }
+            //       // name = names ;
+            //       // print(name) ;
+            //       //Update Ambulance
+            //       // Future<String> x = ApiCaller().updatelocation(21.3244593, 72.0000101);
+            //       // print(x.toString()) ;
 
-                    //getprofile
-                    // ApiCaller().addambulance("TR01 KK 9999", "61e2b1e569a5c49180d4ee7c", "ALS", "cooc", "nice", "oxygen");
-                    // ApiCaller().user_profile();
-                    // Navigator.pushReplacementNamed(context, VehicleManagement.id) ;
+            //       //getprofile
+            //       // ApiCaller().addambulance("TR01 KK 9999", "61e2b1e569a5c49180d4ee7c", "ALS", "cooc", "nice", "oxygen");
+            //       // ApiCaller().user_profile();
+            //       // Navigator.pushReplacementNamed(context, VehicleManagement.id) ;
 
-                    // Navigator.pushReplacementNamed(
-                    //   context,
-                    //   SignupPage.id,
-                    // );
-                  },
-                );
-              },
-              child: Column(
-                children: [
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 75),
-                    padding: EdgeInsets.symmetric(vertical: 12),
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFFD428),
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 48.h,
-                  ),
-                  Center(
-                    child: TextButton(
-                      child: Text(
-                        'Skip for now',
-                        style: TextStyle(
-                          fontSize: 20.sp,
-                          color: Color(0xFFBEC2CE),
-                        ),
+            //       // Navigator.pushReplacementNamed(
+            //       //   context,
+            //       //   SignupPage.id,
+            //       // );
+            //     },
+            //   );
+            // },
+            Column(
+              children: [
+                // Container(
+                //   margin: EdgeInsets.symmetric(horizontal: 75),
+                //   padding: EdgeInsets.symmetric(vertical: 12),
+                //   decoration: BoxDecoration(
+                //     color: Color(0xFFFFD428),
+                //     borderRadius: BorderRadius.all(Radius.circular(10)),
+                //   ),
+                // ),
+                SizedBox(
+                  height: 48.h,
+                ),
+                Center(
+                  child: TextButton(
+                    child: Text(
+                      'Skip for now',
+                      style: TextStyle(
+                        fontSize: 20.sp,
+                        color: Color(0xFFBEC2CE),
                       ),
-                      onPressed: () {
-                        setState(
-                          () {
-                            Navigator.pushReplacementNamed(
-                              context,
-                              SignupPage.id,
-                            );
-                          },
-                        );
-                      },
                     ),
+                    onPressed: () {
+                      setState(
+                        () {
+                          Navigator.pushReplacementNamed(
+                            context,
+                            SignupPage.id,
+                          );
+                        },
+                      );
+                    },
                   ),
-                  SizedBox(
-                    height: 18.h,
-                  ),
-                ],
-              ),
+                ),
+                SizedBox(
+                  height: 18.h,
+                ),
+              ],
             ),
+            // ),
           ],
         ),
       ),

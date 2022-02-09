@@ -1,7 +1,8 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:siren24/global/globalvariables.dart';
 import 'package:siren24/optverification/otpverification.dart';
 import 'package:siren24/signup/signin.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:siren24/ForAPI/apicalling.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -49,14 +50,15 @@ class _SignupPageState extends State<SignupPage> {
                             height: 533.h,
                             width: 345.w,
                             decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey,
-                                    blurRadius: 15.0,
-                                  ),
-                                ]),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey,
+                                  blurRadius: 15.0,
+                                ),
+                              ],
+                            ),
                             child: Column(
                               children: [
                                 //Sign Up Stack
@@ -103,7 +105,7 @@ class _SignupPageState extends State<SignupPage> {
                                         text: TextSpan(
                                           style: TextStyle(
                                             fontSize: 34.sp,
-                                            color: Color(0xff242A37),
+                                            color: const Color(0xff242A37),
                                           ),
                                           children: const [
                                             TextSpan(
@@ -127,57 +129,58 @@ class _SignupPageState extends State<SignupPage> {
 
                                 //Bottom half of Sign Up card
                                 Container(
-                                  height: 255.h,
+                                  height: 240.h,
                                   decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.vertical(
-                                        bottom: Radius.circular(10),
-                                      )),
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.vertical(
+                                      bottom: Radius.circular(10),
+                                    ),
+                                  ),
                                   child: Column(
                                     children: [
                                       //Email ID form field
-                                      Padding(
-                                        padding: EdgeInsets.fromLTRB(
-                                            20.w, 30.h, 20.w, 10.h),
-                                        child: SizedBox(
-                                          width: 305.w,
-                                          height: 45.h,
-                                          child: TextField(
-                                            style: TextStyle(
-                                              fontSize: 17.sp,
-                                              height: 1.5,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                            cursorColor:
-                                                const Color(0xffFFD428),
-                                            decoration: InputDecoration(
-                                              // contentPadding: EdgeInsets.only(left: 30,right: 20, top: 20, bottom: 20),
-                                              hintText: 'name@example.com',
-                                              hintStyle: const TextStyle(
-                                                // fontSize: 20,
-                                                fontWeight: FontWeight.normal,
-                                                color: Color(0xffBEC2CE),
-                                              ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                borderSide: const BorderSide(
-                                                  width: 2,
-                                                  color: Color(0xffEFEFF4),
-                                                ),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                borderSide: const BorderSide(
-                                                  width: 2,
-                                                  color: Color(0xffEFEFF4),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
+                                      // Padding(
+                                      //   padding: EdgeInsets.fromLTRB(
+                                      //       20.w, 30.h, 20.w, 10.h),
+                                      //   child: SizedBox(
+                                      //     width: 305.w,
+                                      //     height: 45.h,
+                                      //     child: TextField(
+                                      //       style: TextStyle(
+                                      //         fontSize: 17.sp,
+                                      //         height: 1.5,
+                                      //         fontWeight: FontWeight.bold,
+                                      //       ),
+                                      //       cursorColor:
+                                      //           const Color(0xffFFD428),
+                                      //       decoration: InputDecoration(
+                                      //         // contentPadding: EdgeInsets.only(left: 30,right: 20, top: 20, bottom: 20),
+                                      //         hintText: 'name@example.com',
+                                      //         hintStyle: const TextStyle(
+                                      //           // fontSize: 20,
+                                      //           fontWeight: FontWeight.normal,
+                                      //           color: Color(0xffBEC2CE),
+                                      //         ),
+                                      //         enabledBorder: OutlineInputBorder(
+                                      //           borderRadius:
+                                      //               BorderRadius.circular(10),
+                                      //           borderSide: const BorderSide(
+                                      //             width: 2,
+                                      //             color: Color(0xffEFEFF4),
+                                      //           ),
+                                      //         ),
+                                      //         focusedBorder: OutlineInputBorder(
+                                      //           borderRadius:
+                                      //               BorderRadius.circular(10),
+                                      //           borderSide: const BorderSide(
+                                      //             width: 2,
+                                      //             color: Color(0xffEFEFF4),
+                                      //           ),
+                                      //         ),
+                                      //       ),
+                                      //     ),
+                                      //   ),
+                                      // ),
 
                                       //Phone Number text form field
                                       Padding(
@@ -188,10 +191,12 @@ class _SignupPageState extends State<SignupPage> {
                                           height: 45.h,
                                           child: TextField(
                                             onChanged: (value) {
-                                              setState(() {
-                                                _phoneNumber = value;
-                                                phonenumber = value ;
-                                              });
+                                              setState(
+                                                () {
+                                                  _phoneNumber = value;
+                                                  phonenumber = value;
+                                                },
+                                              );
                                               print(_phoneNumber);
                                             },
                                             style: TextStyle(
@@ -204,26 +209,31 @@ class _SignupPageState extends State<SignupPage> {
                                                 const Color(0xffFFD428),
                                             decoration: InputDecoration(
                                               prefixIcon: Padding(
-                                                padding: EdgeInsets.only(right: 5,left: 20, top: 4),
-                                                child: Text('+91 ',
+                                                padding: const EdgeInsets.only(
+                                                    right: 5, left: 20, top: 4),
+                                                child: Text(
+                                                  '+91 ',
                                                   style: TextStyle(
                                                     fontSize: 17.sp,
                                                     height: 1.5,
-                                                    fontWeight: FontWeight.bold,),
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
                                                 ),
                                               ),
-                                              hintText: "Enter your phone number",
+                                              hintText:
+                                                  "Enter your phone number",
                                               hintStyle: TextStyle(
                                                 fontSize: 17.sp,
                                                 fontWeight: FontWeight.normal,
-                                                color: Color(0xffBEC2CE),
+                                                color: const Color(0xffBEC2CE),
                                               ),
                                               contentPadding:
                                                   const EdgeInsets.only(
-                                                      left: 30,
-                                                      right: 20,
-                                                      top: 20,
-                                                      bottom: 20),
+                                                left: 30,
+                                                right: 20,
+                                                top: 20,
+                                                bottom: 20,
+                                              ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(10),
@@ -251,29 +261,36 @@ class _SignupPageState extends State<SignupPage> {
                                             20.w, 20.h, 20.w, 30.h),
                                         child: GestureDetector(
                                           onTap: () {
-                                            setState(() {
-                                              var pnumber =
-                                                  int.parse(_phoneNumber);
-                                              ApiCaller().sendOtpToPhone(
-                                                  pnumber, 2);
-                                              firsttimechecker = 0;
-                                              Navigator.pushReplacementNamed(
-                                                  context, OtpVerification.id);
-                                            });
+                                            setState(
+                                              () {
+                                                var pnumber =
+                                                    int.parse(_phoneNumber);
+                                                ApiCaller()
+                                                    .sendOtpToPhone(pnumber, 2);
+                                                firsttimechecker = 0;
+                                                Navigator.pushReplacementNamed(
+                                                  context,
+                                                  OtpVerification.id,
+                                                );
+                                              },
+                                            );
                                           },
                                           child: Container(
                                             decoration: BoxDecoration(
                                               color: _phoneNumber.length != 10
-                                                  ? Color(0x80242A37)
-                                                  : Color(0xff242A37),
+                                                  ? const Color(0x80242A37)
+                                                  : const Color(0xff242A37),
                                               borderRadius:
-                                              BorderRadius.all(Radius.circular(10)),
+                                                  const BorderRadius.all(
+                                                Radius.circular(10),
+                                              ),
                                             ),
                                             width: 305.w,
                                             height: 45.h,
                                             child: Center(
                                               child: Padding(
-                                                padding: EdgeInsets.all(8.0),
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
                                                 child: Text(
                                                   'SIGN UP',
                                                   style: TextStyle(
@@ -316,12 +333,16 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            setState(() {
-                              Navigator.push(
+                            setState(
+                              () {
+                                Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => SignIn()));
-                            });
+                                    builder: (context) => const SignIn(),
+                                  ),
+                                );
+                              },
+                            );
                           },
                           child: Text(
                             'Sign In',

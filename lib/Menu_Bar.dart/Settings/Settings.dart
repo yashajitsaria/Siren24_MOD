@@ -486,99 +486,101 @@ class _SettingsState extends State<Settings> {
                   Container(
                     height: 2.h,
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Notifications()));
-                      });
-                    },
-                    child: Container(
-                      height: 50.h,
-                      color: Colors.white,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Stack(
-                                      children: <Widget>[
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                            top: 3,
-                                            bottom: 3,
-                                            left: 7,
-                                            right: 15,
-                                          ),
-                                          child: Container(
-                                            width: 30.w,
-                                            height: 36.h,
-                                            decoration: BoxDecoration(
-                                              color: Color(0xFF5AC8FA),
-                                              borderRadius:
-                                                  BorderRadius.circular(6),
-                                            ),
-                                            child: Align(
-                                              alignment: Alignment.center,
-                                              child: Image.asset(
-                                                'UIAssets/notification.png',
-                                                scale: 1.5,
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Notifications',
-                                          style: TextStyle(
-                                            fontFamily: 'SF Pro Text',
-                                            fontSize: 20.sp,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Icon(
-                                  Icons.keyboard_arrow_right_rounded,
-                                  color: Colors.grey[400],
-                                  size: 36.sp,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 54),
-                    height: 2.h,
-                  ),
+                  // GestureDetector(
+                  //   // onTap: () {
+                  //   //   setState(() {
+                  //   //     Navigator.push(
+                  //   //       context,
+                  //   //       MaterialPageRoute(
+                  //   //         builder: (context) => Notifications(),
+                  //   //       ),
+                  //   //     );
+                  //   //   });
+                  //   // },
+                  //   child: Container(
+                  //     height: 50.h,
+                  //     color: Colors.white,
+                  //     child: Padding(
+                  //       padding: const EdgeInsets.only(left: 10, right: 10),
+                  //       child: Row(
+                  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //         children: [
+                  //           Row(
+                  //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //             children: [
+                  //               Row(
+                  //                 mainAxisAlignment:
+                  //                     MainAxisAlignment.spaceEvenly,
+                  //                 children: [
+                  //                   Stack(
+                  //                     children: <Widget>[
+                  //                       Padding(
+                  //                         padding: const EdgeInsets.only(
+                  //                           top: 3,
+                  //                           bottom: 3,
+                  //                           left: 7,
+                  //                           right: 15,
+                  //                         ),
+                  //                         child: Container(
+                  //                           width: 30.w,
+                  //                           height: 36.h,
+                  //                           decoration: BoxDecoration(
+                  //                             color: Color(0xFF5AC8FA),
+                  //                             borderRadius:
+                  //                                 BorderRadius.circular(6),
+                  //                           ),
+                  //                           child: Align(
+                  //                             alignment: Alignment.center,
+                  //                             child: Image.asset(
+                  //                               'UIAssets/notification.png',
+                  //                               scale: 1.5,
+                  //                               color: Colors.white,
+                  //                             ),
+                  //                           ),
+                  //                         ),
+                  //                       ),
+                  //                     ],
+                  //                   ),
+                  //                   Column(
+                  //                     mainAxisAlignment:
+                  //                         MainAxisAlignment.center,
+                  //                     crossAxisAlignment:
+                  //                         CrossAxisAlignment.start,
+                  //                     children: [
+                  //                       Text(
+                  //                         'Notifications',
+                  //                         style: TextStyle(
+                  //                           fontFamily: 'SF Pro Text',
+                  //                           fontSize: 20.sp,
+                  //                           color: Colors.black,
+                  //                         ),
+                  //                       ),
+                  //                     ],
+                  //                   ),
+                  //                 ],
+                  //               ),
+                  //             ],
+                  //           ),
+                  //           Column(
+                  //             mainAxisAlignment: MainAxisAlignment.end,
+                  //             crossAxisAlignment: CrossAxisAlignment.end,
+                  //             children: [
+                  //               Icon(
+                  //                 Icons.keyboard_arrow_right_rounded,
+                  //                 color: Colors.grey[400],
+                  //                 size: 36.sp,
+                  //               ),
+                  //             ],
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  // Container(
+                  //   margin: EdgeInsets.only(left: 54),
+                  //   height: 2.h,
+                  // ),
                   Container(
                     height: 50.h,
                     color: Colors.white,

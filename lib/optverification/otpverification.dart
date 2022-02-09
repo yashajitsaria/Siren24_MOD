@@ -1,9 +1,9 @@
 import 'dart:async';
 // import 'package:connectivity/connectivity.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:siren24/GoogleMaps/HomeOffline.dart';
 import 'package:siren24/Menu_Bar.dart/Settings/Profile.dart';
 import 'package:siren24/Menu_Bar.dart/Settings/ProfileEdit.dart';
 import 'package:siren24/Menu_Bar.dart/Settings/profileeditpage.dart';
@@ -12,14 +12,13 @@ import 'package:siren24/ForAPI/apicalling.dart';
 
 class OtpVerification extends StatefulWidget {
   const OtpVerification({Key? key}) : super(key: key);
-  static String id = 'OtpVerification' ;
+  static String id = 'OtpVerification';
 
   @override
   _OtpVerificationState createState() => _OtpVerificationState();
 }
 
 class _OtpVerificationState extends State<OtpVerification> {
-
   TextEditingController textEditingController = TextEditingController();
   late StreamController<ErrorAnimationType> errorController;
   bool hasError = false;
@@ -28,11 +27,11 @@ class _OtpVerificationState extends State<OtpVerification> {
   double width = 0;
   @override
   Widget build(BuildContext context) {
-    width = MediaQuery.of(context).size.width ;
+    width = MediaQuery.of(context).size.width;
     return ScreenUtilInit(
-      builder: ()=> GestureDetector(
-        onTap: (){
-          FocusScopeNode currentFocus = FocusScope.of(context) ;
+      builder: () => GestureDetector(
+        onTap: () {
+          FocusScopeNode currentFocus = FocusScope.of(context);
           if (!currentFocus.hasPrimaryFocus) {
             currentFocus.unfocus();
           }
@@ -57,20 +56,26 @@ class _OtpVerificationState extends State<OtpVerification> {
                       Positioned(
                         right: 0,
                         bottom: 0,
-                        child: Image.asset('images/img1.png',
-                          scale: 0.65,),
+                        child: Image.asset(
+                          'images/img1.png',
+                          scale: 0.65,
+                        ),
                       ),
                       Positioned(
                         right: 0,
                         bottom: 0,
-                        child: Image.asset('images/img22.png',
-                          scale: 0.75,),
+                        child: Image.asset(
+                          'images/img22.png',
+                          scale: 0.75,
+                        ),
                       ),
                       Positioned(
                         left: 0,
                         bottom: 0,
-                        child: Image.asset('images/img3.png',
-                          scale: 0.83,),
+                        child: Image.asset(
+                          'images/img3.png',
+                          scale: 0.83,
+                        ),
                       ),
                     ],
                   ),
@@ -80,23 +85,26 @@ class _OtpVerificationState extends State<OtpVerification> {
                   top: 210.h,
                   child: Padding(
                     padding: EdgeInsets.fromLTRB(
-                        15.w,
-                        10.h,
-                        15.w,
-                        10.h),
+                      15.w,
+                      10.h,
+                      15.w,
+                      10.h,
+                    ),
                     child: Container(
                       width: 345.w,
-                      height: 350.h,
+                      height: 375.h,
                       decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius:
-                          BorderRadius.all(Radius.circular(10)),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 15.0,
-                            ),
-                          ]),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey,
+                            blurRadius: 15.0,
+                          ),
+                        ],
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -105,19 +113,23 @@ class _OtpVerificationState extends State<OtpVerification> {
                           // ),
                           Padding(
                             padding: EdgeInsets.fromLTRB(30.w, 30.h, 30.w, 6.h),
-                            child: Text('Phone Verification',
+                            child: Text(
+                              'Phone Verification',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 34.sp,
-                                color: Color(0xff242A37),
-                              ),),
+                                color: const Color(0xff242A37),
+                              ),
+                            ),
                           ),
                           Padding(
                             padding: EdgeInsets.fromLTRB(30.w, 7.h, 30.w, 30.h),
-                            child: Text('Enter your OTP code here',
-                            style: TextStyle(
-                              fontSize: 17.sp,
-                            ),),
+                            child: Text(
+                              'Enter your OTP code here',
+                              style: TextStyle(
+                                fontSize: 17.sp,
+                              ),
+                            ),
                           ),
 
                           // SizedBox(
@@ -134,10 +146,10 @@ class _OtpVerificationState extends State<OtpVerification> {
                                 animationType: AnimationType.none,
                                 appContext: context,
                                 length: 6,
-                                onChanged: (value){
+                                onChanged: (value) {
                                   print(value);
                                   setState(() {
-                                    _currentText = value ;
+                                    _currentText = value;
                                   });
                                 },
                                 textStyle: TextStyle(
@@ -146,9 +158,9 @@ class _OtpVerificationState extends State<OtpVerification> {
                                 showCursor: false,
                                 keyboardType: TextInputType.number,
                                 pinTheme: PinTheme(
-                                  activeColor: Color(0xffD8D8D8),
-                                  inactiveColor: Color(0xffD8D8D8),
-                                  selectedColor: Color(0xffD8D8D8),
+                                  activeColor: const Color(0xffD8D8D8),
+                                  inactiveColor: const Color(0xffD8D8D8),
+                                  selectedColor: const Color(0xffD8D8D8),
                                   borderWidth: 5,
                                   fieldWidth: 35.w,
                                 ),
@@ -158,43 +170,54 @@ class _OtpVerificationState extends State<OtpVerification> {
 
                           //Verify Button
                           Padding(
-                            padding: EdgeInsets.fromLTRB(20.w, 20.h, 20.w, 20.h),
+                            padding:
+                                EdgeInsets.fromLTRB(20.w, 20.h, 20.w, 20.h),
                             child: GestureDetector(
                               onTap: () {
-                                if ( _currentText.length == 6)
-                                  {
-                                    setState(() async{
-                                      var _otp =int.parse(_currentText) ;
-                                      ApiCaller().verifyOtp(_otp) ;
-                                      if ( firsttimechecker == 0 )
-                                        {
-                                          Navigator.pushReplacementNamed(context, ProfileEditPage.id);
-                                          firsttimechecker = 1 ;
-                                        }
-                                      else
-                                        {
-                                          userdata = await ApiCaller().user_profile() as Map;
-                                          Navigator.pushReplacementNamed(context, Profile.id);
-                                        }
-                                    });
-                                  }
+                                if (_currentText.length == 6) {
+                                  setState(
+                                    () async {
+                                      var _otp = int.parse(_currentText);
+                                      ApiCaller().verifyOtp(_otp);
+                                      if (firsttimechecker == 0) {
+                                        Navigator.pushReplacementNamed(
+                                          context,
+                                          ProfileEditPage.id,
+                                        );
+                                        firsttimechecker = 1;
+                                      } else {
+                                        userdata =
+                                            await ApiCaller().user_profile();
+                                        Navigator.pushReplacementNamed(
+                                          context,
+                                          HomeOffline.id,
+                                        );
+                                      }
+                                    },
+                                  );
+                                }
                               },
                               child: Container(
                                 decoration: BoxDecoration(
                                   // color: _currentText.length != 4 ? Color(0xff242A37):Color(0xffFFD428),
-                                  color: _currentText.length != 6 ? Color(0x80FFD428):Color(0xffFFD428),
-                                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                                  color: _currentText.length != 6
+                                      ? const Color(0x80FFD428)
+                                      : const Color(0xffFFD428),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
                                 ),
-                                width: MediaQuery.of(context).size.width*0.9,
+                                width: MediaQuery.of(context).size.width * 0.9,
                                 height: 60,
                                 child: Center(
                                   child: Padding(
-                                    padding: EdgeInsets.all(8.0),
+                                    padding: const EdgeInsets.all(8.0),
                                     child: Text(
                                       'VERIFY NOW',
                                       style: TextStyle(
                                         // color: Colors.white,
-                                        color: _currentText.length != 6 ? Colors.white : Color(0xff242A37),
+                                        color: _currentText.length != 6
+                                            ? Colors.white
+                                            : const Color(0xff242A37),
                                         fontWeight: FontWeight.bold,
                                         fontSize: 25,
                                       ),
@@ -214,7 +237,7 @@ class _OtpVerificationState extends State<OtpVerification> {
           ),
         ),
       ),
-      designSize: const Size(375,812),
+      designSize: const Size(375, 812),
     );
   }
 }

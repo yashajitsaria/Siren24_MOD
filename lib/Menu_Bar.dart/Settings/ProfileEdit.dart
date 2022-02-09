@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:siren24/ForAPI/apicalling.dart';
+import 'package:siren24/Menu_Bar.dart/MenuBar.dart';
 import 'package:siren24/Menu_Bar.dart/Settings/Profile.dart';
 import 'package:siren24/global/globalvariables.dart';
 
@@ -14,12 +15,11 @@ class ProfileEdit extends StatefulWidget {
 }
 
 class _ProfileEditState extends State<ProfileEdit> {
-
-  String name = userdata["name"] ;
-  String dob = userdata["dob"] ;
-  String gender = userdata["gender"] ;
-  String profileimg = userdata["profile_img"] ;
-  int age = userdata["age"] ;
+  String name = userdata["name"];
+  String dob = userdata["dob"];
+  String gender = userdata["gender"];
+  String profileimg = userdata["profile_img"];
+  int age = userdata["age"];
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +27,12 @@ class _ProfileEditState extends State<ProfileEdit> {
       designSize: Size(375, 812),
       builder: () => SafeArea(
         child: Scaffold(
+          drawer: MenuBar(),
+          appBar: AppBar(
+            iconTheme: IconThemeData(
+              color: Color(0xFFFF8900),
+            ),
+          ),
           backgroundColor: Colors.grey[200],
           body: Column(
             children: [
@@ -53,14 +59,16 @@ class _ProfileEditState extends State<ProfileEdit> {
                           ),
                         ),
                         TextButton(
-                          onPressed: () async{
-                            ApiCaller().editProfile(name, dob, gender, profileimg, age);
+                          onPressed: () async {
+                            ApiCaller().editProfile(
+                                name, dob, gender, profileimg, age);
                             userdata = await ApiCaller().user_profile() as Map;
-                          setState(() {
-                            // userdata = await ApiCaller().user_profile();
-                            print(userdata);
-                            Navigator.pushReplacementNamed(context, Profile.id);
-                          });
+                            setState(() {
+                              // userdata = await ApiCaller().user_profile();
+                              print(userdata);
+                              Navigator.pushReplacementNamed(
+                                  context, Profile.id);
+                            });
                           },
                           child: Text(
                             'Done',
@@ -87,13 +95,13 @@ class _ProfileEditState extends State<ProfileEdit> {
                             height: 16.h,
                           ),
                           TextField(
-                            onChanged: (value){
+                            onChanged: (value) {
                               setState(() {
-                                name = value ;
+                                name = value;
                               });
                             },
                             decoration: InputDecoration(
-                              hintText: name ,
+                              hintText: name,
                               hintStyle: TextStyle(
                                 fontFamily: 'SF UI Display',
                                 fontWeight: FontWeight.bold,
@@ -171,12 +179,13 @@ class _ProfileEditState extends State<ProfileEdit> {
                               children: [
                                 Row(
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceEvenly,
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Phone number',
@@ -236,12 +245,13 @@ class _ProfileEditState extends State<ProfileEdit> {
                               children: [
                                 Row(
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceEvenly,
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Email',
@@ -301,12 +311,13 @@ class _ProfileEditState extends State<ProfileEdit> {
                               children: [
                                 Row(
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceEvenly,
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Gender',
@@ -366,12 +377,13 @@ class _ProfileEditState extends State<ProfileEdit> {
                               children: [
                                 Row(
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceEvenly,
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Birthday',
