@@ -93,7 +93,7 @@ class ApiCaller {
   //*********************************************************************************//
 
   //Add Ambulance
-  Future<String> addambulance(String car_no, String ownerid, String type,
+  Future<String> addambulance(String car_no,  String type,
       String brand, String model, List addons) async {
     var res = await post(
       Uri.parse('http://$ip:4000/api/ambulance/add'),
@@ -104,7 +104,8 @@ class ApiCaller {
       },
       body: jsonEncode({
         "car_no": car_no,
-        "ownerid": ownerid,
+        "ownerid": userid,
+        // "ownerid": "61e2b1e569a5c49180d4ee7c" ,
         "type": type,
         "brand": brand,
         "model": model,
@@ -113,8 +114,8 @@ class ApiCaller {
     );
     handleError(res);
     Logger().d(res.body) ;
-    var response = UpdateApi.fromJson(jsonDecode(res.body));
-    return response.message.toString() ;
+    var response = jsonDecode(res.body);
+    return response['message'] ;
   }
 
   //*********************************************************************************//
@@ -123,7 +124,7 @@ class ApiCaller {
   Future<List> get_ambulance() async {
     var res = await get(Uri.parse('http://$ip:4000/api/ambulance/find'),
     headers: {
-      HttpHeaders.contentTypeHeader: 'application/json',
+      // HttpHeaders.contentTypeHeader: 'application/json',
       // "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
       "authtoken": authToken,
     },
@@ -142,28 +143,14 @@ class ApiCaller {
       Uri.parse('http://$ip:4000/api/profile/view'),
       headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
-        // "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
-        "authtoken": authToken,
+        "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
+        // "authtoken": authToken,
       },
     );
     handleError(res);
     Logger().d(res.body) ;
 
-    // var response = Profile.fromJson(jsonDecode(res.body));
     var value = jsonDecode(res.body) ;
-    // Map value = {
-    //   "name": response.name ,
-    //   "dob": response.dob,
-    //   "phonenumber": response.phonenumber,
-    //   "profileimg": response.profileimg,
-    //   "gender": response.gender
-    // } ;
-    // name = await response.name ;
-    // print(name) ;
-    // return name ;
-    // name = response.name ;
-    // phonenumberr = response.phonenumber ;
-    // return response.toString() ;
     return value ;
   }
 
@@ -240,6 +227,22 @@ class ApiCaller {
 
   //*********************************************************************************//
 
+  Future<String> logout() async{
+    var res = await post(
+      Uri.parse('http://65.2.132.175:4000/api/otp/logout'),
+      headers: {
+        HttpHeaders.contentTypeHeader: 'application/json',
+        "authtoken": authToken,
+        // "authtoken": "EVuSACB5AchWPbj2hsaPKPK9XWnPiyHqxxocUMTKJ7N9" ,
+      }
+    );
+    handleError(res) ;
+    Logger().d(res.body) ;
+    var response = jsonDecode(res.body) ;
+    return response['message'] ;
+  }
+
+  //*********************************************************************************//
 
   //Handle error
   handleError(Response response) {

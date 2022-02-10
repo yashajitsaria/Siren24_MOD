@@ -35,19 +35,19 @@ class _VehicleManagementState extends State<VehicleManagement> {
       body: Stack(
         children: [
           ListViewvm(),
-          // AddVehicleButton(),
-          FloatingActionButton(
-            onPressed: () {
-              setState(
-                () {
-                  Navigator.pushReplacementNamed(
-                    context,
-                    AddVehicleButton.id,
-                  );
-                },
-              );
-            },
-          ),
+          AddVehicleButton(),
+          // FloatingActionButton(
+          //   onPressed: () {
+          //     setState(
+          //       () {
+          //         Navigator.pushReplacementNamed(
+          //           context,
+          //           AddVehiclePage.id,
+          //         );
+          //       },
+          //     );
+          //   },
+          // ),
         ],
       ),
     );

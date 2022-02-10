@@ -68,7 +68,7 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
               style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
-                fontSize: 36.sp,
+                fontSize: 30.sp,
               ),
             ),
             SizedBox(
@@ -80,13 +80,13 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
                   Text(
                     'Choose your location to start find the',
                     style: TextStyle(
-                      fontSize: 20.sp,
+                      fontSize: 17.sp,
                     ),
                   ),
                   Text(
                     'request around you.',
                     style: TextStyle(
-                      fontSize: 20.sp,
+                      fontSize: 17.sp,
                     ),
                   ),
                 ],
@@ -97,7 +97,8 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
             ),
             GestureDetector(
               onTap: () async {
-                _determinePosition();
+                await _determinePosition();
+                Navigator.pushReplacementNamed(context, SignupPage.id);
               },
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 75),
@@ -111,7 +112,7 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
                     'USE MY LOCATION',
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 20.sp,
+                      fontSize: 17.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -175,7 +176,7 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
                     child: Text(
                       'Skip for now',
                       style: TextStyle(
-                        fontSize: 20.sp,
+                        fontSize: 17.sp,
                         color: Color(0xFFBEC2CE),
                       ),
                     ),

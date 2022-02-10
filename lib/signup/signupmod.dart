@@ -47,7 +47,7 @@ class _SignupPageState extends State<SignupPage> {
                         child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 15.w),
                           child: Container(
-                            height: 533.h,
+                            height: 493.h,
                             width: 345.w,
                             decoration: const BoxDecoration(
                               borderRadius:
@@ -129,7 +129,7 @@ class _SignupPageState extends State<SignupPage> {
 
                                 //Bottom half of Sign Up card
                                 Container(
-                                  height: 240.h,
+                                  height: 200.h,
                                   decoration: const BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.vertical(
@@ -181,6 +181,11 @@ class _SignupPageState extends State<SignupPage> {
                                       //     ),
                                       //   ),
                                       // ),
+                                      //Sized Box
+                                      SizedBox(
+                                        height: 20.h,
+                                      ),
+
 
                                       //Phone Number text form field
                                       Padding(
@@ -316,7 +321,9 @@ class _SignupPageState extends State<SignupPage> {
                   ),
 
                   SizedBox(
-                    height: 105.h,
+
+                    //Changes
+                    height: 120.h,
                   ),
 
                   //To Sign In page
@@ -358,7 +365,9 @@ class _SignupPageState extends State<SignupPage> {
 
                   Container(
                     color: Colors.white,
-                    height: 10.h,
+
+                    //Changes
+                    height: 25.h,
                     width: double.infinity,
                   ),
                 ],

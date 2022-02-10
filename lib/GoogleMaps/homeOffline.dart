@@ -28,64 +28,66 @@ class _HomeOfflineState extends State<HomeOffline> {
     return ScreenUtilInit(
       designSize: Size(375, 812),
       builder: () => Scaffold(
-        body: Scaffold(
-          extendBodyBehindAppBar: true,
-          drawer: MenuBar(),
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(110),
-            child: ClipRRect(
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
-                child: AppBar(
-                  iconTheme: IconThemeData(
-                    color: Color(0xFFFFD428),
-                  ),
-                  bottom: PreferredSize(
-                    child: OfflineNotif(),
-                    preferredSize: Size.fromHeight(48),
-                  ),
-                  elevation: 0,
-                  backgroundColor: Colors.transparent,
-                  shadowColor: Colors.white,
-                  centerTitle: true,
-                  title: Text(
-                    'Offline',
-                    style: TextStyle(
-                      fontFamily: 'SF UI Display',
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
+        body: SafeArea(
+          child: Scaffold(
+            extendBodyBehindAppBar: true,
+            drawer: MenuBar(),
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(130.h),
+              child: ClipRRect(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+                  child: AppBar(
+                    iconTheme: IconThemeData(
+                      color: Color(0xFFFFD428),
                     ),
+                    bottom: PreferredSize(
+                      child: OfflineNotif(),
+                      preferredSize: Size.fromHeight(48),
+                    ),
+                    elevation: 0,
+                    backgroundColor: Colors.transparent,
+                    shadowColor: Colors.white,
+                    centerTitle: true,
+                    title: Text(
+                      'Offline',
+                      style: TextStyle(
+                        fontFamily: 'SF UI Display',
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                    actions: [
+                      FlutterSwitch(
+                        activeColor: Color(0xFFFF8900),
+                        inactiveToggleColor: Colors.white,
+                        activeToggleColor: Colors.white,
+                        width: 52.w,
+                        height: 32.h,
+                        valueFontSize: 25.0,
+                        toggleSize: 30,
+                        value: status,
+                        borderRadius: 30.0,
+                        padding: 3,
+                        showOnOff: false,
+                        onToggle: (val) {
+                          setState(() {
+                            status = val;
+                          });
+                        },
+                      ),
+                      SizedBox(
+                        width: 25,
+                      ),
+                    ],
                   ),
-                  actions: [
-                    FlutterSwitch(
-                      activeColor: Color(0xFFFF8900),
-                      inactiveToggleColor: Colors.white,
-                      activeToggleColor: Colors.white,
-                      width: 62.w,
-                      height: 42.h,
-                      valueFontSize: 25.0,
-                      toggleSize: 30,
-                      value: status,
-                      borderRadius: 30.0,
-                      padding: 3,
-                      showOnOff: false,
-                      onToggle: (val) {
-                        setState(() {
-                          status = val;
-                        });
-                      },
-                    ),
-                    SizedBox(
-                      width: 25,
-                    ),
-                  ],
                 ),
               ),
             ),
-          ),
-          body: SlidingPanelHomeOffline(
-            child: GMapsHomeOffline(),
+            body: SlidingPanelHomeOffline(
+              child: GMapsHomeOffline(),
+            ),
           ),
         ),
       ),
@@ -109,8 +111,8 @@ class SlidingPanelHomeOffline extends StatelessWidget {
         ),
       ],
       borderRadius: BorderRadius.circular(15),
-      minHeight: 100,
-      maxHeight: 200,
+      minHeight: 94.h,
+      maxHeight: 200.h,
       body: child,
       panel: Column(
         children: [
@@ -118,8 +120,8 @@ class SlidingPanelHomeOffline extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(top: 7),
               child: Container(
-                width: 36,
-                height: 5,
+                width: 36.w,
+                height: 5.h,
                 decoration: BoxDecoration(
                   color: Color(0xFFCBCDCC),
                   borderRadius: BorderRadius.all(Radius.circular(18)),
@@ -135,7 +137,7 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     SizedBox(
-                      width: 7,
+                      width: 7.w,
                     ),
                     // Image.asset('UIAssets/dp.png'),
                     Container(
@@ -147,7 +149,7 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 24,
+                      width: 24.w,
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -174,10 +176,10 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  width: 100,
+                  width: 100.h,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 25),
+                  padding: EdgeInsets.only(top: 25.h),
                   child: Text(
                     'Earned',
                     style: TextStyle(

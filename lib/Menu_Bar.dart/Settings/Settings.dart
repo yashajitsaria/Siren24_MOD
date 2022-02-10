@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:siren24/Menu_Bar.dart/Settings/Profile.dart';
+import 'package:siren24/global/globalvariables.dart';
 import 'package:siren24/vehicle_management/vehicle_management.dart';
 
 import '../MenuBar.dart';
@@ -80,12 +81,11 @@ class _SettingsState extends State<Settings> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Image.asset(
-                                      'UIAssets/dp.png',
-                                      scale: MediaQuery.of(context)
-                                              .size
-                                              .aspectRatio *
-                                          1.6,
+                                    Container(
+                                      height: 60.h,
+                                      width: 60.w,
+                                      child: Image.network(userdata['profile_img'],
+                                      fit: BoxFit.fill,),
                                     ),
                                     SizedBox(
                                       width: 15,
@@ -97,20 +97,20 @@ class _SettingsState extends State<Settings> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'Martha Banks',
+                                          userdata['name'],
                                           style: TextStyle(
                                             fontFamily: 'SF UI Display',
                                             fontSize: 24.sp,
                                             color: Colors.black,
                                           ),
                                         ),
-                                        Text(
-                                          'Gold Member',
-                                          style: TextStyle(
-                                            fontSize: 18.sp,
-                                            color: Color(0xFFBEC2CE),
-                                          ),
-                                        ),
+                                        // Text(
+                                        //   'Gold Member',
+                                        //   style: TextStyle(
+                                        //     fontSize: 18.sp,
+                                        //     color: Color(0xFFBEC2CE),
+                                        //   ),
+                                        // ),
                                       ],
                                     ),
                                   ],

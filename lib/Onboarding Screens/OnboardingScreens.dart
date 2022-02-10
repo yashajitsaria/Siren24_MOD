@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:siren24/Onboarding%20Screens/SetupGPSLocations.dart';
 import 'package:siren24/global/globalvariables.dart';
 import 'package:siren24/ForAPI/apicalling.dart';
+import 'package:siren24/vehicle_management/vehicle_management.dart';
 
 class OnboardingScreens extends StatefulWidget {
   const OnboardingScreens({Key? key}) : super(key: key);
@@ -77,7 +78,7 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                             style: TextStyle(
                               fontFamily: 'SF UI Display',
                               fontWeight: FontWeight.bold,
-                              fontSize: 36.sp,
+                              fontSize: 30.sp,
                             ),
                           ),
                           SizedBox(
@@ -91,7 +92,7 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontFamily: 'SF UI Display',
-                                fontSize: 20.sp,
+                                fontSize: 17.sp,
                                 fontWeight: FontWeight.normal,
                               ),
                             ),
@@ -111,7 +112,7 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                               'Skip',
                               style: TextStyle(
                                 color: Color(0xFFBEC2CE),
-                                fontSize: 20.h,
+                                fontSize: 17.h,
                               ),
                             ),
                           ),
@@ -134,7 +135,7 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                               fontFamily: 'SF UI Display',
                               letterSpacing: 1,
                               fontWeight: FontWeight.bold,
-                              fontSize: 36.sp,
+                              fontSize: 30.sp,
                             ),
                           ),
                           SizedBox(
@@ -148,7 +149,7 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontFamily: 'SF UI Display',
-                                fontSize: 20.sp,
+                                fontSize: 17.sp,
                                 fontWeight: FontWeight.normal,
                               ),
                             ),
@@ -168,7 +169,7 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                               'Skip',
                               style: TextStyle(
                                 color: Color(0xFFBEC2CE),
-                                fontSize: 20.sp,
+                                fontSize: 17.sp,
                               ),
                             ),
                           ),
@@ -191,7 +192,7 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                               fontFamily: 'SF UI Display',
                               letterSpacing: 1,
                               fontWeight: FontWeight.bold,
-                              fontSize: 36.sp,
+                              fontSize: 30.sp,
                             ),
                           ),
                           SizedBox(
@@ -205,7 +206,7 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontFamily: 'SF UI Display',
-                                fontSize: 20.sp,
+                                fontSize: 17.sp,
                                 fontWeight: FontWeight.normal,
                               ),
                             ),
@@ -214,10 +215,14 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                             height: 20.h,
                           ),
                           GestureDetector(
-                            onTap: () {
-                              // userdata = ApiCaller().user_profile;
+                            onTap: () async{
+                              // ambulance_details = await ApiCaller().get_ambulance();
                               setState(
                                 () {
+                                  // Navigator.pushReplacementNamed(
+                                  //   context,
+                                  //   VehicleManagement.id,
+                                  // );
                                   Navigator.pushReplacementNamed(
                                     context,
                                     SetupGPSLocations.id,
@@ -238,7 +243,7 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                                   'GET STARTED',
                                   style: TextStyle(
                                     color: Colors.black,
-                                    fontSize: 20.sp,
+                                    fontSize: 17.sp,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),

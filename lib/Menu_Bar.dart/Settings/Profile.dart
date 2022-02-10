@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:siren24/Menu_Bar.dart/MenuBar.dart';
 import 'package:siren24/Menu_Bar.dart/Settings/profileeditpage.dart';
 import 'package:siren24/global/globalvariables.dart';
 
@@ -25,38 +26,40 @@ class _ProfileState extends State<Profile> {
       child: ScreenUtilInit(
         designSize: Size(375, 812),
         builder: () => Scaffold(
+          drawer: MenuBar(),
+          appBar: AppBar(
+            actions: [
+              TextButton(
+                onPressed: () {
+                  setState(() {
+                    Navigator.pushReplacementNamed(
+                        context, ProfileEditPage.id);
+                  });
+                },
+                child: Text(
+                  'Edit',
+                  style: TextStyle(
+                    color: Color(0xFFFF8900),
+                    fontSize: 20.sp,
+                    fontFamily: 'SF UI Display',
+                  ),
+                ),
+              ),
+            ],
+            backgroundColor: Colors.white,
+            shadowColor: Colors.transparent,
+            iconTheme: IconThemeData(
+              color: Color(0xFFFFD428),
+            ),
+          ),
           backgroundColor: Color(0xFFF7F8FA),
           body: Column(
             children: [
               Container(
-                height: 296.h,
+                height: 150.h,
                 color: Colors.white,
                 child: Column(
                   children: [
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            setState(() {
-                              Navigator.pushReplacementNamed(
-                                  context, ProfileEditPage.id);
-                            });
-                          },
-                          child: Text(
-                            'Edit',
-                            style: TextStyle(
-                              color: Color(0xFFFF8900),
-                              fontSize: 20.sp,
-                              fontFamily: 'SF UI Display',
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
                     SizedBox(
                       height: 15,
                     ),
@@ -86,16 +89,6 @@ class _ProfileState extends State<Profile> {
                               fontWeight: FontWeight.bold,
                               fontSize: 24.sp,
                               color: Colors.black,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            'Gold Member',
-                            style: TextStyle(
-                              fontSize: 18.sp,
-                              color: Color(0xFFBEC2CE),
                             ),
                           ),
                         ],
@@ -134,7 +127,7 @@ class _ProfileState extends State<Profile> {
               ),
               Container(
                 color: Colors.white,
-                height: 227.25.h,
+                height: 190.25.h,
                 child: Column(
                   children: [
                     Padding(
@@ -243,71 +236,6 @@ class _ProfileState extends State<Profile> {
                             children: [
                               Text(
                                 userdata['phoneno'].toString(),
-                                style: TextStyle(
-                                  fontFamily: 'SF UI Display',
-                                  fontSize: 20.sp,
-                                  color: Color(0xFFBEC2CE),
-                                ),
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Icon(
-                                    Icons.keyboard_arrow_right_rounded,
-                                    color: Color(0xFFBEC2CE),
-                                    size: 21,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 18),
-                      height: 1.h,
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 15, right: 10, top: 7, bottom: 7),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Email',
-                                        style: TextStyle(
-                                          fontFamily: 'SF UI Display',
-                                          fontSize: 20.sp,
-                                          color: Color(0xFF030303),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                'freeslab88@gmail.com',
                                 style: TextStyle(
                                   fontFamily: 'SF UI Display',
                                   fontSize: 20.sp,

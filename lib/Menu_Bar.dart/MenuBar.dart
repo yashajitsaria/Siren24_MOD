@@ -3,10 +3,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:siren24/ForAPI/apicalling.dart';
 import 'package:siren24/GoogleMaps/HomeOffline.dart';
 import 'package:siren24/Invite%20Friends/InviteFriends.dart';
 import 'package:siren24/Menu_Bar.dart/Notifications.dart';
 import 'package:siren24/MyWallet/MyWallet.dart';
+import 'package:siren24/global/globalvariables.dart';
+import 'package:siren24/history/history.dart';
+import 'package:siren24/signup/signin.dart';
 import 'package:siren24/vehicle_management/vehicle_management.dart';
 
 import 'Settings/Settings.dart';
@@ -38,19 +42,25 @@ class _MenuBarState extends State<MenuBar> {
                   children: [
                     Padding(
                       padding: EdgeInsets.only(
-                        bottom: 5,
-                        top: 5,
-                        left: 5,
-                        right: 5,
+                        bottom: 5.h,
+                        top: 5.h,
+                        left: 5.w,
+                        right: 5.w,
                       ),
                       child: Row(
                         children: [
                           SizedBox(
                             width: 10,
                           ),
-                          Image.asset(
-                            'UIAssets/dp.png',
-                            scale: 0.75,
+                          // Image.asset(
+                          //   'UIAssets/dp.png',
+                          //   scale: 0.75,
+                          // ),
+                          Container(
+                            height: 40.h,
+                            width: 40.w,
+                            child: Image.network(userdata['profile_img'],
+                            fit: BoxFit.fill,),
                           ),
                           SizedBox(
                             width: 15,
@@ -60,7 +70,7 @@ class _MenuBarState extends State<MenuBar> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                'Martha Banks',
+                                userdata['name'],
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 21,
@@ -70,34 +80,41 @@ class _MenuBarState extends State<MenuBar> {
                               SizedBox(
                                 height: 5,
                               ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(25)),
-                                  color: Colors.white,
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(7),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Icon(
-                                        Icons.star_rounded,
-                                        color: Color(0xFFFFD428),
-                                        size: 15,
-                                      ),
-                                      Text(
-                                        'Gold Member',
-                                        style: TextStyle(
-                                          color: Color(0xFFFFD428),
-                                          fontSize: 15,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
+
+                              //*********************************************************************************//
+
+                              //Gold Member
+                              // Container(
+                              //   decoration: BoxDecoration(
+                              //     borderRadius:
+                              //         BorderRadius.all(Radius.circular(25)),
+                              //     color: Colors.white,
+                              //   ),
+                              //   child: Padding(
+                              //     padding: const EdgeInsets.all(7),
+                              //     child: Row(
+                              //       mainAxisAlignment:
+                              //           MainAxisAlignment.spaceEvenly,
+                              //       children: [
+                              //         Icon(
+                              //           Icons.star_rounded,
+                              //           color: Color(0xFFFFD428),
+                              //           size: 15,
+                              //         ),
+                              //         Text(
+                              //           'Gold Member',
+                              //           style: TextStyle(
+                              //             color: Color(0xFFFFD428),
+                              //             fontSize: 15,
+                              //           ),
+                              //         )
+                              //       ],
+                              //     ),
+                              //   ),
+                              // ),
+
+                              //*********************************************************************************//
+
                             ],
                           ),
                           SizedBox(
@@ -138,7 +155,7 @@ class _MenuBarState extends State<MenuBar> {
                           ),
                         ),
                         SizedBox(
-                          width: 7,
+                          width: 5.w,
                         ),
                         Center(
                           child: Column(
@@ -165,9 +182,9 @@ class _MenuBarState extends State<MenuBar> {
                             ],
                           ),
                         ),
-                        SizedBox(
-                          width: 7,
-                        ),
+                        // SizedBox(
+                        //   width: 5.w,
+                        // ),
                         Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -287,7 +304,12 @@ class _MenuBarState extends State<MenuBar> {
                         ),
                       ],
                     ),
-                    onTap: () {},
+                    onTap: () async {
+                      history_data = await ApiCaller().historydata() ;
+                      setState(() {
+                        Navigator.pushReplacementNamed(context, History.id);
+                      });
+                    },
                   ),
                   // ListTile(
                   //   title: Row(
@@ -436,7 +458,13 @@ class _MenuBarState extends State<MenuBar> {
                         ),
                       ],
                     ),
-                    onTap: () {},
+                    onTap: () async {
+                      String x = await ApiCaller().logout() ;
+                      setState(() {
+                        print(x) ;
+                        Navigator.pushReplacementNamed(context, SignIn.id);
+                      });
+                    },
                   ),
                 ],
               ),

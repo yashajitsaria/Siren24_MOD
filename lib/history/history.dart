@@ -1,4 +1,4 @@
-
+import 'package:siren24/Menu_Bar.dart/MenuBar.dart';
 import 'package:siren24/global/globalvariables.dart';
 import 'package:siren24/history/listviewforhistory.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,23 +6,23 @@ import 'package:flutter/material.dart';
 
 class History extends StatelessWidget {
   const History({Key? key}) : super(key: key);
-  static String id = 'History' ;
+  static String id = 'History';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MenuBar(),
       appBar: AppBar(
-        toolbarHeight: MediaQuery.of(context).size.height * 0.06,
-        elevation: 0,
+        iconTheme: IconThemeData(color: Color(0xFFFFD428)),
         backgroundColor: Colors.white,
-        title: const Center(
-          child: Text(
-            'History',
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              color: Color(0xff242A37),
-            ),
+        shadowColor: Colors.transparent,
+        centerTitle: true,
+        title: Text(
+          'History',
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            color: Color(0xff242A37),
           ),
         ),
       ),
@@ -65,7 +65,7 @@ class History extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsets.fromLTRB(0,25,0,0),
+                              padding: EdgeInsets.fromLTRB(0, 25, 0, 0),
                               child: Text(
                                 'Total Jobs',
                                 style: TextStyle(
@@ -75,7 +75,7 @@ class History extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.fromLTRB(0,2.5,0,5),
+                              padding: EdgeInsets.fromLTRB(0, 2.5, 0, 5),
                               child: Text(
                                 history_data.length.toString(),
                                 style: TextStyle(
@@ -120,7 +120,7 @@ class History extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: const [
                             Padding(
-                              padding: EdgeInsets.fromLTRB(0,25,0,0),
+                              padding: EdgeInsets.fromLTRB(0, 25, 0, 0),
                               child: Text(
                                 'Earned',
                                 style: TextStyle(
@@ -130,7 +130,7 @@ class History extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.fromLTRB(0,2.5,0,5),
+                              padding: EdgeInsets.fromLTRB(0, 2.5, 0, 5),
                               child: Text(
                                 '\$325.00 ',
                                 style: TextStyle(
@@ -149,10 +149,10 @@ class History extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(0,0,0,10),
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
               child: Container(
-                  height: MediaQuery.of(context).size.height*(0.6),
-                  child: ListViewHistory(),
+                height: MediaQuery.of(context).size.height * (0.6),
+                child: ListViewHistory(),
               ),
             ),
           ],

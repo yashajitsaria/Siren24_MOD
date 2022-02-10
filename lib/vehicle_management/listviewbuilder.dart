@@ -12,10 +12,6 @@ class ListViewvm extends StatefulWidget {
 
 class _ListViewvmState extends State<ListViewvm> {
 
-
-  List<String> nameofvehicle = ['Mazda','Mitsubishi Outlander','Mitsubishi Outlander','Mazda','Mitsubishi Outlander','Mazda','Mitsubishi Outlander','Mazda','Mitsubishi Outlander','Mazda','Mitsubishi Outlander'] ;
-  List<String> liscenseplatenumber = ['43A 235.70','43A 125.84','43A 235.70','43A 125.84','43A 235.70','43A 125.84','43A 125.84','43A 125.84','43A 125.84','43A 125.84','43A 125.84'] ;
-  List<int> counter = [0,0,0,0,0,0,0,0,0,0,0];
   List<int> zeros = List.filled(ambulance_details.length, 0) ;
   int number = 0 ;
 
@@ -118,7 +114,7 @@ class _ListViewvmState extends State<ListViewvm> {
                           ),
                           shape: BoxShape.circle,
                         ),
-                        child: counter[index] == 1 ? Image.asset('icons/tick.png',
+                        child: zeros[index] == 1 ? Image.asset('icons/tick.png',
                         fit: BoxFit.fill,) : null ,
                       ),
                     ),

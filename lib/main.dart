@@ -44,7 +44,7 @@ class Siren24 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: ProfileEditPage.id,
+      initialRoute: SplashScreen.id,
       routes: {
         SplashScreen.id: (context) => SplashScreen(),
         OnboardingScreens.id: (context) => OnboardingScreens(),
@@ -65,8 +65,8 @@ class Siren24 extends StatelessWidget {
         ProfileEdit.id: (context) => ProfileEdit(),
         ProfileEditPage.id: (context) => ProfileEditPage(),
         VehicleManagement.id: (context) => VehicleManagement(),
+        AddVehiclePage.id: (context) => AddVehiclePage(),
         AddVehicleButton.id: (context) => AddVehicleButton(),
-        AddNewvehicle.id: (context) => AddNewvehicle(),
         // AddVehicle.id: (context) => AddVehicle(),
         // Notifications.id: (context) => Notifications(),
         // InviteFriends.id: (context) => InviteFriends(),
