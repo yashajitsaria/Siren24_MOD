@@ -118,7 +118,7 @@ class _MenuBarState extends State<MenuBar> {
                             ],
                           ),
                           SizedBox(
-                            width: 50,
+                            width: 30.h,
                           ),
                         ],
                       ),
@@ -131,6 +131,7 @@ class _MenuBarState extends State<MenuBar> {
                       children: [
                         Center(
                           child: Column(
+                            // crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Icon(
@@ -140,15 +141,22 @@ class _MenuBarState extends State<MenuBar> {
                               Text(
                                 '10.2',
                                 style: TextStyle(
-                                  fontSize: 21.sp,
+                                  fontSize: 17.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              Text(
-                                'Hours online',
-                                style: TextStyle(
-                                  color: Color(0xFF242E42),
-                                  fontSize: 15.sp,
+                              Container(
+                                height: 17.h,
+                                child: Flexible(
+                                  child: Center(
+                                    child: Text(
+                                      'Hours online',
+                                      style: TextStyle(
+                                        color: Color(0xFF242E42),
+                                        fontSize: 12.sp,
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ],
@@ -168,23 +176,30 @@ class _MenuBarState extends State<MenuBar> {
                               Text(
                                 '30 KM',
                                 style: TextStyle(
-                                  fontSize: 21.sp,
+                                  fontSize: 17.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              Text(
-                                'Total Distance',
-                                style: TextStyle(
-                                  color: Color(0xFF242E42),
-                                  fontSize: 15.sp,
+                              Container(
+                                height: 17.h,
+                                child: Flexible(
+                                  child: Center(
+                                    child: Text(
+                                      'Total Distance',
+                                      style: TextStyle(
+                                        color: Color(0xFF242E42),
+                                        fontSize: 12.sp,
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                        // SizedBox(
-                        //   width: 5.w,
-                        // ),
+                        SizedBox(
+                          width: 5.w,
+                        ),
                         Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -196,15 +211,22 @@ class _MenuBarState extends State<MenuBar> {
                               Text(
                                 '20',
                                 style: TextStyle(
-                                  fontSize: 21.sp,
+                                  fontSize: 17.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              Text(
-                                'Total Jobs',
-                                style: TextStyle(
-                                  color: Color(0xFF242E42),
-                                  fontSize: 15.sp,
+                              Container(
+                                height: 17.h,
+                                child: Flexible(
+                                  child: Center(
+                                    child: Text(
+                                      'Total Jobs',
+                                      style: TextStyle(
+                                        color: Color(0xFF242E42),
+                                        fontSize: 12.sp,
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ],
@@ -217,7 +239,7 @@ class _MenuBarState extends State<MenuBar> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 15, top: 15),
+              padding: EdgeInsets.only(left: 0.w, top: 5.h),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -362,7 +384,9 @@ class _MenuBarState extends State<MenuBar> {
                         ),
                       ],
                     ),
-                    onTap: () {
+                    onTap: () async {
+                      ambulance_details = await ApiCaller().get_ambulance() ;
+                      print(ambulance_details) ;
                       setState(
                         () {
                           Navigator.push(

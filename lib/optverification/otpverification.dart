@@ -92,7 +92,7 @@ class _OtpVerificationState extends State<OtpVerification> {
                     ),
                     child: Container(
                       width: 345.w,
-                      height: 375.h,
+                      height: 393.h,
                       decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(
@@ -138,7 +138,7 @@ class _OtpVerificationState extends State<OtpVerification> {
 
                           //Pin Code
                           SizedBox(
-                            height: 120.h,
+                            height: 130.h,
                             width: width,
                             child: Padding(
                               padding: const EdgeInsets.all(30.0),
@@ -178,21 +178,28 @@ class _OtpVerificationState extends State<OtpVerification> {
                                   setState(
                                     () async {
                                       var _otp = int.parse(_currentText);
-                                      ApiCaller().verifyOtp(_otp);
-                                      if (firsttimechecker == 0) {
-                                        Navigator.pushReplacementNamed(
-                                          context,
-                                          ProfileEditPage.id,
-                                        );
-                                        firsttimechecker = 1;
-                                      } else {
-                                        userdata =
+                                      String x = await ApiCaller().verifyOtp(_otp);
+                                      if ( x == "Unexpected error occurred")
+                                        {
+                                          print("Error") ;
+                                        }
+                                      else
+                                        {
+                                          if (firsttimechecker == 0) {
+                                            Navigator.pushReplacementNamed(
+                                              context,
+                                              ProfileEditPage.id,
+                                            );
+                                            firsttimechecker = 1;
+                                          } else {
+                                            userdata =
                                             await ApiCaller().user_profile();
-                                        Navigator.pushReplacementNamed(
-                                          context,
-                                          HomeOffline.id,
-                                        );
-                                      }
+                                            Navigator.pushReplacementNamed(
+                                              context,
+                                              HomeOffline.id,
+                                            );
+                                          }
+                                        }
                                     },
                                   );
                                 }

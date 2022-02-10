@@ -47,7 +47,7 @@ class _SignupPageState extends State<SignupPage> {
                         child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 15.w),
                           child: Container(
-                            height: 493.h,
+                            height: 494.h,
                             width: 345.w,
                             decoration: const BoxDecoration(
                               borderRadius:

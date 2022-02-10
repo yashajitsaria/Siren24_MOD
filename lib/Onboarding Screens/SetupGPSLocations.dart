@@ -54,7 +54,7 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
         body: Column(
           children: [
             SizedBox(
-              height: 90.h,
+              height: 150.h,
             ),
             Image.asset(
               'UIAssets/enable your location.png',
@@ -168,9 +168,9 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
                 //     borderRadius: BorderRadius.all(Radius.circular(10)),
                 //   ),
                 // ),
-                SizedBox(
-                  height: 48.h,
-                ),
+                // SizedBox(
+                //   height: 48.h,
+                // ),
                 Center(
                   child: TextButton(
                     child: Text(

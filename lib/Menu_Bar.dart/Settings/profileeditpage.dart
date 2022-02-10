@@ -66,13 +66,13 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                           15.h,
                         ),
                         child: Container(
-                          height: 175.h,
+                          height: 153.h,
                           width: 450.w,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.all(10.0),
+                                padding: EdgeInsets.symmetric(horizontal: 10.0.w),
                                 child: Text(
                                   'Name',
                                   style: TextStyle(
@@ -80,42 +80,46 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(5),
-                                child: TextField(
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    height: 1.5,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  onChanged: (value) {
-                                    setState(
-                                      () {
-                                        name = value;
-                                      },
-                                    );
-                                  },
-                                  cursorColor: const Color(0xffFFD428),
-                                  decoration: InputDecoration(
-                                    // contentPadding: EdgeInsets.only(left: 30,right: 20, top: 20, bottom: 20),
-                                    hintText: name,
-                                    hintStyle: const TextStyle(
-                                      // fontSize: 20,
-                                      fontWeight: FontWeight.normal,
-                                      color: Color(0xffBEC2CE),
+                              Container(
+                                width: 305.w,
+                                height: 80.h,
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 5.0.w),
+                                  child: TextField(
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      height: 1.5,
+                                      fontWeight: FontWeight.bold,
                                     ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide: const BorderSide(
-                                        width: 2,
-                                        color: Color(0xffEFEFF4),
+                                    onChanged: (value) {
+                                      setState(
+                                        () {
+                                          name = value;
+                                        },
+                                      );
+                                    },
+                                    cursorColor: const Color(0xffFFD428),
+                                    decoration: InputDecoration(
+                                      // contentPadding: EdgeInsets.only(left: 30,right: 20, top: 20, bottom: 20),
+                                      hintText: name,
+                                      hintStyle: const TextStyle(
+                                        // fontSize: 20,
+                                        fontWeight: FontWeight.normal,
+                                        color: Color(0xffBEC2CE),
                                       ),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide: const BorderSide(
-                                        width: 2,
-                                        color: Color(0xffEFEFF4),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        borderSide: const BorderSide(
+                                          width: 2,
+                                          color: Color(0xffEFEFF4),
+                                        ),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        borderSide: const BorderSide(
+                                          width: 2,
+                                          color: Color(0xffEFEFF4),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -134,7 +138,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.all(10.0),
+                                padding: EdgeInsets.symmetric(horizontal: 10.0.w),
                                 child: Text(
                                   'Gender',
                                   style: TextStyle(
@@ -142,42 +146,46 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(5),
-                                child: TextField(
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    height: 1.5,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  onChanged: (value) {
-                                    setState(
-                                      () {
-                                        gender = value;
-                                      },
-                                    );
-                                  },
-                                  cursorColor: const Color(0xffFFD428),
-                                  decoration: InputDecoration(
-                                    // contentPadding: EdgeInsets.only(left: 30,right: 20, top: 20, bottom: 20),
-                                    hintText: gender,
-                                    hintStyle: const TextStyle(
-                                      // fontSize: 20,
-                                      fontWeight: FontWeight.normal,
-                                      color: Color(0xffBEC2CE),
+                              Container(
+                                width: 305.w,
+                                height: 80.h,
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 5.0.w),
+                                  child: TextField(
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      height: 1.5,
+                                      fontWeight: FontWeight.bold,
                                     ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide: const BorderSide(
-                                        width: 2,
-                                        color: Color(0xffEFEFF4),
+                                    onChanged: (value) {
+                                      setState(
+                                        () {
+                                          gender = value;
+                                        },
+                                      );
+                                    },
+                                    cursorColor: const Color(0xffFFD428),
+                                    decoration: InputDecoration(
+                                      // contentPadding: EdgeInsets.only(left: 30,right: 20, top: 20, bottom: 20),
+                                      hintText: gender,
+                                      hintStyle: const TextStyle(
+                                        // fontSize: 20,
+                                        fontWeight: FontWeight.normal,
+                                        color: Color(0xffBEC2CE),
                                       ),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide: const BorderSide(
-                                        width: 2,
-                                        color: Color(0xffEFEFF4),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        borderSide: const BorderSide(
+                                          width: 2,
+                                          color: Color(0xffEFEFF4),
+                                        ),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        borderSide: const BorderSide(
+                                          width: 2,
+                                          color: Color(0xffEFEFF4),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -196,7 +204,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.all(10.0),
+                                padding: EdgeInsets.symmetric(horizontal: 10.0.w),
                                 child: Text(
                                   'Date of Birth',
                                   style: TextStyle(
@@ -204,45 +212,49 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(5),
-                                child: DateTimeField(
-                                  mode: DateTimeFieldPickerMode.date,
-                                  decoration: InputDecoration(
-                                    // contentPadding: EdgeInsets.only(left: 30,right: 20, top: 20, bottom: 20),
-                                    hintText: dob,
-                                    hintStyle: const TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.normal,
-                                      color: Color(0xffBEC2CE),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide: const BorderSide(
-                                        width: 2,
-                                        color: Color(0xffEFEFF4),
+                              Container(
+                                width: 305.w,
+                                height: 80.h,
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 5.0.w),
+                                  child: DateTimeField(
+                                    mode: DateTimeFieldPickerMode.date,
+                                    decoration: InputDecoration(
+                                      // contentPadding: EdgeInsets.only(left: 30,right: 20, top: 20, bottom: 20),
+                                      hintText: dob,
+                                      hintStyle: const TextStyle(
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.normal,
+                                        color: Color(0xffBEC2CE),
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        borderSide: const BorderSide(
+                                          width: 2,
+                                          color: Color(0xffEFEFF4),
+                                        ),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        borderSide: const BorderSide(
+                                          width: 2,
+                                          color: Color(0xffEFEFF4),
+                                        ),
                                       ),
                                     ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide: const BorderSide(
-                                        width: 2,
-                                        color: Color(0xffEFEFF4),
-                                      ),
-                                    ),
-                                  ),
-                                  lastDate: DateTime.now(),
-                                  onDateSelected: (value) {
-                                    setState(
-                                      () {
-                                        dob = value.toString();
-                                        print(dob);
-                                      },
-                                    );
+                                    lastDate: DateTime.now(),
+                                    onDateSelected: (value) {
+                                      setState(
+                                        () {
+                                          dob = value.toString();
+                                          print(dob);
+                                        },
+                                      );
 
-                                    // print(dob) ;
-                                  },
-                                  selectedDate: DateTime.tryParse(dob),
+                                      // print(dob) ;
+                                    },
+                                    selectedDate: DateTime.tryParse(dob),
+                                  ),
                                 ),
                               ),
                             ],

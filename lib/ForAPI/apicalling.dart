@@ -8,7 +8,7 @@ import 'otp.dart';
 import 'otpverify.dart';
 
 String otpToken = " ";
-String authToken = "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU";
+String authToken = " ";
 String userid = " ";
 String ip = "65.2.132.175";
 
@@ -143,8 +143,8 @@ class ApiCaller {
       Uri.parse('http://$ip:4000/api/profile/view'),
       headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
-        "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
-        // "authtoken": authToken,
+        // "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
+        "authtoken": authToken,
       },
     );
     handleError(res);
@@ -215,8 +215,8 @@ class ApiCaller {
       Uri.parse('http://$ip:4000/api/order/user/get'),
       headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
-        "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
-        // "authtoken": authToken,
+        // "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
+        "authtoken": authToken,
       },
     );
     handleError(res) ;

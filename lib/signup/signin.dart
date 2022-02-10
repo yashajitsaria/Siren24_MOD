@@ -88,7 +88,7 @@ class _SignInState extends State<SignIn> {
                       //Decoration for login card
                       child: Container(
                         width: 345.w,
-                        height: 320.h,
+                        height: 335.h,
                         decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(10)),

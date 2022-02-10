@@ -85,8 +85,8 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                             height: 33.h,
                           ),
                           SizedBox(
-                            width: 200,
-                            height: 50,
+                            width: 300.h,
+                            height: 50.h,
                             child: Text(
                               'Lorem ipsum dolor sit amet consectetur adipiscing',
                               textAlign: TextAlign.center,
@@ -142,8 +142,8 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                             height: 33.sp,
                           ),
                           SizedBox(
-                            width: 200,
-                            height: 50,
+                            width: 300.h,
+                            height: 50.w,
                             child: Text(
                               'Lorem ipsum dolor sit amet consectetur adipiscing',
                               textAlign: TextAlign.center,
@@ -199,8 +199,8 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                             height: 33.h,
                           ),
                           SizedBox(
-                            width: 200,
-                            height: 50,
+                            width: 300.h,
+                            height: 50.w,
                             child: Text(
                               'Lorem ipsum dolor sit amet consectetur adipiscing.',
                               textAlign: TextAlign.center,

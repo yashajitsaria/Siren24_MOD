@@ -43,7 +43,7 @@ class _AddVehicleButtonState extends State<AddVehicleButton> {
           ),
           child: Image.asset('icons/plus1.png',
             color: Color(0xff242A37),
-            scale: 0.8,),
+            scale: 1.2,),
         ),
       ),
     );

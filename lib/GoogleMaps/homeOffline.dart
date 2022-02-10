@@ -20,6 +20,8 @@ class HomeOffline extends StatefulWidget {
   _HomeOfflineState createState() => _HomeOfflineState();
 }
 
+  int x = 0 ;
+
 class _HomeOfflineState extends State<HomeOffline> {
   bool status = false;
 
@@ -42,8 +44,8 @@ class _HomeOfflineState extends State<HomeOffline> {
                       color: Color(0xFFFFD428),
                     ),
                     bottom: PreferredSize(
-                      child: OfflineNotif(),
-                      preferredSize: Size.fromHeight(48),
+                      child: int == 0 ? OfflineNotif() : Container() ,
+                      preferredSize: Size.fromHeight(80),
                     ),
                     elevation: 0,
                     backgroundColor: Colors.transparent,
@@ -74,6 +76,7 @@ class _HomeOfflineState extends State<HomeOffline> {
                         onToggle: (val) {
                           setState(() {
                             status = val;
+                            x = 1 ;
                           });
                         },
                       ),
@@ -111,8 +114,8 @@ class SlidingPanelHomeOffline extends StatelessWidget {
         ),
       ],
       borderRadius: BorderRadius.circular(15),
-      minHeight: 94.h,
-      maxHeight: 200.h,
+      minHeight: 87.h,
+      maxHeight: 212.h,
       body: child,
       panel: Column(
         children: [
@@ -130,7 +133,7 @@ class SlidingPanelHomeOffline extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(12),
+            padding: EdgeInsets.all(8),
             child: Row(
               children: [
                 Row(
@@ -192,7 +195,7 @@ class SlidingPanelHomeOffline extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(12),
+            padding: EdgeInsets.only(top: 12.h, left: 12.w, right: 12.w),
             child: Container(
               decoration: BoxDecoration(
                 color: Color(0xFFFFD428),
@@ -303,9 +306,9 @@ class OfflineNotif extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 2.h),
       child: Container(
-        height: 68.h,
+        height: 80.h,
         decoration: BoxDecoration(
           color: Color(0xFFFF8900),
           borderRadius: BorderRadius.circular(12),
