@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, duplicate_ignore, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
+// ignore_for_file: file_names, duplicate_ignore, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, must_be_immutable
 // ignore_for_file: prefer_const_constructors, unused_import, file_names
 
 import 'dart:ui';
@@ -22,6 +22,8 @@ class HomeOffline extends StatefulWidget {
 
 class _HomeOfflineState extends State<HomeOffline> {
   bool status = false;
+  String driverStatus = 'OFFLINE';
+  bool isOnline = false;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,7 @@ class _HomeOfflineState extends State<HomeOffline> {
                     color: Color(0xFFFFD428),
                   ),
                   bottom: PreferredSize(
-                    child: OfflineNotif(),
+                    child: isOnline ? Text('') : OfflineNotif(),
                     preferredSize: Size.fromHeight(48),
                   ),
                   elevation: 0,
@@ -49,7 +51,7 @@ class _HomeOfflineState extends State<HomeOffline> {
                   shadowColor: Colors.white,
                   centerTitle: true,
                   title: Text(
-                    'Offline',
+                    driverStatus,
                     style: TextStyle(
                       fontFamily: 'SF UI Display',
                       fontSize: 20.sp,
@@ -71,9 +73,15 @@ class _HomeOfflineState extends State<HomeOffline> {
                       padding: 3,
                       showOnOff: false,
                       onToggle: (val) {
-                        setState(() {
-                          status = val;
-                        });
+                        isOnline = !isOnline;
+                        setState(
+                          () {
+                            status = val;
+                            driverStatus = isOnline
+                                ? driverStatus = 'ONLINE'
+                                : driverStatus = 'OFFLINE';
+                          },
+                        );
                       },
                     ),
                     SizedBox(
@@ -95,7 +103,9 @@ class _HomeOfflineState extends State<HomeOffline> {
 
 class SlidingPanelHomeOffline extends StatelessWidget {
   final Widget child;
-  const SlidingPanelHomeOffline({
+  String modeOfPayment = 'Online';
+  bool isCash = false;
+  SlidingPanelHomeOffline({
     Key? key,
     required this.child,
   }) : super(key: key);
@@ -137,15 +147,15 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                     SizedBox(
                       width: 7,
                     ),
-                    // Image.asset('UIAssets/dp.png'),
-                    Container(
-                      height: 50.h,
-                      width: 45.w,
-                      child: Image.network(
-                        userdata['profile_img'],
-                        fit: BoxFit.fill,
-                      ),
-                    ),
+                    Image.asset('UIAssets/dp.png'),
+                    // Container(
+                    //   height: 50.h,
+                    //   width: 45.w,
+                    //   child: Image.network(
+                    //     userdata['profile_img'],
+                    //     fit: BoxFit.fill,
+                    //   ),
+                    // ),
                     SizedBox(
                       width: 24,
                     ),
@@ -154,8 +164,8 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          // 'Jeremiah Curtis',
-                          userdata['name'],
+                          'Jeremiah Curtis',
+                          // userdata['name'],
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20.sp,
@@ -178,11 +188,65 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 25),
-                  child: Text(
-                    'Earned',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16.sp,
+                  child: GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                          title: Center(
+                            child: Text('Payment'),
+                          ),
+                          // content: Text('Rs. 350'),
+                          actions: <Widget>[
+                            Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                // crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('Total Amount: ₹ 20'),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text('Amount already Paid: ₹ 20'),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text('Mode of Payment - ' + (modeOfPayment = isCash ? 'Cash' : 'Online')),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text('Amount to be Paid: ₹ 0'),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            TextButton(
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.resolveWith(
+                                  (states) => Color(0xFFFFD428),
+                                ),
+                              ),
+                              onPressed: () => Navigator.pop(context, 'OK'),
+                              child: const Text(
+                                'OK',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'Earned',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16.sp,
+                      ),
                     ),
                   ),
                 ),

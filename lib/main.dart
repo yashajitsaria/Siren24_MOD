@@ -21,8 +21,6 @@ import 'package:siren24/history/HistoryDetails.dart';
 import 'package:siren24/optverification/otpverification.dart';
 import 'package:siren24/signup/signin.dart';
 import 'package:siren24/vehicle_management/addvehiclebutton.dart';
-// import 'package:siren24/signup/signup.dart';
-// import 'package:siren24/vehicle_management/addvehicle.dart';
 import 'package:siren24/vehicle_management/addvehiclepage.dart';
 import 'package:siren24/vehicle_management/vehicle_management.dart';
 import 'GoogleMaps/HomeOffline.dart';
@@ -44,7 +42,7 @@ class Siren24 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: ProfileEditPage.id,
+      initialRoute: HomeOffline.id,
       routes: {
         SplashScreen.id: (context) => SplashScreen(),
         OnboardingScreens.id: (context) => OnboardingScreens(),
@@ -69,7 +67,7 @@ class Siren24 extends StatelessWidget {
         AddNewvehicle.id: (context) => AddNewvehicle(),
         // AddVehicle.id: (context) => AddVehicle(),
         // Notifications.id: (context) => Notifications(),
-        // InviteFriends.id: (context) => InviteFriends(),
+        InviteFriends.id: (context) => InviteFriends(),
         // MyWallet.id: (context) => MyWallet(),
         // PaymentMethod.id: (context) => PaymentMethod(),
         // AddVehicleDetails.id: (context) => AddVehicleDetails(),
