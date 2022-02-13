@@ -1,15 +1,17 @@
-// ignore_for_file: file_names, prefer_const_constructors, unused_field, unused_element, constant_identifier_names, unused_import, unnecessary_const, unnecessary_new, avoid_print, unused_local_variable
+// ignore_for_file: file_names, prefer_const_constructors, unused_field, unused_element, constant_identifier_names, unused_import, unnecessary_const, unnecessary_new, avoid_print, unused_local_variable, non_constant_identifier_names
 
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps_routes/google_maps_routes.dart';
 import 'package:location/location.dart';
 import 'package:geocoding/geocoding.dart' as geo;
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:siren24/GoogleMaps/direction_response.dart' as res;
 
 import 'directions.dart';
+// import 'globalVariableGoogleMapsPickup.dart';
 
 class GMapsHomePickUp extends StatefulWidget {
   const GMapsHomePickUp({
@@ -174,19 +176,19 @@ class _GMapsHomePickUpState extends State<GMapsHomePickUp> {
   // ignore: prefer_final_fields
   GoogleMapsServices _googleMapsServices = GoogleMapsServices();
 
-  void sendRequest() async {
-    LatLng destination = LatLng(20.008751, 73.780037);
-    res.GoogleMapServices route =
-        await _googleMapsServices.getRouteCoordinates(latLng, destination);
-    createRoute(
-      route.routes[0].legs[0].startLocation.lat.toString(),
-    );
-    // _addMarker(destination, "KTHM Collage");
-  }
+  // void sendRequest() async {
+  //   LatLng destination = LatLng(20.008751, 73.780037);
+  //   res.GoogleMapServices route =
+  //       await _googleMapsServices.getRouteCoordinates(latLng, destination);
+  //   createRoute(
+  //     route.routes[0].legs[0].startLocation.lat.toString(),
+  //   );
+  //   // _addMarker(destination, "KTHM Collage");
+  // }
 
   // void displayDirections() async {
   //   late res.GoogleMapServices route;
-    
+
   // }
 
   @override
@@ -239,17 +241,49 @@ class _GMapsHomePickUpState extends State<GMapsHomePickUp> {
   //   super.dispose();
   // }
 
+  late GoogleMapController _Pathmapcontroller;
+
+  List<Marker> pathMarkers = [];
+  MapsRoutes route = MapsRoutes();
+  String googleApiKey = 'AIzaSyASODipwXRfzJNuFRN8lCaQeMnxLXSOvgQ';
+  String totalDistance = 'No route';
+
+  Map mapdata = {};
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: GoogleMap(
-        polylines: polyLines,
+        // polylines: polyLines,
         mapType: MapType.normal,
-        markers: _markers,
+        markers: Set.from(pathMarkers),
         myLocationEnabled: true,
         compassEnabled: true,
         tiltGesturesEnabled: false,
-        onMapCreated: _onMapCreated,
+        polylines: route.routes,
+        // onMapCreated: _onMapCreated,
+        onMapCreated: (controller) async {
+          List<LatLng> points = [
+            LatLng(19.0508, 73.0684),
+            LatLng(19.045774, 73.081144),
+            LatLng(19.032499, 73.066484),
+          ];
+          await route.drawRoute(
+            points,
+            'Test routes',
+            Color(0Xff4C6EE5),
+            googleApiKey,
+            travelMode: TravelModes.driving,
+          );
+          setState(
+            () {
+              _Pathmapcontroller = controller;
+              addCurrentLocation();
+              adddestination();
+              addPickupLocation();
+            },
+          );
+        },
         initialCameraPosition: CameraPosition(
           target: LatLng(
             _position?.latitude ?? 0,
@@ -286,6 +320,7 @@ class _GMapsHomePickUpState extends State<GMapsHomePickUp> {
         // ),
       ),
       floatingActionButton: Align(
+        
         alignment: Alignment(1, -0.48),
         child: FloatingActionButton.small(
           backgroundColor: Colors.white,
@@ -293,7 +328,11 @@ class _GMapsHomePickUpState extends State<GMapsHomePickUp> {
             borderRadius: BorderRadius.circular(10),
           ),
           onPressed: () async {
-            _controller.animateCamera(
+            mapdata = await GoogleMapsServices().getRouteCoordinates(
+              LatLng(25.540539431310854, 84.85082954594253),
+              LatLng(25.533609, 84.855555),
+            );
+            _Pathmapcontroller.animateCamera(
               CameraUpdate.newCameraPosition(
                 CameraPosition(
                   target: LatLng(25.540539431310854, 84.85082954594253),
@@ -308,6 +347,69 @@ class _GMapsHomePickUpState extends State<GMapsHomePickUp> {
           ),
         ),
       ),
+    );
+  }
+
+  void addCurrentLocation() {
+    setState(
+      () {
+        pathMarkers.add(
+          Marker(
+            markerId: MarkerId('myLocation'),
+            position: LatLng(25.540539431310854, 84.85082954594253),
+            icon: BitmapDescriptor.defaultMarkerWithHue(
+              BitmapDescriptor.hueCyan,
+            ),
+          ),
+        );
+      },
+    );
+
+    CameraPosition cameraposition = CameraPosition(
+      target: LatLng(25.540539431310854, 84.85082954594253),
+      zoom: 11,
+    );
+    _Pathmapcontroller.animateCamera(
+      CameraUpdate.newCameraPosition(cameraposition),
+    );
+  }
+
+  void addPickupLocation() {
+    setState(
+      () {
+        pathMarkers.add(
+          Marker(
+            markerId: MarkerId('PickupLocation'),
+            position: LatLng(
+              25.537060,
+              84.852352,
+            ),
+            icon: BitmapDescriptor.defaultMarkerWithHue(
+              BitmapDescriptor.hueOrange,
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  void adddestination() {
+    setState(
+      () {
+        pathMarkers.add(
+          Marker(
+            markerId: MarkerId('destinationlocation'),
+            position: LatLng(
+              25.526901, 84.851830,
+              // 25.531146,
+              // 84.854279,
+            ),
+            icon: BitmapDescriptor.defaultMarkerWithHue(
+              BitmapDescriptor.hueRose,
+            ),
+          ),
+        );
+      },
     );
   }
 }

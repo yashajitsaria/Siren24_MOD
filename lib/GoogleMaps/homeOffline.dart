@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, duplicate_ignore, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
+// ignore_for_file: file_names, duplicate_ignore, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, must_be_immutable
 // ignore_for_file: prefer_const_constructors, unused_import, file_names
 
 import 'dart:ui';
@@ -20,77 +20,80 @@ class HomeOffline extends StatefulWidget {
   _HomeOfflineState createState() => _HomeOfflineState();
 }
 
-  int x = 0 ;
-
 class _HomeOfflineState extends State<HomeOffline> {
   bool status = false;
+  String driverStatus = 'OFFLINE';
+  bool isOnline = false;
 
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: Size(375, 812),
       builder: () => Scaffold(
-        body: SafeArea(
-          child: Scaffold(
-            extendBodyBehindAppBar: true,
-            drawer: MenuBar(),
-            appBar: PreferredSize(
-              preferredSize: Size.fromHeight(130.h),
-              child: ClipRRect(
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
-                  child: AppBar(
-                    iconTheme: IconThemeData(
-                      color: Color(0xFFFFD428),
-                    ),
-                    bottom: PreferredSize(
-                      child: int == 0 ? OfflineNotif() : Container() ,
-                      preferredSize: Size.fromHeight(80),
-                    ),
-                    elevation: 0,
-                    backgroundColor: Colors.transparent,
-                    shadowColor: Colors.white,
-                    centerTitle: true,
-                    title: Text(
-                      'Offline',
-                      style: TextStyle(
-                        fontFamily: 'SF UI Display',
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                    actions: [
-                      FlutterSwitch(
-                        activeColor: Color(0xFFFF8900),
-                        inactiveToggleColor: Colors.white,
-                        activeToggleColor: Colors.white,
-                        width: 52.w,
-                        height: 32.h,
-                        valueFontSize: 25.0,
-                        toggleSize: 30,
-                        value: status,
-                        borderRadius: 30.0,
-                        padding: 3,
-                        showOnOff: false,
-                        onToggle: (val) {
-                          setState(() {
-                            status = val;
-                            x = 1 ;
-                          });
-                        },
-                      ),
-                      SizedBox(
-                        width: 25,
-                      ),
-                    ],
+        body: Scaffold(
+          extendBodyBehindAppBar: true,
+          drawer: MenuBar(),
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(110),
+            child: ClipRRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+                child: AppBar(
+                  iconTheme: IconThemeData(
+                    color: Color(0xFFFFD428),
                   ),
+                  bottom: PreferredSize(
+                    child: isOnline ? Text('') : OfflineNotif(),
+                    preferredSize: Size.fromHeight(48),
+                  ),
+                  elevation: 0,
+                  backgroundColor: Colors.transparent,
+                  shadowColor: Colors.white,
+                  centerTitle: true,
+                  title: Text(
+                    driverStatus,
+                    style: TextStyle(
+                      fontFamily: 'SF UI Display',
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  actions: [
+                    FlutterSwitch(
+                      activeColor: Color(0xFFFF8900),
+                      inactiveToggleColor: Colors.white,
+                      activeToggleColor: Colors.white,
+                      width: 62.w,
+                      height: 42.h,
+                      valueFontSize: 25.0,
+                      toggleSize: 30,
+                      value: status,
+                      borderRadius: 30.0,
+                      padding: 3,
+                      showOnOff: false,
+                      onToggle: (val) {
+                        isOnline = !isOnline;
+                        setState(
+                          () {
+                            status = val;
+                            driverStatus = isOnline
+                                ? driverStatus = 'ONLINE'
+                                : driverStatus = 'OFFLINE';
+                          },
+                        );
+                      },
+                    ),
+                    SizedBox(
+                      width: 25,
+                    ),
+                  ],
                 ),
               ),
             ),
-            body: SlidingPanelHomeOffline(
-              child: GMapsHomeOffline(),
-            ),
+          ),
+          body: SlidingPanelHomeOffline(
+            child: GMapsHomeOffline(),
           ),
         ),
       ),
@@ -100,7 +103,9 @@ class _HomeOfflineState extends State<HomeOffline> {
 
 class SlidingPanelHomeOffline extends StatelessWidget {
   final Widget child;
-  const SlidingPanelHomeOffline({
+  String modeOfPayment = 'Online';
+  bool isCash = false;
+  SlidingPanelHomeOffline({
     Key? key,
     required this.child,
   }) : super(key: key);
@@ -114,8 +119,8 @@ class SlidingPanelHomeOffline extends StatelessWidget {
         ),
       ],
       borderRadius: BorderRadius.circular(15),
-      minHeight: 87.h,
-      maxHeight: 212.h,
+      minHeight: 100,
+      maxHeight: 200,
       body: child,
       panel: Column(
         children: [
@@ -123,8 +128,8 @@ class SlidingPanelHomeOffline extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(top: 7),
               child: Container(
-                width: 36.w,
-                height: 5.h,
+                width: 36,
+                height: 5,
                 decoration: BoxDecoration(
                   color: Color(0xFFCBCDCC),
                   borderRadius: BorderRadius.all(Radius.circular(18)),
@@ -133,34 +138,34 @@ class SlidingPanelHomeOffline extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.all(12),
             child: Row(
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     SizedBox(
-                      width: 7.w,
+                      width: 7,
                     ),
-                    // Image.asset('UIAssets/dp.png'),
-                    Container(
-                      height: 50.h,
-                      width: 45.w,
-                      child: Image.network(
-                        userdata['profile_img'],
-                        fit: BoxFit.fill,
-                      ),
-                    ),
+                    Image.asset('UIAssets/dp.png'),
+                    // Container(
+                    //   height: 50.h,
+                    //   width: 45.w,
+                    //   child: Image.network(
+                    //     userdata['profile_img'],
+                    //     fit: BoxFit.fill,
+                    //   ),
+                    // ),
                     SizedBox(
-                      width: 24.w,
+                      width: 24,
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          // 'Jeremiah Curtis',
-                          userdata['name'],
+                          'Jeremiah Curtis',
+                          // userdata['name'],
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20.sp,
@@ -179,15 +184,69 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  width: 100.h,
+                  width: 100,
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 25.h),
-                  child: Text(
-                    'Earned',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16.sp,
+                  padding: const EdgeInsets.only(top: 25),
+                  child: GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                          title: Center(
+                            child: Text('Payment'),
+                          ),
+                          // content: Text('Rs. 350'),
+                          actions: <Widget>[
+                            Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                // crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('Total Amount: ₹ 20'),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text('Amount already Paid: ₹ 20'),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text('Mode of Payment - ' + (modeOfPayment = isCash ? 'Cash' : 'Online')),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text('Amount to be Paid: ₹ 0'),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            TextButton(
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.resolveWith(
+                                  (states) => Color(0xFFFFD428),
+                                ),
+                              ),
+                              onPressed: () => Navigator.pop(context, 'OK'),
+                              child: const Text(
+                                'OK',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'Earned',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16.sp,
+                      ),
                     ),
                   ),
                 ),
@@ -195,7 +254,7 @@ class SlidingPanelHomeOffline extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 12.h, left: 12.w, right: 12.w),
+            padding: const EdgeInsets.all(12),
             child: Container(
               decoration: BoxDecoration(
                 color: Color(0xFFFFD428),
@@ -306,9 +365,9 @@ class OfflineNotif extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 2.h),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
       child: Container(
-        height: 80.h,
+        height: 68.h,
         decoration: BoxDecoration(
           color: Color(0xFFFF8900),
           borderRadius: BorderRadius.circular(12),

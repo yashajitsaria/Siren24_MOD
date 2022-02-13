@@ -1,6 +1,5 @@
 // ignore_for_file: unused_import, file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_element
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,10 +26,10 @@ class _InviteFriendsState extends State<InviteFriends> {
           duration: Duration(milliseconds: 1000),
           elevation: 5,
           margin: EdgeInsets.only(
-            bottom: 25,
-            left: 100,
-            right: 100,
-            top: MediaQuery.of(context).size.aspectRatio * 1000,
+            bottom: 75.h,
+            left: 115.w,
+            right: 115.w,
+            top: 675.h,
           ),
           behavior: SnackBarBehavior.floating,
           content: Center(
@@ -190,7 +189,9 @@ class _InviteFriendsState extends State<InviteFriends> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Share.share('Sex bhai');
+                      Share.share(
+                        'Siren 24 demo Invite Friends share plugin',   
+                      );
                     },
                     child: Container(
                       width: 300.w,

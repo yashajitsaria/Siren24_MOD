@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, duplicate_ignore, prefer_const_literals_to_create_immutables
+// ignore_for_file: file_names, duplicate_ignore, prefer_const_literals_to_create_immutables, unused_local_variable
 // ignore_for_file: prefer_const_constructors, unused_import, file_names
 
 import 'dart:async';
@@ -8,10 +8,13 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_html/flutter_html.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:siren24/GoogleMaps/GMaps_HomePickUp.dart';
+import 'package:siren24/GoogleMaps/directions.dart';
+// import 'package:siren24/GoogleMaps/globalVariableGoogleMapsPickup.dart';
 import 'package:siren24/Menu_Bar.dart/MenuBar.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'GMaps_HomeOffline.dart';
 
 class HomePickUp extends StatefulWidget {
@@ -87,6 +90,18 @@ class _SlidingPanelHomePickUpState extends State<SlidingPanelHomePickUp> {
   // //   document: document, data: '',
   // // );
 
+  String? htmlData;
+  Map mapdata = {};
+
+  int eta = 0;
+  double dist = 0;
+  double fare = 0;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SlidingUpPanel(
@@ -159,6 +174,43 @@ class _SlidingPanelHomePickUpState extends State<SlidingPanelHomePickUp> {
           SizedBox(
             height: 15,
           ),
+          GestureDetector(
+            onTap: () async {
+              mapdata = await GoogleMapsServices().getRouteCoordinates(
+                LatLng(25.540539431310854, 84.85082954594253),
+                LatLng(25.533609, 84.855555),
+              );
+              setState(
+                () {
+                  eta = int.parse(mapdata["routes"][0]["legs"][0]["duration"]
+                          ["value"] /
+                      60);
+                  dist = mapdata["routes"][0]["legs"][0]["distance"]["value"] /
+                      1000;
+                  htmlData = mapdata["routes"][0]["legs"][0]["steps"][0]
+                      ["html_instructions"];
+                  // htmlData = """z""";
+                },
+              );
+            },
+            child: Container(
+              width: 325,
+              height: 45,
+              decoration: BoxDecoration(
+                color: Color(0xFFFFD428),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Center(
+                child: Text(
+                  'DROP OFF',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(12),
             child: Container(
@@ -184,7 +236,13 @@ class _SlidingPanelHomePickUpState extends State<SlidingPanelHomePickUp> {
                             ),
                           ),
                           Text(
-                            '5 min',
+                            (DateTime.now().hour +
+                                        (DateTime.now().minute + eta) ~/ 60)
+                                    .toString() +
+                                ':' +
+                                ((DateTime.now().minute + eta) % 60)
+                                    .toString() +
+                                ' AM',
                             style: TextStyle(
                               fontSize:
                                   MediaQuery.of(context).size.aspectRatio * 30,
@@ -210,7 +268,7 @@ class _SlidingPanelHomePickUpState extends State<SlidingPanelHomePickUp> {
                             ),
                           ),
                           Text(
-                            '2.2 KM',
+                            dist.toString() + ' Km',
                             style: TextStyle(
                               fontSize:
                                   MediaQuery.of(context).size.aspectRatio * 30,
@@ -236,7 +294,7 @@ class _SlidingPanelHomePickUpState extends State<SlidingPanelHomePickUp> {
                             ),
                           ),
                           Text(
-                            '\$25.00',
+                            '₹ ' + fare.toString(),
                             style: TextStyle(
                               fontSize:
                                   MediaQuery.of(context).size.aspectRatio * 30,
@@ -254,34 +312,17 @@ class _SlidingPanelHomePickUpState extends State<SlidingPanelHomePickUp> {
           SizedBox(
             height: 15,
           ),
-          GestureDetector(
-            onTap: () {},
-            child: Container(
-              width: 325,
-              height: 45,
-              decoration: BoxDecoration(
-                color: Color(0xFFFFD428),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Center(
-                child: Text(
-                  'DROP OFF',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-          ),
+
           SizedBox(
             height: 15,
           ),
-          Container(
-            width: 1,
-            color: Color(0xFFEFEFF4),
+          // Container(
+          //   width: 1,
+          //   color: Color(0xFFEFEFF4),
+          // ),
+          Html(
+            data: htmlData,
           ),
-          // Html(data: htmlData),
         ],
       ),
     );
