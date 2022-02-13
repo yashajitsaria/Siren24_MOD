@@ -118,18 +118,6 @@ class _GMapsHomeOfflineState extends State<GMapsHomeOffline> {
               CameraUpdate.newCameraPosition(_initialCameraPosition),
             );
             await OpenGoogleMaps.openMap(25.533573, 84.855654);
-            // try {
-            //   final location = await context.read(locationProvider.future);
-            //   LocationData userLocation = await location.getLocation();
-            //   // driverCoordinates =
-            //   //     Coordinates(userLocation.latitude, userLocation.longitude);
-            // } catch (e) {
-            //   ScaffoldMessenger.of(context).showSnackBar(
-            //     SnackBar(
-            //       content: Text('error'),
-            //     ),
-            //   );
-            // }
           },
           child: Icon(
             Icons.near_me_outlined,
@@ -149,16 +137,7 @@ class _GMapsHomeOfflineState extends State<GMapsHomeOffline> {
           zoom: 14,
         ),
         onMapCreated: _onMapCreated,
-        markers: {
-          Marker(
-            markerId: MarkerId('driver'),
-            position: LatLng(
-              _position?.latitude ?? 0,
-              _position?.longitude ?? 0,
-            ),
-          )
-        },
-        // polylines: {},
+        markers: _marker,
       ),
     );
   }
