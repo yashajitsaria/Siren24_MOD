@@ -143,8 +143,8 @@ class _GMapsHomeOfflineState extends State<GMapsHomeOffline> {
         zoomControlsEnabled: false,
         initialCameraPosition: CameraPosition(
           target: LatLng(
-            _currentposition.latitude,
-            _currentposition.longitude,
+            _position?.latitude ?? 0,
+            _position?.longitude ?? 0,
           ),
           zoom: 14,
         ),
@@ -153,8 +153,8 @@ class _GMapsHomeOfflineState extends State<GMapsHomeOffline> {
           Marker(
             markerId: MarkerId('driver'),
             position: LatLng(
-              _currentposition.latitude,
-              _currentposition.longitude,
+              _position?.latitude ?? 0,
+              _position?.longitude ?? 0,
             ),
           )
         },
