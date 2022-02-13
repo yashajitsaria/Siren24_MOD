@@ -19,6 +19,7 @@ import 'package:siren24/MyWallet/PaymentMethod.dart';
 import 'package:siren24/Onboarding%20Screens/OnboardingScreens.dart';
 import 'package:siren24/bookingdetails/bookingdetailsafter.dart';
 import 'package:siren24/bookingdetails/bookingdetailsbefore.dart';
+import 'package:siren24/bookingdetails/endride.dart';
 import 'package:siren24/documents/documentpage.dart';
 import 'package:siren24/documents/imageselector.dart';
 import 'package:siren24/history/HistoryDetails.dart';
@@ -50,7 +51,7 @@ class Siren24 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: SplashScreen.id,
+      initialRoute: EndRide.id,
       routes: {
         SplashScreen.id: (context) => SplashScreen(),
         OnboardingScreens.id: (context) => OnboardingScreens(),
@@ -80,6 +81,7 @@ class Siren24 extends StatelessWidget {
         BookingDetailsAfter.id: (context) => BookingDetailsAfter(),
         ImageSelector.id: (context) => ImageSelector() ,
         MyWallet.id: (context) => MyWallet(),
+        EndRide.id: (context) => EndRide(),
         // PaymentMethod.id: (context) => PaymentMethod(),
         // AddVehicleDetails.id: (context) => AddVehicleDetails(),
       },

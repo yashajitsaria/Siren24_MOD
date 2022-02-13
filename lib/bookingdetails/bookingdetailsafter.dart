@@ -1,21 +1,16 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:siren24/ForAPI/apicalling.dart';
-import 'package:siren24/bookingdetails/bookingdetailsafter.dart';
-import 'package:siren24/global/globalvariables.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
-class BookingDetailsBefore extends StatefulWidget {
-  const BookingDetailsBefore({Key? key}) : super(key: key);
-  static String id = 'BookingDetailsBefore';
+class BookingDetailsAfter extends StatefulWidget {
+  const BookingDetailsAfter({Key? key}) : super(key: key);
+  static String id = 'BookingDetailsAfter';
 
   @override
-  State<BookingDetailsBefore> createState() => _BookingDetailsBeforeState();
+  _BookingDetailsAfterState createState() => _BookingDetailsAfterState();
 }
 
-class _BookingDetailsBeforeState extends State<BookingDetailsBefore> {
+class _BookingDetailsAfterState extends State<BookingDetailsAfter> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -65,19 +60,19 @@ class _BookingDetailsBeforeState extends State<BookingDetailsBefore> {
                           width: 375.w,
                           decoration: const BoxDecoration(
                             borderRadius:
-                                BorderRadius.vertical(top: Radius.circular(10)),
+                            BorderRadius.vertical(top: Radius.circular(10)),
                             color: Color(0xffF7F7F7),
                           ),
                           child: Row(
                             children: [
                               Padding(
                                 padding:
-                                    EdgeInsets.fromLTRB(16.w, 12.h, 10.w, 12.h),
+                                EdgeInsets.fromLTRB(16.w, 12.h, 10.w, 12.h),
                                 child: Container(
                                   decoration: const BoxDecoration(
                                     color: Colors.black,
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
+                                    BorderRadius.all(Radius.circular(10)),
                                   ),
                                   height: 44.h,
                                   width: 44.w,
@@ -87,7 +82,7 @@ class _BookingDetailsBeforeState extends State<BookingDetailsBefore> {
                                 width: 300.w,
                                 child: Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
                                       width: 120.w,
@@ -111,7 +106,7 @@ class _BookingDetailsBeforeState extends State<BookingDetailsBefore> {
                                     Container(
                                       child: Column(
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.end,
+                                        CrossAxisAlignment.end,
                                         children: [
                                           Padding(
                                             padding: EdgeInsets.fromLTRB(
@@ -386,142 +381,150 @@ class _BookingDetailsBeforeState extends State<BookingDetailsBefore> {
                         ),
 
                         //Row 5 (Buttons)
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  Navigator.pushReplacementNamed(context, BookingDetailsAfter.id);
-                                });
-                              },
-                              child: Padding(
-                                padding:
-                                    EdgeInsets.fromLTRB(10.w, 20.h, 10.w, 20.h),
-                                child: Container(
-                                  height: 80.h,
-                                  width: 120.w,
-                                  decoration: const BoxDecoration(
-                                    color: Color(0xffffd428),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        GestureDetector(
+                          onTap: () async {
+                            await launch('tel:+91 8723965414');
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(10.w, 20.h, 10.w, 20.h),
+                            child: Container(
+                              height: 80.h,
+                              width: 120.w,
+                              decoration: const BoxDecoration(
+                                color: Color(0xff4CE5B1),
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(0, 5.h, 0, 5.h),
+                                    child: Image.asset(
+                                      'images/call.png',
+                                      scale: 0.8,
+                                      color: Colors.white,
+                                    ),
                                   ),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Padding(
-                                        padding:
-                                            EdgeInsets.fromLTRB(0, 5.h, 0, 5.h),
-                                        // child: Image.asset(
-                                        //   'images/call.png',
-                                        //   scale: 0.8,
-                                        //   color: Colors.white,
-                                        // ),
-                                        child: Image.asset('icons/plus.png',color: Colors.white,scale: 1,),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.only(bottom: 10.h),
-                                        child: Text(
-                                          'Accept',
-                                          style: TextStyle(
-                                              fontSize: 15.sp,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white),
-                                        ),
-                                      ),
-                                    ],
+                                  Padding(
+                                    padding: EdgeInsets.only(bottom: 0.h),
+                                    child: Text(
+                                      'Call',
+                                      style: TextStyle(
+                                          fontSize: 15.sp,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
                                   ),
-                                ),
+                                ],
                               ),
                             ),
-                            // Expanded(
-                            //   child: Padding(
-                            //     padding: EdgeInsets.fromLTRB(10.w, 20.h, 10.w, 20.h),
-                            //     child: Container(
-                            //       height: 99.h,
-                            //       decoration: const BoxDecoration(
-                            //         color: Color(0xff4252FF),
-                            //         borderRadius:
-                            //             BorderRadius.all(Radius.circular(10)),
-                            //       ),
-                            //       child: Column(
-                            //         mainAxisAlignment: MainAxisAlignment.end,
-                            //         children: [
-                            //           Padding(
-                            //             padding:
-                            //                 const EdgeInsets.fromLTRB(0, 15, 0, 5),
-                            //             child: Image.asset(
-                            //               'images/message.png',
-                            //               scale: 0.6,
-                            //               color: Colors.white,
-                            //             ),
-                            //           ),
-                            //           Padding(
-                            //             padding: EdgeInsets.only(bottom: 10.h),
-                            //             child: Text(
-                            //               'Message',
-                            //               style: TextStyle(
-                            //                   fontSize: 15.sp,
-                            //                   fontWeight: FontWeight.bold,
-                            //                   color: Colors.white),
-                            //             ),
-                            //           ),
-                            //         ],
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
-                            GestureDetector(
-                              onTap: () async
-                              {
-                                String x = await ApiCaller().rejectambulance('', '') ;
-                                print(x) ;
-                              },
-                              child: Padding(
-                                padding:
-                                    EdgeInsets.fromLTRB(10.w, 20.h, 10.w, 20.h),
-                                child: Container(
-                                  height: 80.h,
-                                  width: 120.w,
-                                  decoration: const BoxDecoration(
-                                    color: Color(0xffBEC2CE),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                  ),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Padding(
-                                        padding:
-                                            EdgeInsets.fromLTRB(0, 5.h, 0, 5.h),
-                                        child: Image.asset(
-                                          'images/cancel.png',
-                                          scale: 0.8,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.only(bottom: 10.h),
-                                        child: Text(
-                                          'Cancel',
-                                          style: TextStyle(
-                                              fontSize: 15.sp,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
+                        // Expanded(
+                        //   child: Padding(
+                        //     padding: EdgeInsets.fromLTRB(10.w, 20.h, 10.w, 20.h),
+                        //     child: Container(
+                        //       height: 99.h,
+                        //       decoration: const BoxDecoration(
+                        //         color: Color(0xff4252FF),
+                        //         borderRadius:
+                        //             BorderRadius.all(Radius.circular(10)),
+                        //       ),
+                        //       child: Column(
+                        //         mainAxisAlignment: MainAxisAlignment.end,
+                        //         children: [
+                        //           Padding(
+                        //             padding:
+                        //                 const EdgeInsets.fromLTRB(0, 15, 0, 5),
+                        //             child: Image.asset(
+                        //               'images/message.png',
+                        //               scale: 0.6,
+                        //               color: Colors.white,
+                        //             ),
+                        //           ),
+                        //           Padding(
+                        //             padding: EdgeInsets.only(bottom: 10.h),
+                        //             child: Text(
+                        //               'Message',
+                        //               style: TextStyle(
+                        //                   fontSize: 15.sp,
+                        //                   fontWeight: FontWeight.bold,
+                        //                   color: Colors.white),
+                        //             ),
+                        //           ),
+                        //         ],
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(10.w, 20.h, 10.w, 20.h),
+                          child: Container(
+                            height: 80.h,
+                            width: 120.w,
+                            decoration: const BoxDecoration(
+                              color: Color(0xffffd428),
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(0, 5.h, 0, 5.h),
+                                  child: Image.asset(
+                                    'images/icon.png',
+                                    scale: 0.8,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(bottom: 10.h),
+                                  child: Text(
+                                    'Pick Up',
+                                    style: TextStyle(
+                                        fontSize: 15.sp,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                       ],
                     ),
                   ),
                 ),
 
+                // //Pick Up Button
+                // Positioned(
+                //   bottom: 0,
+                //   child: GestureDetector(
+                //     onTap: () async {
+                //       await launch('tel:+91 8723965414');
+                //     },
+                //     child: Container(
+                //       color: const Color(0xffffd428),
+                //       height: 75.h,
+                //       width: MediaQuery.of(context).size.width,
+                //       child: Center(
+                //         child: Text(
+                //           'GO TO PICK UP',
+                //           style: TextStyle(
+                //             fontSize: 18.sp,
+                //             fontWeight: FontWeight.bold,
+                //             color: Color(0xff242A37),
+                //           ),
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),
@@ -530,5 +533,3 @@ class _BookingDetailsBeforeState extends State<BookingDetailsBefore> {
     );
   }
 }
-
-
