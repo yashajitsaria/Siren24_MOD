@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:siren24/GoogleMaps/HomeOffline.dart';
@@ -16,7 +17,10 @@ import 'package:siren24/Menu_Bar.dart/Settings/Settings.dart';
 import 'package:siren24/MyWallet/MyWallet.dart';
 import 'package:siren24/MyWallet/PaymentMethod.dart';
 import 'package:siren24/Onboarding%20Screens/OnboardingScreens.dart';
-import 'package:siren24/bookingdetails/bookingdetails.dart';
+import 'package:siren24/bookingdetails/bookingdetailsafter.dart';
+import 'package:siren24/bookingdetails/bookingdetailsbefore.dart';
+import 'package:siren24/documents/documentpage.dart';
+import 'package:siren24/documents/imageselector.dart';
 import 'package:siren24/history/HistoryDetails.dart';
 import 'package:siren24/optverification/otpverification.dart';
 import 'package:siren24/signup/signin.dart';
@@ -31,9 +35,11 @@ import 'package:siren24/splashscreen/splashscreen.dart';
 import 'history/history.dart';
 import 'package:siren24/signup/signupmod.dart';
 
+
 // ['name','dob','age','gender','profile_img','address']
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(Siren24());
 }
 
@@ -59,7 +65,7 @@ class Siren24 extends StatelessWidget {
             ),
         HomePickUp.id: (context) => HomePickUp(),
         History.id: (context) => History(),
-        BookingDetails.id: (context) => BookingDetails(),
+        BookingDetailsBefore.id: (context) => BookingDetailsBefore(),
         Settings.id: (context) => Settings(),
         Profile.id: (context) => Profile(),
         ProfileEdit.id: (context) => ProfileEdit(),
@@ -68,9 +74,12 @@ class Siren24 extends StatelessWidget {
         AddVehiclePage.id: (context) => AddVehiclePage(),
         AddVehicleButton.id: (context) => AddVehicleButton(),
         // AddVehicle.id: (context) => AddVehicle(),
-        // Notifications.id: (context) => Notifications(),
-        // InviteFriends.id: (context) => InviteFriends(),
-        // MyWallet.id: (context) => MyWallet(),
+        Notifications.id: (context) => Notifications(),
+        InviteFriends.id: (context) => InviteFriends(),
+        DocumentsUpload.id: (context) => DocumentsUpload(),
+        BookingDetailsAfter.id: (context) => BookingDetailsAfter(),
+        ImageSelector.id: (context) => ImageSelector() ,
+        MyWallet.id: (context) => MyWallet(),
         // PaymentMethod.id: (context) => PaymentMethod(),
         // AddVehicleDetails.id: (context) => AddVehicleDetails(),
       },

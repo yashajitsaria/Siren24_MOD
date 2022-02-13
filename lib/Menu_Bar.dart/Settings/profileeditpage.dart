@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:siren24/ForAPI/apicalling.dart';
 import 'package:siren24/GoogleMaps/HomeOffline.dart';
+import 'package:siren24/Menu_Bar.dart/Settings/Profile.dart';
+import 'package:siren24/documents/imageselector.dart';
 import 'package:siren24/global/globalvariables.dart';
 import 'package:date_field/date_field.dart';
 
@@ -278,10 +280,19 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                               () {
                                 print(" result" + x);
                                 print(userdata);
-                                Navigator.pushReplacementNamed(
-                                  context,
-                                  HomeOffline.id,
-                                );
+                                print(firsttimechecker) ;
+                                if (firsttimechecker == 0) {
+                                  Navigator.pushReplacementNamed(
+                                    context,
+                                    ImageSelector.id,
+                                  );
+                                  // firsttimechecker = 1;
+                                } else {
+                                  Navigator.pushReplacementNamed(
+                                    context,
+                                    Profile.id,
+                                  );
+                                }
                               },
                             );
                           },

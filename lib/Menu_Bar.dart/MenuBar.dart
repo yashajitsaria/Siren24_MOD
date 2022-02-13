@@ -8,6 +8,7 @@ import 'package:siren24/GoogleMaps/HomeOffline.dart';
 import 'package:siren24/Invite%20Friends/InviteFriends.dart';
 import 'package:siren24/Menu_Bar.dart/Notifications.dart';
 import 'package:siren24/MyWallet/MyWallet.dart';
+import 'package:siren24/documents/documentpage.dart';
 import 'package:siren24/global/globalvariables.dart';
 import 'package:siren24/history/history.dart';
 import 'package:siren24/signup/signin.dart';
@@ -297,12 +298,7 @@ class _MenuBarState extends State<MenuBar> {
                   //   onTap: () {
                   //     setState(
                   //       () {
-                  //         Navigator.push(
-                  //           context,
-                  //           MaterialPageRoute(
-                  //             builder: (context) => MyWallet(),
-                  //           ),
-                  //         );
+                  //         Navigator.pushReplacementNamed(context, MyWallet.id);
                   //       },
                   //     );
                   //   },
@@ -395,6 +391,36 @@ class _MenuBarState extends State<MenuBar> {
                               builder: (context) => VehicleManagement(),
                             ),
                           );
+                        },
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: Row(
+                      children: [
+                        Image.asset(
+                          'UIAssets/ID contact.png',
+                          color: Color(0xFFD8D8D8),
+                          scale: 1,
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Text(
+                          'Document Management',
+                          style: TextStyle(
+                            fontSize: 20.sp,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
+                    onTap: () async {
+                      // ambulance_details = await ApiCaller().get_ambulance() ;
+                      // print(ambulance_details) ;
+                      setState(
+                            () {
+                          Navigator.pushReplacementNamed(context, DocumentsUpload.id);
                         },
                       );
                     },

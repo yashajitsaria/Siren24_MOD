@@ -36,7 +36,7 @@ class ApiCaller {
   //*********************************************************************************//
 
   //Verify OTP
-  Future<String> verifyOtp(int otp) async {
+  Future<int> verifyOtp(int otp) async {
     var res = await post(
       Uri.parse('http://$ip:4000/api/otp/verifyotp'),
       headers: {
@@ -45,18 +45,33 @@ class ApiCaller {
       },
       body: jsonEncode({"otp": otp}),
     );
-    handleError(res);
+    // await handleError(res);
 
     Logger().d(res.body);
-    var response = Verify.fromJson(jsonDecode(res.body));
-    authToken = response.authtoken;
-    userid = response.userid;
-
-    if (response.userid == '') {
-      return 'Yes';
-    } else {
-      return 'No';
+      // var response = Verify.fromJson(jsonDecode(res.body));
+      // authToken = response.authtoken;
+      // userid = response.userid;
+    if ( res.statusCode >= 300 )
+      {
+        return res.statusCode ;
+      }
+      else{
+      var response = Verify.fromJson(jsonDecode(res.body));
+        authToken = response.authtoken;
+        userid = response.userid;
+        return res.statusCode ;
     }
+    // if (res.statusCode >= 300 ) {
+    //   return 'ERROR';
+    // } else {
+    //   var response = Verify.fromJson(jsonDecode(res.body));
+    //   authToken = response.authtoken;
+    //   userid = response.userid;
+    //   return 'SUCCESS' ;
+    // }
+
+
+
   }
 
   //*********************************************************************************//
@@ -78,7 +93,7 @@ class ApiCaller {
   //*********************************************************************************//
 
   //Reject Ambulance
-  Future<void> rejectambulance(String orderid, String cencelation_reason) async {
+  Future<String> rejectambulance(String orderid, String cencelation_reason) async {
     var res = await post(
         Uri.parse('http://$ip:4000/api/order/driver/cencelbooking'),
       headers: {
@@ -87,7 +102,10 @@ class ApiCaller {
       },
       body: jsonEncode({"orderid": orderid, "cencelation_reason": cencelation_reason}),
     );
+    Logger().d(res.body) ;
     handleError(res) ;
+    String response = jsonDecode(res.body) ;
+    return response ;
   }
 
   //*********************************************************************************//

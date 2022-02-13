@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
 import 'package:siren24/ForAPI/apicalling.dart';
+import 'package:siren24/GoogleMaps/homeOffline.dart';
 import 'package:siren24/Menu_Bar.dart/MenuBar.dart';
 import 'package:siren24/global/globalvariables.dart';
 import 'package:siren24/vehicle_management/vehicle_management.dart';
@@ -367,16 +368,15 @@ class _AddVehiclePageState extends State<AddVehiclePage> {
                 ),
                 child: GestureDetector(
                   onTap: () async {
-                    String x = await ApiCaller().addambulance(no_amb, type_amb, brand_amb, model_amb, addons_amb) ;
+                    // String x = await ApiCaller().addambulance(no_amb, type_amb, brand_amb, model_amb, addons_amb) ;
                     ambulance_details = await ApiCaller().get_ambulance() ;
                     setState(
                           () {
-                            print(x) ;
-                            Navigator.pushReplacementNamed(context, VehicleManagement.id) ;
-                        // Navigator.pushReplacementNamed(
-                        //   context,
-                        //   VehicleManagement.id,
-                        // );
+                            // print(x) ;
+                        Navigator.pushReplacementNamed(
+                          context,
+                          VehicleManagement.id,
+                        );
                       },
                     );
                   },

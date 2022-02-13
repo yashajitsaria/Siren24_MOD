@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:siren24/ForAPI/apicalling.dart';
+import 'package:siren24/GoogleMaps/homeOffline.dart';
+import 'package:siren24/Menu_Bar.dart/Settings/profileeditpage.dart';
 import 'package:siren24/MyWallet/MyWallet.dart';
 import 'package:siren24/global/globalvariables.dart';
 import 'package:siren24/history/history.dart';
@@ -98,7 +100,20 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
             GestureDetector(
               onTap: () async {
                 await _determinePosition();
-                Navigator.pushReplacementNamed(context, SignupPage.id);
+                if (firsttimechecker == 0) {
+                  Navigator.pushReplacementNamed(
+                    context,
+                    ProfileEditPage.id,
+                  );
+                  // firsttimechecker = 1;
+                } else {
+                  userdata =
+                  await ApiCaller().user_profile();
+                  Navigator.pushReplacementNamed(
+                    context,
+                    HomeOffline.id,
+                  );
+                }
               },
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 75),
@@ -182,11 +197,21 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
                     ),
                     onPressed: () {
                       setState(
-                        () {
-                          Navigator.pushReplacementNamed(
-                            context,
-                            SignupPage.id,
-                          );
+                        () async{
+                          if (firsttimechecker == 0) {
+                            Navigator.pushReplacementNamed(
+                              context,
+                              ProfileEditPage.id,
+                            );
+                            // firsttimechecker = 1;
+                          } else {
+                            userdata =
+                                await ApiCaller().user_profile();
+                            Navigator.pushReplacementNamed(
+                              context,
+                              HomeOffline.id,
+                            );
+                          }
                         },
                       );
                     },

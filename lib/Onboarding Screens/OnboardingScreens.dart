@@ -1,11 +1,13 @@
 // ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_const, use_key_in_widget_constructors
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 // import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:siren24/Onboarding%20Screens/SetupGPSLocations.dart';
 import 'package:siren24/global/globalvariables.dart';
 import 'package:siren24/ForAPI/apicalling.dart';
+import 'package:siren24/signup/signupmod.dart';
 import 'package:siren24/vehicle_management/vehicle_management.dart';
 
 class OnboardingScreens extends StatefulWidget {
@@ -98,12 +100,15 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                             ),
                           ),
                           TextButton(
-                            onPressed: () {
+                            onPressed: () async{
+                              String? x = await FirebaseMessaging.instance.getToken();
+                              FirebaseMessaging.onMessageOpenedApp.toString();
+                              print("token:"+ x!) ;
                               setState(
                                 () {
                                   Navigator.pushReplacementNamed(
                                     context,
-                                    SetupGPSLocations.id,
+                                    SignupPage.id,
                                   );
                                 },
                               );
@@ -155,12 +160,14 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                             ),
                           ),
                           TextButton(
-                            onPressed: () {
+                            onPressed: () async{
+                              String? x = await FirebaseMessaging.instance.getToken();
+                              print("token:"+ x!) ;
                               setState(
                                 () {
                                   Navigator.pushReplacementNamed(
                                     context,
-                                    SetupGPSLocations.id,
+                                    SignupPage.id,
                                   );
                                 },
                               );
@@ -216,6 +223,8 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                           ),
                           GestureDetector(
                             onTap: () async{
+                              String? x = await FirebaseMessaging.instance.getToken();
+                              print("token:"+ x!) ;
                               // ambulance_details = await ApiCaller().get_ambulance();
                               setState(
                                 () {
@@ -225,7 +234,7 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                                   // );
                                   Navigator.pushReplacementNamed(
                                     context,
-                                    SetupGPSLocations.id,
+                                    SignupPage.id,
                                   );
                                 },
                               );

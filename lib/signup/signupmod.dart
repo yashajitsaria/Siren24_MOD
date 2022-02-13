@@ -31,6 +31,7 @@ class _SignupPageState extends State<SignupPage> {
         },
         child: SafeArea(
           child: Scaffold(
+
             resizeToAvoidBottomInset: false,
             body: Container(
               color: const Color(0xffF7F8FA),
@@ -342,12 +343,7 @@ class _SignupPageState extends State<SignupPage> {
                           onTap: () {
                             setState(
                               () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const SignIn(),
-                                  ),
-                                );
+                                Navigator.pushReplacementNamed(context, SignIn.id) ;
                               },
                             );
                           },

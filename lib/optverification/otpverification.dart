@@ -7,6 +7,7 @@ import 'package:siren24/GoogleMaps/HomeOffline.dart';
 import 'package:siren24/Menu_Bar.dart/Settings/Profile.dart';
 import 'package:siren24/Menu_Bar.dart/Settings/ProfileEdit.dart';
 import 'package:siren24/Menu_Bar.dart/Settings/profileeditpage.dart';
+import 'package:siren24/Onboarding%20Screens/SetupGPSLocations.dart';
 import 'package:siren24/global/globalvariables.dart';
 import 'package:siren24/ForAPI/apicalling.dart';
 
@@ -147,7 +148,6 @@ class _OtpVerificationState extends State<OtpVerification> {
                                 appContext: context,
                                 length: 6,
                                 onChanged: (value) {
-                                  print(value);
                                   setState(() {
                                     _currentText = value;
                                   });
@@ -178,28 +178,21 @@ class _OtpVerificationState extends State<OtpVerification> {
                                   setState(
                                     () async {
                                       var _otp = int.parse(_currentText);
-                                      String x = await ApiCaller().verifyOtp(_otp);
-                                      if ( x == "Unexpected error occurred")
-                                        {
-                                          print("Error") ;
-                                        }
-                                      else
-                                        {
-                                          if (firsttimechecker == 0) {
-                                            Navigator.pushReplacementNamed(
-                                              context,
-                                              ProfileEditPage.id,
-                                            );
-                                            firsttimechecker = 1;
-                                          } else {
-                                            userdata =
-                                            await ApiCaller().user_profile();
-                                            Navigator.pushReplacementNamed(
-                                              context,
-                                              HomeOffline.id,
-                                            );
-                                          }
-                                        }
+                                      int x = await ApiCaller().verifyOtp(_otp);
+                                      if (x < 300) {
+                                        Navigator.pushReplacementNamed(context, SetupGPSLocations.id) ;
+                                      } else {
+
+                                        // Scaffold.of(context).showSnackBar(snackBar);
+                                        const snackBar = SnackBar(
+                                          content: Text(
+                                              'THE OTP ENTERED IS INCORRECT'),
+                                          duration: Duration(seconds:3),
+                                        );
+                                        // Scaffold.of(context).showSnackBar(snackBar);
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(snackBar);
+                                      }
                                     },
                                   );
                                 }

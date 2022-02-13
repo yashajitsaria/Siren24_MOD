@@ -1,7 +1,10 @@
 // ignore_for_file: use_key_in_widget_constructors, unnecessary_new, prefer_const_constructors, file_names
 import 'dart:async';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:siren24/Onboarding%20Screens/OnboardingScreens.dart';
+import 'package:siren24/global/globalvariables.dart';
 
 class SplashScreen extends StatefulWidget {
   static String id = 'Splash_Screen';
@@ -19,6 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void navigationPage() async{
     Navigator.pushReplacementNamed(context, OnboardingScreens.id);
   }
+
 
   @override
   void initState() {

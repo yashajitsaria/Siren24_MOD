@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:siren24/bookingdetails/bookingdetails.dart';
+import 'package:siren24/bookingdetails/bookingdetailsbefore.dart';
 import 'package:siren24/global/globalvariables.dart';
 
 class ListViewHistory extends StatefulWidget {
@@ -26,7 +26,7 @@ class _ListViewHistoryState extends State<ListViewHistory> {
               child: GestureDetector(
                 onTap: (){
                   setState(() {
-                    Navigator.pushReplacementNamed(context, BookingDetails.id);
+                    Navigator.pushReplacementNamed(context, BookingDetailsBefore.id);
                   });
                 },
                 child: Container(
