@@ -124,7 +124,7 @@ class _GMapsHomeOfflineState extends State<GMapsHomeOffline> {
             _googleMapController.animateCamera(
               CameraUpdate.newCameraPosition(_initialCameraPosition),
             );
-            await OpenGoogleMaps.openMap(25.533573, 84.855654);
+            // await OpenGoogleMaps.openMap(25.533573, 84.855654);
             // try {
             //   final location = await context.read(locationProvider.future);
             //   LocationData userLocation = await location.getLocation();

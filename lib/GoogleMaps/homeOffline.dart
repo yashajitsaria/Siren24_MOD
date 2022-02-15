@@ -9,6 +9,7 @@ import 'package:siren24/GoogleMaps/GMaps_HomePickUp.dart';
 import 'package:siren24/Menu_Bar.dart/MenuBar.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:siren24/bookingdetails/bookingdetailsafter.dart';
 import 'package:siren24/global/globalvariables.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'GMaps_HomeOffline.dart';
@@ -241,11 +242,16 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                         ),
                       );
                     },
-                    child: Text(
-                      'Earned',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16.sp,
+                    child: GestureDetector(
+                      onTap: (){
+                        Navigator.pushReplacementNamed(context, BookingDetailsAfter.id);
+                      },
+                      child: Text(
+                        'Earned',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16.sp,
+                        ),
                       ),
                     ),
                   ),
