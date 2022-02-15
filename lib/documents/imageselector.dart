@@ -309,8 +309,9 @@ class _ImageSelectorState extends State<ImageSelector> {
 
                                     stringfordata = await ApiCaller().fileUploader(filename!,_image!,extension!) ;
                                     // print(x["url"]) ;
-                                    if ( documentnumber == 1 )
+                                    if ( documentType == 'Adhaar Card')
                                       {
+                                        print(stringfordata['url'],);
                                         String x = await ApiCaller().editProfile(
                                           userdata['name'],
                                           userdata['dob'],
@@ -319,13 +320,14 @@ class _ImageSelectorState extends State<ImageSelector> {
                                           stringfordata['url'],
                                           userdata['voter_id'],
                                           userdata['pan_card'],
-                                          userdata['driving_license'],
+                                          userdata['driving_licence'],
                                           20,
                                         );
                                         userdata = await ApiCaller().user_profile();
                                       }
-                                    else if(documentnumber == 2)
+                                    else if(documentType == 'Voter ID Card')
                                       {
+                                        print(stringfordata['url'],);
                                         String x = await ApiCaller().editProfile(
                                           userdata['name'],
                                           userdata['dob'],
@@ -334,13 +336,14 @@ class _ImageSelectorState extends State<ImageSelector> {
                                           userdata['aadhar_card'],
                                           stringfordata['url'],
                                           userdata['pan_card'],
-                                          userdata['driving_license'],
+                                          userdata['driving_licence'],
                                           20,
                                         );
                                         userdata = await ApiCaller().user_profile();
                                       }
-                                    else if(documentnumber == 3)
+                                    else if(documentType == 'Pan Card')
                                       {
+                                        print(stringfordata['url'],);
                                         String x = await ApiCaller().editProfile(
                                           userdata['name'],
                                           userdata['dob'],
@@ -349,13 +352,14 @@ class _ImageSelectorState extends State<ImageSelector> {
                                           userdata['aadhar_card'],
                                           userdata['voter_id'],
                                           stringfordata['url'],
-                                          userdata['driving_license'],
+                                          userdata['driving_licence'],
                                           20,
                                         );
                                         userdata = await ApiCaller().user_profile();
                                       }
                                     else
                                       {
+                                        print(stringfordata['url'],);
                                         String x = await ApiCaller().editProfile(
                                           userdata['name'],
                                           userdata['dob'],

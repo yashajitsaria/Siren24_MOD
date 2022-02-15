@@ -32,25 +32,25 @@ class _DocumentsUploadState extends State<DocumentsUpload> {
             drawer: MenuBar(),
             appBar: AppBar(
               actions: [
-                // TextButton(
-                //   onPressed: () {
-                //     if ( documents.length < 4 )
-                //       {
-                //         setState(() {
-                //           Navigator.pushReplacementNamed(
-                //               context, ImageSelector.id);
-                //         });
-                //       }
-                //   },
-                //   child: documents.length >= 4 ? Container() : Text(
-                //     'ADD',
-                //     style: TextStyle(
-                //       color: Color(0xFFFFD428),
-                //       fontSize: 17.sp,
-                //       fontFamily: 'SF UI Display',
-                //     ),
-                //   ),
-                // ),
+                TextButton(
+                  onPressed: () {
+                    // if ( documents.length < 4 )
+                      {
+                        setState(() {
+                          Navigator.pushReplacementNamed(
+                              context, ImageSelector.id);
+                        });
+                      }
+                  },
+                  child:  Text(
+                    'ADD',
+                    style: TextStyle(
+                      color: Color(0xFFFFD428),
+                      fontSize: 17.sp,
+                      fontFamily: 'SF UI Display',
+                    ),
+                  ),
+                ),
               ],
               iconTheme: IconThemeData(color: Color(0xFFFFD428), size: 24.sp),
               backgroundColor: Colors.white,
@@ -249,7 +249,7 @@ class _DocumentsUploadState extends State<DocumentsUpload> {
                                 child: Container(
                                   height: 210.h,
                                   width: double.infinity,
-                                  // child: Image.file(documents[index]["image"]) ,
+                                  child: Image.network(userdata['aadhar_card']),
                                   decoration: const BoxDecoration(
                                     color: Colors.red,
                                     borderRadius: BorderRadius.vertical(
@@ -322,7 +322,7 @@ class _DocumentsUploadState extends State<DocumentsUpload> {
                                 child: Container(
                                   height: 210.h,
                                   width: double.infinity,
-                                  // child: Image.file(documents[index]["image"]) ,
+                                  child: Image.network(userdata['voter_id']),
                                   decoration: const BoxDecoration(
                                     color: Colors.red,
                                     borderRadius: BorderRadius.vertical(
@@ -390,7 +390,8 @@ class _DocumentsUploadState extends State<DocumentsUpload> {
                                 child: Container(
                                   height: 210.h,
                                   width: double.infinity,
-                                  child: Image.network(userdata['driving_licence']) ,
+                                  child: Image.network(userdata['driving_licence'],
+                                  fit: BoxFit.fill,) ,
                                   decoration: const BoxDecoration(
                                     color: Colors.red,
                                     borderRadius: BorderRadius.vertical(
@@ -458,7 +459,7 @@ class _DocumentsUploadState extends State<DocumentsUpload> {
                                 child: Container(
                                   height: 210.h,
                                   width: double.infinity,
-                                  // child: Image.file(documents[index]["image"]) ,
+                                  child: Image.network(userdata['pan_card']),
                                   decoration: const BoxDecoration(
                                     color: Colors.red,
                                     borderRadius: BorderRadius.vertical(
