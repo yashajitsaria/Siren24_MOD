@@ -2,6 +2,7 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:siren24/GoogleMaps/HomeOffline.dart';
 import 'package:siren24/GoogleMaps/HomePickUp.dart';
@@ -51,7 +52,7 @@ class Siren24 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: EndRide.id,
+      initialRoute:  SplashScreen.id,
       routes: {
         SplashScreen.id: (context) => SplashScreen(),
         OnboardingScreens.id: (context) => OnboardingScreens(),
@@ -69,7 +70,7 @@ class Siren24 extends StatelessWidget {
         BookingDetailsBefore.id: (context) => BookingDetailsBefore(),
         Settings.id: (context) => Settings(),
         Profile.id: (context) => Profile(),
-        ProfileEdit.id: (context) => ProfileEdit(),
+        // ProfileEdit.id: (context) => ProfileEdit(),
         ProfileEditPage.id: (context) => ProfileEditPage(),
         VehicleManagement.id: (context) => VehicleManagement(),
         AddVehiclePage.id: (context) => AddVehiclePage(),

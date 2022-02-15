@@ -1,14 +1,17 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
-
+import 'dart:typed_data';
+import 'package:path/path.dart' as path;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:siren24/ForAPI/apicalling.dart';
 import 'package:siren24/GoogleMaps/homeOffline.dart';
 import 'package:siren24/documents/documentpage.dart';
 import 'package:siren24/documents/documentslist.dart';
 import 'package:siren24/global/globalvariables.dart';
-import 'package:siren24/vehicle_management/addvehiclepage.dart';
+
 
 class ImageSelector extends StatefulWidget {
   @override
@@ -18,13 +21,23 @@ class ImageSelector extends StatefulWidget {
 
 class _ImageSelectorState extends State<ImageSelector> {
   File? _image;
-
+  String? filename ;
+  String? extension ;
+  Uint8List? imageinbytes ;
   Future uploadImage(ImageSource source) async {
-    final XFile? image = await ImagePicker().pickImage(source: source);
+    final XFile? image = await ImagePicker().pickImage(source: source,imageQuality: source == ImageSource.camera ? 40 : 70,);
     File file = File(image!.path);
+    final bytes = file.readAsBytesSync().lengthInBytes;
+    final kb = bytes / 1024;
+    final imagebytes = await  file.readAsBytes();
     setState(() {
+      print(kb);
+      filename = path.basename(file.path)!.split("/").last ;
       _image = (file);
+      extension = filename!.split(".").last ;
       uploadcounter = 1;
+      imageinbytes = imagebytes ;
+      // print(imagebytes) ;
     });
   }
 
@@ -218,7 +231,7 @@ class _ImageSelectorState extends State<ImageSelector> {
                                     //Gallery
                                     GestureDetector(
                                       onTap: () =>
-                                          uploadImage(ImageSource.gallery),
+                                          uploadImage(ImageSource.gallery,),
                                       child: Container(
                                         height: 45.h,
                                         width: 165.w,
@@ -291,6 +304,73 @@ class _ImageSelectorState extends State<ImageSelector> {
                                     });
                                     documents.add(mapfordata);
                                     mapfordata = {};
+                                    print(filename!) ;
+                                    print(_image!.path) ;
+
+                                    stringfordata = await ApiCaller().fileUploader(filename!,_image!,extension!) ;
+                                    // print(x["url"]) ;
+                                    if ( documentnumber == 1 )
+                                      {
+                                        String x = await ApiCaller().editProfile(
+                                          userdata['name'],
+                                          userdata['dob'],
+                                          userdata['gender'],
+                                          userdata['profile_img'],
+                                          stringfordata['url'],
+                                          userdata['voter_id'],
+                                          userdata['pan_card'],
+                                          userdata['driving_license'],
+                                          20,
+                                        );
+                                        userdata = await ApiCaller().user_profile();
+                                      }
+                                    else if(documentnumber == 2)
+                                      {
+                                        String x = await ApiCaller().editProfile(
+                                          userdata['name'],
+                                          userdata['dob'],
+                                          userdata['gender'],
+                                          userdata['profile_img'],
+                                          userdata['aadhar_card'],
+                                          stringfordata['url'],
+                                          userdata['pan_card'],
+                                          userdata['driving_license'],
+                                          20,
+                                        );
+                                        userdata = await ApiCaller().user_profile();
+                                      }
+                                    else if(documentnumber == 3)
+                                      {
+                                        String x = await ApiCaller().editProfile(
+                                          userdata['name'],
+                                          userdata['dob'],
+                                          userdata['gender'],
+                                          userdata['profile_img'],
+                                          userdata['aadhar_card'],
+                                          userdata['voter_id'],
+                                          stringfordata['url'],
+                                          userdata['driving_license'],
+                                          20,
+                                        );
+                                        userdata = await ApiCaller().user_profile();
+                                      }
+                                    else
+                                      {
+                                        String x = await ApiCaller().editProfile(
+                                          userdata['name'],
+                                          userdata['dob'],
+                                          userdata['gender'],
+                                          userdata['profile_img'],
+                                          userdata['aadhar_card'],
+                                          userdata['voter_id'],
+                                          userdata['pan_card'],
+                                          stringfordata['url'],
+                                          20,
+                                        );
+                                        userdata = await ApiCaller().user_profile();
+                                      }
+                                    history_data = await ApiCaller().historydata() ;
+                                    ambulance_details = await ApiCaller().get_ambulance();
 
                                     if (firsttimechecker == 0) {
                                       ScaffoldMessenger.of(context)
@@ -303,7 +383,6 @@ class _ImageSelectorState extends State<ImageSelector> {
                                       });
 
                                       firsttimechecker = 1;
-                                      print("right");
                                     } else {
                                       Navigator.pushReplacementNamed(
                                         context,

@@ -204,9 +204,11 @@ class _SignInState extends State<SignIn> {
                                       if (_phonenumber.length == 10) {
                                         var pnumber = int.parse(_phonenumber);
                                         phonenumber = _phonenumber;
+                                        print(pnumber) ;
                                         ApiCaller().sendOtpToPhone(pnumber, 2);
                                         // print(name);
                                         // print(dob);
+                                        firsttimechecker = 1;
                                         Navigator.pushReplacementNamed(
                                           context,
                                           OtpVerification.id,

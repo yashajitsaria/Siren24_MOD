@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:siren24/ForAPI/apicalling.dart';
+import 'package:siren24/GoogleMaps/homeOffline.dart';
 import 'package:siren24/bookingdetails/bookingdetailsafter.dart';
+import 'package:siren24/bookingdetails/bookingdetailsbefore.dart';
 import 'package:siren24/global/globalvariables.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -14,6 +16,8 @@ class EndRide extends StatefulWidget {
   _EndRideState createState() => _EndRideState();
 }
 
+String modeOfPayment = 'Online';
+bool isCash = false;
 class _EndRideState extends State<EndRide> {
   @override
   Widget build(BuildContext context) {
@@ -438,9 +442,57 @@ class _EndRideState extends State<EndRide> {
                               // ),
                               GestureDetector(
                                 onTap: () {
-                                  // setState(() {
-                                  //   Navigator.pushReplacementNamed(context, BookingDetailsAfter.id);
-                                  // });
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) => AlertDialog(
+                                      title: Center(
+                                        child: Text('Payment'),
+                                      ),
+                                      // content: Text('Rs. 350'),
+                                      actions: <Widget>[
+                                        Center(
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            // crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text('Total Amount: ₹ 20'),
+                                              SizedBox(
+                                                height: 10,
+                                              ),
+                                              Text('Amount already Paid: ₹ 20'),
+                                              SizedBox(
+                                                height: 10,
+                                              ),
+                                              Text('Mode of Payment - ' + (modeOfPayment = isCash ? 'Cash' : 'Online')),
+                                              SizedBox(
+                                                height: 10,
+                                              ),
+                                              Text('Amount to be Paid: ₹ 0'),
+                                              SizedBox(
+                                                height: 10,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        TextButton(
+                                          style: ButtonStyle(
+                                            backgroundColor:
+                                            MaterialStateProperty.resolveWith(
+                                                  (states) => Color(0xFFFFD428),
+                                            ),
+                                          ),
+                                          // onPressed: () => Navigator.pop(context, 'OK'),
+                                          onPressed: () => Navigator.pushReplacementNamed(context, HomeOffline.id),
+                                          child: const Text(
+                                            'OK',
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  );
                                 },
                                 child: Padding(
                                   padding:

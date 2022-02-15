@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:siren24/Onboarding%20Screens/SetupGPSLocations.dart';
 import 'package:siren24/global/globalvariables.dart';
 import 'package:siren24/ForAPI/apicalling.dart';
+import 'package:siren24/history/history.dart';
 import 'package:siren24/signup/signupmod.dart';
 import 'package:siren24/vehicle_management/vehicle_management.dart';
 
@@ -87,10 +88,10 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                             height: 33.h,
                           ),
                           SizedBox(
-                            width: 300.h,
-                            height: 50.h,
+                            width: 300.w,
+                            height: 60.h,
                             child: Text(
-                              'Lorem ipsum dolor sit amet consectetur adipiscing',
+                              "Accept the nearest patient's request and be someone's hero.",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontFamily: 'SF UI Display',
@@ -101,17 +102,23 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                           ),
                           TextButton(
                             onPressed: () async{
-                              String? x = await FirebaseMessaging.instance.getToken();
-                              FirebaseMessaging.onMessageOpenedApp.toString();
-                              print("token:"+ x!) ;
+                               String? token = await FirebaseMessaging.instance.getToken();
+                               print(token!) ;
+                              //  String response  = await ApiCaller().registrationtoken(token!) ;
                               setState(
                                 () {
+                                //  print(response) ;
                                   Navigator.pushReplacementNamed(
                                     context,
                                     SignupPage.id,
                                   );
                                 },
                               );
+                              // history_data = await ApiCaller().historydata() ;
+                              // print(history_data) ;
+                              // setState(() {
+                              //   Navigator.pushReplacementNamed(context, History.id);
+                              // });
                             },
                             child: Text(
                               'Skip',
@@ -147,10 +154,10 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                             height: 33.sp,
                           ),
                           SizedBox(
-                            width: 300.h,
-                            height: 50.w,
+                            width: 300.w,
+                            height:60.h,
                             child: Text(
-                              'Lorem ipsum dolor sit amet consectetur adipiscing',
+                              "Track the patient's location using GPS to avoid hassle and reach in time.",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontFamily: 'SF UI Display',
@@ -161,8 +168,9 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                           ),
                           TextButton(
                             onPressed: () async{
-                              String? x = await FirebaseMessaging.instance.getToken();
-                              print("token:"+ x!) ;
+                              String? token = await FirebaseMessaging.instance.getToken();
+                              print(token!) ;
+                              // String response  = await ApiCaller().registrationtoken(token!) ;
                               setState(
                                 () {
                                   Navigator.pushReplacementNamed(
@@ -206,10 +214,10 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                             height: 33.h,
                           ),
                           SizedBox(
-                            width: 300.h,
-                            height: 50.w,
+                            width: 300.w,
+                            height:60.h,
                             child: Text(
-                              'Lorem ipsum dolor sit amet consectetur adipiscing.',
+                              "Get paid for every valuable life you save.",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontFamily: 'SF UI Display',
@@ -223,9 +231,9 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                           ),
                           GestureDetector(
                             onTap: () async{
-                              String? x = await FirebaseMessaging.instance.getToken();
-                              print("token:"+ x!) ;
-                              // ambulance_details = await ApiCaller().get_ambulance();
+                              String? token = await FirebaseMessaging.instance.getToken();
+                              print(token!) ;
+                              // String response  = await ApiCaller().registrationtoken(token!) ;
                               setState(
                                 () {
                                   // Navigator.pushReplacementNamed(

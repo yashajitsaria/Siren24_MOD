@@ -29,12 +29,12 @@ class _HomeOfflineState extends State<HomeOffline> {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: Size(375, 812),
-      builder: () => Scaffold(
-        body: Scaffold(
+      builder: () => SafeArea(
+        child: Scaffold(
           extendBodyBehindAppBar: true,
           drawer: MenuBar(),
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(110),
+            preferredSize: Size.fromHeight(110.h),
             child: ClipRRect(
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
@@ -44,7 +44,7 @@ class _HomeOfflineState extends State<HomeOffline> {
                   ),
                   bottom: PreferredSize(
                     child: isOnline ? Text('') : OfflineNotif(),
-                    preferredSize: Size.fromHeight(48),
+                    preferredSize: Size.fromHeight(48.h),
                   ),
                   elevation: 0,
                   backgroundColor: Colors.transparent,
@@ -75,7 +75,7 @@ class _HomeOfflineState extends State<HomeOffline> {
                       onToggle: (val) {
                         isOnline = !isOnline;
                         setState(
-                          () {
+                              () {
                             status = val;
                             driverStatus = isOnline
                                 ? driverStatus = 'ONLINE'
@@ -119,8 +119,8 @@ class SlidingPanelHomeOffline extends StatelessWidget {
         ),
       ],
       borderRadius: BorderRadius.circular(15),
-      minHeight: 100,
-      maxHeight: 200,
+      minHeight: 100.h,
+      maxHeight: 200.h,
       body: child,
       panel: Column(
         children: [
@@ -147,15 +147,15 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                     SizedBox(
                       width: 7,
                     ),
-                    Image.asset('UIAssets/dp.png'),
-                    // Container(
-                    //   height: 50.h,
-                    //   width: 45.w,
-                    //   child: Image.network(
-                    //     userdata['profile_img'],
-                    //     fit: BoxFit.fill,
-                    //   ),
-                    // ),
+                    // Image.asset('UIAssets/dp.png'),
+                    Container(
+                      height: 50.h,
+                      width: 45.w,
+                      child: Image.network(
+                        userdata['profile_img'],
+                        fit: BoxFit.fill,
+                      ),
+                    ),
                     SizedBox(
                       width: 24,
                     ),
@@ -164,8 +164,8 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Jeremiah Curtis',
-                          // userdata['name'],
+                          // 'Jeremiah Curtis',
+                          userdata['name'],
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20.sp,
@@ -225,8 +225,8 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                             TextButton(
                               style: ButtonStyle(
                                 backgroundColor:
-                                    MaterialStateProperty.resolveWith(
-                                  (states) => Color(0xFFFFD428),
+                                MaterialStateProperty.resolveWith(
+                                      (states) => Color(0xFFFFD428),
                                 ),
                               ),
                               onPressed: () => Navigator.pop(context, 'OK'),

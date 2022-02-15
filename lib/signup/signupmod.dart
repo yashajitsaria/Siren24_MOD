@@ -215,8 +215,8 @@ class _SignupPageState extends State<SignupPage> {
                                                 const Color(0xffFFD428),
                                             decoration: InputDecoration(
                                               prefixIcon: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    right: 5, left: 20, top: 4),
+                                                padding: EdgeInsets.only(
+                                                    right: 5.w, left: 20.w, top: 7.h, bottom: 7.h),
                                                 child: Text(
                                                   '+91 ',
                                                   style: TextStyle(
@@ -234,11 +234,11 @@ class _SignupPageState extends State<SignupPage> {
                                                 color: const Color(0xffBEC2CE),
                                               ),
                                               contentPadding:
-                                                  const EdgeInsets.only(
-                                                left: 30,
-                                                right: 20,
-                                                top: 20,
-                                                bottom: 20,
+                                                  EdgeInsets.only(
+                                                left: 30.w,
+                                                right: 20.w,
+                                                top: 0.h,
+                                                bottom: 0.h,
                                               ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderRadius:

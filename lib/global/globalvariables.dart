@@ -5,9 +5,14 @@ Map userdata = {} ;
 List ambulance_details = [] ;
 late List history_data  ;
 int firsttimechecker = 0 ;
+List documentname = ['Adhaar Card',
+  'Voter ID Card',
+  'Driving License',
+  'Pan Card',] ;
+int documentnumber = 0 ;
 
 int counter = 0 ;
-
+Map stringfordata = {} ;
 String? idcard = null ;
 String? dlcard = null ;
 

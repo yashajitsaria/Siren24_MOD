@@ -1,5 +1,6 @@
 import 'dart:async';
 // import 'package:connectivity/connectivity.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -180,6 +181,12 @@ class _OtpVerificationState extends State<OtpVerification> {
                                       var _otp = int.parse(_currentText);
                                       int x = await ApiCaller().verifyOtp(_otp);
                                       if (x < 300) {
+                                        // String? firebasetoken = await FirebaseMessaging.instance.getToken();
+                                        // print("1") ;
+                                        // String? y = await ApiCaller().registrationtoken(firebasetoken!) ;
+                                        // print("2") ;
+                                        // FirebaseMessaging.onMessageOpenedApp.toString();
+                                        // print("token:"+ firebasetoken + " message:" + y ) ;
                                         Navigator.pushReplacementNamed(context, SetupGPSLocations.id) ;
                                       } else {
 

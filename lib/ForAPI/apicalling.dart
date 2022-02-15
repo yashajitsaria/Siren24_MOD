@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:logger/logger.dart';
 import 'package:http/http.dart';
 import 'package:siren24/ForAPI/updateambulance.dart';
+import 'package:http/http.dart' as http ;
 import 'package:siren24/ForAPI/userprofile.dart';
 import 'otp.dart';
 import 'otpverify.dart';
@@ -118,18 +120,20 @@ class ApiCaller {
       headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         // "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
-        "authtoken": authToken,
+        'authtoken': authToken,
       },
       body: jsonEncode({
-        "car_no": car_no,
-        "ownerid": userid,
+        'car_no': car_no,
+        'ownerid': userid,
         // "ownerid": "61e2b1e569a5c49180d4ee7c" ,
-        "type": type,
-        "brand": brand,
-        "model": model,
-        "addons": addons
+        'type': type,
+        'brand': brand,
+        'model': model,
+        'addons': addons
       }),
     );
+    print("a" + userid) ;
+    print(authToken);
     handleError(res);
     Logger().d(res.body) ;
     var response = jsonDecode(res.body);
@@ -199,23 +203,29 @@ class ApiCaller {
       String updatename,
       String updatedob,
       String updategender,
-      // int updatephonenumber,
       String updateimg,
-      int updateage) async {
+      String aadhar_card,
+      String voter_id,
+      String pan_card,
+      String driving_license,
+      int updateage,) async {
     var res = await post(
       Uri.parse('http://$ip:4000/api/profile/edit'),
       headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
-        // "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
-        "authtoken": authToken,
+        "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
+        // "authtoken": authToken,
       },
       body: jsonEncode({
         "name": updatename ,
         "dob": updatedob,
         "gender": updategender,
-        // "phoneno": updatephonenumber,
         "profile_img": updateimg,
         "age": updateage,
+        "aadhar_card": "Update your addhar card",
+        "voter_id": "Update your voter id",
+        "pan_card": "Update your pan card",
+        "driving_licence": "Update your driving licence",
       }),
     );
     handleError(res);
@@ -228,13 +238,13 @@ class ApiCaller {
   //*********************************************************************************//
 
   //History
-  Future <List> historydata() async {
+  Future<List> historydata() async {
     var res = await post(
       Uri.parse('http://$ip:4000/api/order/user/get'),
       headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
-        // "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
-        "authtoken": authToken,
+        "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
+        // "authtoken": authToken,
       },
     );
     handleError(res) ;
@@ -262,9 +272,82 @@ class ApiCaller {
 
   //*********************************************************************************//
 
+  // //File Uploader Api
+  // Future<String> fileUploader(String filename,File file, String extension) async{
+  //   var res = await post(Uri.parse('https://8h43nvvxfd.execute-api.ap-south-1.amazonaws.com/Prod/api/upload_file'),
+  //   headers: {
+  //     HttpHeaders.contentTypeHeader: 'application/json',
+  //     "folder-name": "FileUpload" ,
+  //     "filename": filename ,
+  //   },
+  //   body: jsonEncode({
+  //         "file": file ,
+  //       "Metadata": {"extension":(filename.split('.').last),"mimetype":"image/jpg"}
+  //       }),
+  //   );
+  //
+  //   // handleError(res) ;
+  //   Logger().d(res.body) ;
+  //   var response = jsonDecode(res.body) ;
+  //   return response["message"] ;
+  // }
+  
+  //*********************************************************************************//
+
+  //File Uploader Api
+  Future<Map> fileUploader(String filename,File file, String extension) async{
+      var res = await http.MultipartRequest('POST',Uri.parse('https://8h43nvvxfd.execute-api.ap-south-1.amazonaws.com/Prod/api/upload_file'));
+      Map <String, String> headers = {'folder-name':'FileUpload','filename':filename.split(".").first};
+      res.headers.addAll(headers) ;
+      Map <String, String> metadata = {
+        'extension': '.'+extension ,
+        'mimetype': 'image/'+extension
+      };
+      res.fields['Metadata']=jsonEncode(metadata) ;
+      res.files.add( await http.MultipartFile.fromPath('file', file.path,));
+      print(res.fields['Metadata']) ;
+      // res.files.add( await
+      //     http.MultipartFile.fromBytes(
+      //         'file',
+      //         file,
+      //         filename: filename
+      //     )
+      // );
+
+      var response = await res.send() ;
+      var answer  = await http.Response.fromStream(response) ;
+      Logger().d(answer.body) ;
+      var finalresponse  = jsonDecode(answer.body) ;
+      return finalresponse ;
+  }
+
+  // //*********************************************************************************//
+
+  //Registration Token
+  Future<String> registrationtoken(String firebasetoken) async {
+    var res = await post(Uri.parse('http://65.2.132.175:4000/api/push_notification/update/registration_token'),
+      headers: {
+        HttpHeaders.contentTypeHeader: 'application/json',
+        // "authtoken": authToken ,
+        "authtoken": "EVuSACB5AchWPbj2hsaPKPK9XWnPiyHqxxocUMTKJ7N9" ,
+      },
+      body: jsonEncode({
+        "registrationToken": firebasetoken ,
+      }),
+    );
+    print("reach") ;
+    handleError(res) ;
+    Logger().d(res.body) ;
+    var response = jsonDecode(res.body) ;
+    return response["message"] ;
+  }
+
+  //*********************************************************************************//
+
   //Handle error
   handleError(Response response) {
     if (response.statusCode >= 300) {
+      print("b");
       throw Exception(
           jsonDecode(response.body)['message'] ?? "Unexpected error occurred");
     }

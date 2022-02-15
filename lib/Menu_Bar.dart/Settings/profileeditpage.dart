@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:siren24/ForAPI/apicalling.dart';
 import 'package:siren24/GoogleMaps/HomeOffline.dart';
-import 'package:siren24/Menu_Bar.dart/Settings/Profile.dart';
+import 'package:siren24/documents/documentpage.dart';
 import 'package:siren24/documents/imageselector.dart';
 import 'package:siren24/global/globalvariables.dart';
 import 'package:date_field/date_field.dart';
@@ -24,6 +24,11 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
   DateTime? sel = DateTime.tryParse("1995-02-22T00:00:00.000Z");
   // String profileimg = userdata["profile_img"] ;
   // int age = userdata["age"] ==  ? " " : userdata["age"];
+  String? driverGenderSelect;
+  List<String> driverGender = [
+    'Female',
+    'Male',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -38,290 +43,336 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
         },
         child: SafeArea(
           child: Scaffold(
+            appBar: AppBar(
+              iconTheme:
+              IconThemeData(color: Color(0xFFFFD428), size: 24.sp),
+              backgroundColor: Colors.white,
+              shadowColor: Colors.transparent,
+              centerTitle: true,
+              toolbarHeight: 56.h,
+              title: Text(
+                'Profile Edit',
+                style: TextStyle(
+                  fontSize: 17.sp,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xff242A37),
+                ),
+              ),
+            ),
             resizeToAvoidBottomInset: false,
-            backgroundColor: Color(0xffFFD428),
+            backgroundColor: Color(0xffF7F8FA),
             // backgroundColor: Colors.red,
-            body: Center(
-              child: Padding(
-                padding:
-                    EdgeInsets.symmetric(vertical: 8.0.h, horizontal: 10.h),
-                child: Container(
-                  height: 650.h,
-                  width: 450.h,
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey,
-                        blurRadius: 15.0,
+            body: Padding(
+              padding:
+              EdgeInsets.symmetric(vertical: 20.0.h, horizontal: 10.h),
+              child: Container(
+                height: 600.h,
+                width: 440.h,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 15.0,
+                    ),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(
+                        20.w,
+                        15.h,
+                        20.w,
+                        15.h,
                       ),
-                    ],
-                  ),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(
-                          20.w,
-                          15.h,
-                          20.w,
-                          15.h,
-                        ),
-                        child: Container(
-                          height: 153.h,
-                          width: 450.w,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 10.0.w),
-                                child: Text(
-                                  'Name',
-                                  style: TextStyle(
-                                    fontSize: 35,
-                                  ),
+                      child: Container(
+                        height: 165.h,
+                        width: 450.w,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Text(
+                                'Name',
+                                style: TextStyle(
+                                  fontSize: 35,
                                 ),
                               ),
-                              Container(
-                                width: 305.w,
-                                height: 80.h,
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 5.0.w),
-                                  child: TextField(
-                                    style: TextStyle(
-                                      fontSize: 17,
-                                      height: 1.5,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    onChanged: (value) {
-                                      setState(
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(5),
+                              child: TextField(
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  height: 1.5,
+                                ),
+                                onChanged: (value) {
+                                  setState(
                                         () {
-                                          name = value;
-                                        },
-                                      );
+                                      name = value;
                                     },
-                                    cursorColor: const Color(0xffFFD428),
-                                    decoration: InputDecoration(
-                                      // contentPadding: EdgeInsets.only(left: 30,right: 20, top: 20, bottom: 20),
-                                      hintText: name,
-                                      hintStyle: const TextStyle(
-                                        // fontSize: 20,
-                                        fontWeight: FontWeight.normal,
-                                        color: Color(0xffBEC2CE),
-                                      ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide: const BorderSide(
-                                          width: 2,
-                                          color: Color(0xffEFEFF4),
-                                        ),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide: const BorderSide(
-                                          width: 2,
-                                          color: Color(0xffEFEFF4),
-                                        ),
-                                      ),
+                                  );
+                                },
+                                cursorColor: const Color(0xffFFD428),
+                                decoration: InputDecoration(
+                                  // contentPadding: EdgeInsets.only(left: 30,right: 20, top: 20, bottom: 20),
+                                  hintText: name,
+                                  hintStyle: const TextStyle(
+                                    // fontSize: 20,
+                                    fontWeight: FontWeight.normal,
+                                    color: Color(0xffBEC2CE),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                      width: 2,
+                                      color: Color(0xffEFEFF4),
+                                    ),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                      width: 2,
+                                      color: Color(0xffEFEFF4),
                                     ),
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(20.w, 5.h, 20.w, 5.h),
-                        child: Container(
-                          height: 180.h,
-                          width: 450.w,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 10.0.w),
-                                child: Text(
-                                  'Gender',
-                                  style: TextStyle(
-                                    fontSize: 35,
-                                  ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(20.w, 5.h, 20.w, 5.h),
+                      child: Container(
+                        height: 145.h,
+                        width: 450.w,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Text(
+                                'Gender',
+                                style: TextStyle(
+                                  fontSize: 35,
                                 ),
                               ),
-                              Container(
-                                width: 305.w,
-                                height: 80.h,
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 5.0.w),
-                                  child: TextField(
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      height: 1.5,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    onChanged: (value) {
-                                      setState(
-                                        () {
-                                          gender = value;
-                                        },
-                                      );
-                                    },
-                                    cursorColor: const Color(0xffFFD428),
-                                    decoration: InputDecoration(
-                                      // contentPadding: EdgeInsets.only(left: 30,right: 20, top: 20, bottom: 20),
-                                      hintText: gender,
-                                      hintStyle: const TextStyle(
-                                        // fontSize: 20,
-                                        fontWeight: FontWeight.normal,
-                                        color: Color(0xffBEC2CE),
-                                      ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide: const BorderSide(
-                                          width: 2,
-                                          color: Color(0xffEFEFF4),
-                                        ),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide: const BorderSide(
-                                          width: 2,
-                                          color: Color(0xffEFEFF4),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(20.w, 5.h, 20.w, 5.h),
-                        child: Container(
-                          height: 175.h,
-                          width: 450.w,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 10.0.w),
-                                child: Text(
-                                  'Date of Birth',
-                                  style: TextStyle(
-                                    fontSize: 35,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: 305.w,
-                                height: 80.h,
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 5.0.w),
-                                  child: DateTimeField(
-                                    mode: DateTimeFieldPickerMode.date,
-                                    decoration: InputDecoration(
-                                      // contentPadding: EdgeInsets.only(left: 30,right: 20, top: 20, bottom: 20),
-                                      hintText: dob,
-                                      hintStyle: const TextStyle(
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.normal,
-                                        color: Color(0xffBEC2CE),
-                                      ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide: const BorderSide(
-                                          width: 2,
-                                          color: Color(0xffEFEFF4),
-                                        ),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide: const BorderSide(
-                                          width: 2,
-                                          color: Color(0xffEFEFF4),
-                                        ),
-                                      ),
-                                    ),
-                                    lastDate: DateTime.now(),
-                                    onDateSelected: (value) {
-                                      setState(
-                                        () {
-                                          dob = value.toString();
-                                          print(dob);
-                                        },
-                                      );
+                            ),
 
-                                      // print(dob) ;
-                                    },
-                                    selectedDate: DateTime.tryParse(dob),
+                            Padding(
+                              padding:
+                              EdgeInsets.fromLTRB(15.w, 5.h, 15.w, 0),
+                              child: Container(
+                                width: 345.w,
+                                height: 45.h,
+                                child: DropdownButton<String>(
+                                  borderRadius: BorderRadius.circular(10),
+                                  hint: Text('Select your Gender'),
+                                  isExpanded: true,
+                                  underline: SizedBox(),
+                                  value: driverGenderSelect,
+                                  icon: const Icon(
+                                    Icons.keyboard_arrow_down,
+                                    color: Color(0xFFBEC2CE),
                                   ),
+                                  iconSize: 24,
+                                  elevation: 16,
+                                  onChanged: (newValue) {
+                                    setState(
+                                          () {
+                                        driverGenderSelect = newValue;
+                                        gender = newValue! ;
+                                      },
+                                    );
+                                  },
+                                  items: driverGender.map<DropdownMenuItem<String>>(
+                                        (String value) {
+                                      return DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(value),
+                                      );
+                                    },
+                                  ).toList(),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                            // Padding(
+                            //   padding: const EdgeInsets.all(5),
+                            //   child: TextField(
+                            //     style: TextStyle(
+                            //       fontSize: 20,
+                            //       height: 1.5,
+                            //       fontWeight: FontWeight.bold,
+                            //     ),
+                            //     onChanged: (value) {
+                            //       setState(
+                            //         () {
+                            //           gender = value;
+                            //         },
+                            //       );
+                            //     },
+                            //     cursorColor: const Color(0xffFFD428),
+                            //     decoration: InputDecoration(
+                            //       // contentPadding: EdgeInsets.only(left: 30,right: 20, top: 20, bottom: 20),
+                            //       hintText: gender,
+                            //       hintStyle: const TextStyle(
+                            //         // fontSize: 20,
+                            //         fontWeight: FontWeight.normal,
+                            //         color: Color(0xffBEC2CE),
+                            //       ),
+                            //       enabledBorder: OutlineInputBorder(
+                            //         borderRadius: BorderRadius.circular(10),
+                            //         borderSide: const BorderSide(
+                            //           width: 2,
+                            //           color: Color(0xffEFEFF4),
+                            //         ),
+                            //       ),
+                            //       focusedBorder: OutlineInputBorder(
+                            //         borderRadius: BorderRadius.circular(10),
+                            //         borderSide: const BorderSide(
+                            //           width: 2,
+                            //           color: Color(0xffEFEFF4),
+                            //         ),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+                          ],
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(20.w, 5.h, 20.w, 5.h),
-                        child: GestureDetector(
-                          onTap: () async {
-                            print(name + dob + gender);
-                            String x = await ApiCaller().editProfile(
-                              name,
-                              dob,
-                              gender,
-                              "https://cdn-icons-png.flaticon.com/512/21/21104.png",
-                              20,
-                            );
-                            userdata = await ApiCaller().user_profile();
-                            setState(
-                              () {
-                                print(" result" + x);
-                                print(userdata);
-                                print(firsttimechecker) ;
-                                if (firsttimechecker == 0) {
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(20.w, 5.h, 20.w, 5.h),
+                      child: Container(
+                        height: 175.h,
+                        width: 450.w,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Text(
+                                'Date of Birth',
+                                style: TextStyle(
+                                  fontSize: 35,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(5),
+                              child: DateTimeField(
+                                mode: DateTimeFieldPickerMode.date,
+                                decoration: InputDecoration(
+                                  // contentPadding: EdgeInsets.only(left: 30,right: 20, top: 20, bottom: 20),
+                                  hintText: dob,
+                                  hintStyle: const TextStyle(
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.normal,
+                                    color: Color(0xffBEC2CE),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                      width: 2,
+                                      color: Color(0xffEFEFF4),
+                                    ),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                      width: 2,
+                                      color: Color(0xffEFEFF4),
+                                    ),
+                                  ),
+                                ),
+                                lastDate: DateTime.now(),
+                                onDateSelected: (value) {
+                                  setState(
+                                        () {
+                                      dob = value.toString();
+                                      print(dob);
+                                    },
+                                  );
+
+                                  // print(dob) ;
+                                },
+                                selectedDate: DateTime.tryParse(dob),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(20.w, 5.h, 20.w, 5.h),
+                      child: GestureDetector(
+                        onTap: () async {
+                          print(name + dob + gender);
+                          String x = await ApiCaller().editProfile(
+                            name,
+                            dob,
+                            gender,
+                            "https://cdn-icons-png.flaticon.com/512/21/21104.png",
+                            "https://cdn-icons-png.flaticon.com/512/21/21104.png",
+                            "https://cdn-icons-png.flaticon.com/512/21/21104.png",
+                            "https://cdn-icons-png.flaticon.com/512/21/21104.png",
+                            "https://cdn-icons-png.flaticon.com/512/21/21104.png",
+                            20,
+                          );
+                          userdata = await ApiCaller().user_profile();
+                          setState(
+                                () {
+                              print(" result" + x);
+                              print(userdata);
+                              if (firsttimechecker == 0) {
+
                                   Navigator.pushReplacementNamed(
                                     context,
                                     ImageSelector.id,
                                   );
-                                  // firsttimechecker = 1;
-                                } else {
-                                  Navigator.pushReplacementNamed(
-                                    context,
-                                    Profile.id,
-                                  );
-                                }
-                              },
-                            );
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Color(0xff242A37),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                            ),
-                            width: 305.w,
-                            height: 50.h,
-                            child: Center(
-                              child: Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Text(
-                                  'SIGN UP',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 17.sp,
-                                  ),
+
+
+                                // firsttimechecker = 1;
+                              } else {
+                                Navigator.pushReplacementNamed(
+                                  context,
+                                  DocumentsUpload.id,
+                                );
+                              }
+
+                            },
+                          );
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Color(0xff242A37),
+                            borderRadius:
+                            BorderRadius.all(Radius.circular(10)),
+                          ),
+                          width: 305.w,
+                          height: 50.h,
+                          child: Center(
+                            child: Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Text(
+                                'SIGN UP',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 17.sp,
                                 ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),

@@ -3,8 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:siren24/Menu_Bar.dart/Settings/Profile.dart';
+import 'package:siren24/documents/documentpage.dart';
 import 'package:siren24/global/globalvariables.dart';
 import 'package:siren24/vehicle_management/vehicle_management.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../MenuBar.dart';
 import '../Notifications.dart';
@@ -84,8 +86,10 @@ class _SettingsState extends State<Settings> {
                                     Container(
                                       height: 60.h,
                                       width: 60.w,
-                                      child: Image.network(userdata['profile_img'],
-                                      fit: BoxFit.fill,),
+                                      child: Image.network(
+                                        userdata['profile_img'],
+                                        fit: BoxFit.fill,
+                                      ),
                                     ),
                                     SizedBox(
                                       width: 15,
@@ -144,12 +148,12 @@ class _SettingsState extends State<Settings> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      setState(() {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => VehicleManagement()));
-                      });
+                      setState(
+                        () {
+                          Navigator.pushReplacementNamed(
+                              context, VehicleManagement.id);
+                        },
+                      );
                     },
                     child: Container(
                       height: 50.h,
@@ -235,81 +239,88 @@ class _SettingsState extends State<Settings> {
                     margin: EdgeInsets.only(left: 54),
                     height: 2.h,
                   ),
-                  Container(
-                    height: 50.h,
-                    color: Colors.white,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10, right: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Stack(
-                                    children: <Widget>[
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                          top: 3,
-                                          bottom: 3,
-                                          left: 7,
-                                          right: 15,
-                                        ),
-                                        child: Container(
-                                          width: 30.w,
-                                          height: 36.h,
-                                          decoration: BoxDecoration(
-                                            color: Color(0xFF4CD964),
-                                            borderRadius:
-                                                BorderRadius.circular(6),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacementNamed(
+                          context, DocumentsUpload.id);
+                    },
+                    child: Container(
+                      height: 50.h,
+                      color: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Stack(
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                            top: 3,
+                                            bottom: 3,
+                                            left: 7,
+                                            right: 15,
                                           ),
-                                          child: Align(
-                                            alignment: Alignment.center,
-                                            child: Image.asset(
-                                              'UIAssets/ID contact.png',
-                                              color: Colors.white,
-                                              scale: 1.5,
+                                          child: Container(
+                                            width: 30.w,
+                                            height: 36.h,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFF4CD964),
+                                              borderRadius:
+                                                  BorderRadius.circular(6),
+                                            ),
+                                            child: Align(
+                                              alignment: Alignment.center,
+                                              child: Image.asset(
+                                                'UIAssets/ID contact.png',
+                                                color: Colors.white,
+                                                scale: 1.5,
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Document Management',
-                                        style: TextStyle(
-                                          fontFamily: 'SF Pro Text',
-                                          fontSize: 20.sp,
-                                          color: Colors.black,
+                                      ],
+                                    ),
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Document Management',
+                                          style: TextStyle(
+                                            fontFamily: 'SF Pro Text',
+                                            fontSize: 20.sp,
+                                            color: Colors.black,
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Icon(
-                                Icons.keyboard_arrow_right_rounded,
-                                color: Colors.grey[400],
-                                size: 36.sp,
-                              ),
-                            ],
-                          ),
-                        ],
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Icon(
+                                  Icons.keyboard_arrow_right_rounded,
+                                  color: Colors.grey[400],
+                                  size: 36.sp,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -663,81 +674,87 @@ class _SettingsState extends State<Settings> {
                     margin: EdgeInsets.only(left: 54),
                     height: 2.h,
                   ),
-                  Container(
-                    height: 50.h,
-                    color: Colors.white,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10, right: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Stack(
-                                    children: <Widget>[
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                          top: 3,
-                                          bottom: 3,
-                                          left: 7,
-                                          right: 15,
-                                        ),
-                                        child: Container(
-                                          width: 30.w,
-                                          height: 36.h,
-                                          decoration: BoxDecoration(
-                                            color: Color(0xFFFF2D55),
-                                            borderRadius:
-                                                BorderRadius.circular(6),
+                  GestureDetector(
+                    onTap: () async {
+                      await launch('tel:+91 9910295915');
+                    },
+                    child: Container(
+                      height: 50.h,
+                      color: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Stack(
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                            top: 3,
+                                            bottom: 3,
+                                            left: 7,
+                                            right: 15,
                                           ),
-                                          child: Align(
-                                            alignment: Alignment.center,
-                                            child: Image.asset(
-                                              'UIAssets/help.png',
-                                              color: Colors.white,
-                                              scale: 1.5,
+                                          child: Container(
+                                            width: 30.w,
+                                            height: 36.h,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFFFF2D55),
+                                              borderRadius:
+                                                  BorderRadius.circular(6),
+                                            ),
+                                            child: Align(
+                                              alignment: Alignment.center,
+                                              child: Image.asset(
+                                                'UIAssets/help.png',
+                                                color: Colors.white,
+                                                scale: 1.5,
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Contact us',
-                                        style: TextStyle(
-                                          fontSize: 20.sp,
-                                          fontFamily: 'SF Pro Text',
-                                          color: Colors.black,
+                                      ],
+                                    ),
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Contact us',
+                                          style: TextStyle(
+                                            fontSize: 20.sp,
+                                            fontFamily: 'SF Pro Text',
+                                            color: Colors.black,
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Icon(
-                                Icons.keyboard_arrow_right_rounded,
-                                color: Colors.grey[400],
-                                size: 36.sp,
-                              ),
-                            ],
-                          ),
-                        ],
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Icon(
+                                  Icons.keyboard_arrow_right_rounded,
+                                  color: Colors.grey[400],
+                                  size: 36.sp,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

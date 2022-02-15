@@ -142,16 +142,17 @@ class _MenuBarState extends State<MenuBar> {
                               Text(
                                 '10.2',
                                 style: TextStyle(
-                                  fontSize: 17.sp,
+                                  fontSize: 15.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               Container(
                                 height: 17.h,
-                                child: Flexible(
+                                child: Expanded(
                                   child: Center(
                                     child: Text(
                                       'Hours online',
+                                      overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                         color: Color(0xFF242E42),
                                         fontSize: 12.sp,
@@ -164,7 +165,7 @@ class _MenuBarState extends State<MenuBar> {
                           ),
                         ),
                         SizedBox(
-                          width: 5.w,
+                          // width: 2.w,
                         ),
                         Center(
                           child: Column(
@@ -177,16 +178,17 @@ class _MenuBarState extends State<MenuBar> {
                               Text(
                                 '30 KM',
                                 style: TextStyle(
-                                  fontSize: 17.sp,
+                                  fontSize: 15.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               Container(
                                 height: 17.h,
-                                child: Flexible(
+                                child: Expanded(
                                   child: Center(
                                     child: Text(
                                       'Total Distance',
+                                      overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                         color: Color(0xFF242E42),
                                         fontSize: 12.sp,
@@ -212,16 +214,17 @@ class _MenuBarState extends State<MenuBar> {
                               Text(
                                 '20',
                                 style: TextStyle(
-                                  fontSize: 17.sp,
+                                  fontSize: 15.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               Container(
                                 height: 17.h,
-                                child: Flexible(
+                                child: Expanded(
                                   child: Center(
                                     child: Text(
                                       'Total Jobs',
+                                      overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                         color: Color(0xFF242E42),
                                         fontSize: 12.sp,
@@ -253,12 +256,15 @@ class _MenuBarState extends State<MenuBar> {
                           scale: 1,
                         ),
                         SizedBox(
-                          width: 15,
+                          width: 10.w,
                         ),
-                        Text(
-                          'Home',
-                          style: TextStyle(
-                            fontSize: 20.sp,
+                        Expanded(
+                          child: Text(
+                            'Home',
+                            overflow: TextOverflow.fade,
+                            style: TextStyle(
+                              fontSize: 17.sp,
+                            ),
                           ),
                         ),
                       ],
@@ -285,12 +291,15 @@ class _MenuBarState extends State<MenuBar> {
                   //         scale: 1,
                   //       ),
                   //       SizedBox(
-                  //         width: 15,
+                  //         width: 10.w,
                   //       ),
-                  //       Text(
-                  //         'My Wallet',
-                  //         style: TextStyle(
-                  //           fontSize: 20.sp,
+                  //       Expanded(
+                  //         child: Text(
+                  //           'My Wallet',
+                  //           overflow: TextOverflow.fade,
+                  //           style: TextStyle(
+                  //             fontSize: 17.sp,
+                  //           ),
                   //         ),
                   //       ),
                   //     ],
@@ -312,55 +321,64 @@ class _MenuBarState extends State<MenuBar> {
                           scale: 1,
                         ),
                         SizedBox(
-                          width: 15,
+                          width: 10.w,
                         ),
-                        Text(
-                          'History',
-                          style: TextStyle(
-                            fontSize: 20.sp,
+                        Expanded(
+                          child: Text(
+                            'History',
+                            overflow: TextOverflow.fade,
+                            style: TextStyle(
+                              fontSize: 17.sp,
+                            ),
                           ),
                         ),
                       ],
                     ),
                     onTap: () async {
-                      history_data = await ApiCaller().historydata() ;
-                      setState(() {
+
+                      setState(() async{
+                        print(history_data) ;
+                        history_data = await ApiCaller().historydata() ;
+                        print(history_data);
                         Navigator.pushReplacementNamed(context, History.id);
                       });
                     },
                   ),
-                  // ListTile(
-                  //   title: Row(
-                  //     children: [
-                  //       Image.asset(
-                  //         'UIAssets/notification.png',
-                  //         color: Color(0xFFD8D8D8),
-                  //         scale: 1,
-                  //       ),
-                  //       SizedBox(
-                  //         width: 15,
-                  //       ),
-                  //       Text(
-                  //         'Notifications',
-                  //         style: TextStyle(
-                  //           fontSize: 20.sp,
-                  //         ),
-                  //       ),
-                  //     ],
-                  //   ),
-                  //   onTap: () {
-                  //     setState(
-                  //       () {
-                  //         Navigator.push(
-                  //           context,
-                  //           MaterialPageRoute(
-                  //             builder: (context) => Notifications(),
-                  //           ),
-                  //         );
-                  //       },
-                  //     );
-                  //   },
-                  // ),
+                  ListTile(
+                    title: Row(
+                      children: [
+                        Image.asset(
+                          'UIAssets/notification.png',
+                          color: Color(0xFFD8D8D8),
+                          scale: 1,
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        Expanded(
+                          child: Text(
+                            'Notifications',
+                            overflow: TextOverflow.fade,
+                            style: TextStyle(
+                              fontSize: 17.sp,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    onTap: () {
+                      setState(
+                        () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Notifications(),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
                   ListTile(
                     title: Row(
                       children: [
@@ -370,12 +388,15 @@ class _MenuBarState extends State<MenuBar> {
                           scale: 1,
                         ),
                         SizedBox(
-                          width: 15,
+                          width: 10.w,
                         ),
-                        Text(
-                          'Vehicle Management',
-                          style: TextStyle(
-                            fontSize: 20.sp,
+                        Expanded(
+                          child: Text(
+                            'Vehicle Management',
+                            overflow: TextOverflow.fade,
+                            style: TextStyle(
+                              fontSize: 17.sp,
+                            ),
                           ),
                         ),
                       ],
@@ -404,14 +425,17 @@ class _MenuBarState extends State<MenuBar> {
                           scale: 1,
                         ),
                         SizedBox(
-                          width: 15,
+                          width: 10.w,
                         ),
-                        Text(
-                          'Document Management',
-                          style: TextStyle(
-                            fontSize: 20.sp,
+                        Expanded(
+                          child: Text(
+                            'Document Management',
+                            style: TextStyle(
+                              fontSize: 17.sp,
+                            ),
+                            overflow: TextOverflow.fade,
+                            softWrap: false,
                           ),
-                          overflow: TextOverflow.ellipsis,
                         ),
                       ],
                     ),
@@ -425,38 +449,39 @@ class _MenuBarState extends State<MenuBar> {
                       );
                     },
                   ),
-                  // ListTile(
-                  //   title: Row(
-                  //     children: [
-                  //       Image.asset(
-                  //         'UIAssets/gift.png',
-                  //         color: Color(0xFFD8D8D8),
-                  //         scale: 1,
-                  //       ),
-                  //       SizedBox(
-                  //         width: 15,
-                  //       ),
-                  //       Text(
-                  //         'Invite Friends',
-                  //         style: TextStyle(
-                  //           fontSize: 20.sp,
-                  //         ),
-                  //       ),
-                  //     ],
-                  //   ),
-                  //   onTap: () {
-                  //     setState(
-                  //       () {
-                  //         Navigator.push(
-                  //           context,
-                  //           MaterialPageRoute(
-                  //             builder: (context) => InviteFriends(),
-                  //           ),
-                  //         );
-                  //       },
-                  //     );
-                  //   },
-                  // ),
+                  ListTile(
+                    title: Row(
+                      children: [
+                        Image.asset(
+                          'UIAssets/gift.png',
+                          color: Color(0xFFD8D8D8),
+                          scale: 1,
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        Text(
+                          'Invite Friends',
+                          overflow: TextOverflow.fade,
+                          style: TextStyle(
+                            fontSize: 17.sp,
+                          ),
+                        ),
+                      ],
+                    ),
+                    onTap: () {
+                      setState(
+                        () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => InviteFriends(),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
                   ListTile(
                     title: Row(
                       children: [
@@ -466,12 +491,15 @@ class _MenuBarState extends State<MenuBar> {
                           scale: 1,
                         ),
                         SizedBox(
-                          width: 15,
+                          width: 10.w,
                         ),
-                        Text(
-                          'Settings',
-                          style: TextStyle(
-                            fontSize: 20.sp,
+                        Expanded(
+                          child: Text(
+                            'Settings',
+                            overflow: TextOverflow.fade,
+                            style: TextStyle(
+                              fontSize: 17.sp,
+                            ),
                           ),
                         ),
                       ],
@@ -498,12 +526,15 @@ class _MenuBarState extends State<MenuBar> {
                           scale: 1,
                         ),
                         SizedBox(
-                          width: 15,
+                          width: 10.w,
                         ),
-                        Text(
-                          'Logout',
-                          style: TextStyle(
-                            fontSize: 20.sp,
+                        Expanded(
+                          child: Text(
+                            'Logout',
+                            overflow: TextOverflow.fade,
+                            style: TextStyle(
+                              fontSize: 17.sp,
+                            ),
                           ),
                         ),
                       ],
@@ -511,6 +542,11 @@ class _MenuBarState extends State<MenuBar> {
                     onTap: () async {
                       String x = await ApiCaller().logout() ;
                       setState(() {
+                        firsttimechecker = 0;
+                        history_data  = [];
+                        ambulance_details = [] ;
+                        userdata = {} ;
+                        print("done") ;
                         print(x) ;
                         Navigator.pushReplacementNamed(context, SignIn.id);
                       });

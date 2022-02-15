@@ -20,20 +20,27 @@ class AddVehiclePage extends StatefulWidget {
 class _AddVehiclePageState extends State<AddVehiclePage> {
   String? ambulanceBrand;
   List<String> brand = [
-    'Maruti Suzuki',
-    'Tata',
+    'Bajaj',
+    'Ford',
+    'Force',
     'Mahindra',
-    'Toyota',
+    'Maruti',
+    'Suzuki',
+    'Tata',
+    'Tempo',
+    'Traveller',
+    'Others',
   ];
 
   String? ambulanceType;
   List<String> type = [
-    'Individual Ambulance',
-    'Mobile ICU Ambulance',
-    'Basic Life Support Ambulance',
-    'Medical and Nursing Care Vehicle',
-    'MVA Logistics Unit',
-    'Neonatal Incubator',
+    'ACLS',
+    'AIR AMBULANCE',
+    'ALS',
+    'ALS+',
+    'BIKE AMBULANCE',
+    'BLS',
+    'PATIENT TRANSPORT',
   ];
 
   String? ambulanceModel;
@@ -368,11 +375,14 @@ class _AddVehiclePageState extends State<AddVehiclePage> {
                 ),
                 child: GestureDetector(
                   onTap: () async {
-                    // String x = await ApiCaller().addambulance(no_amb, type_amb, brand_amb, model_amb, addons_amb) ;
+                    print("a") ;
+                    String x = await ApiCaller().addambulance(no_amb, type_amb, brand_amb, model_amb, addons_amb) ;
+                    print("b") ;
                     ambulance_details = await ApiCaller().get_ambulance() ;
+                    print("c");
                     setState(
                           () {
-                            // print(x) ;
+                            print(x) ;
                         Navigator.pushReplacementNamed(
                           context,
                           VehicleManagement.id,

@@ -31,7 +31,7 @@ class _GMapsHomeOfflineState extends State<GMapsHomeOffline> {
     print(position);
 
     setState(
-      () {
+          () {
         _currentposition = LatLng(position.latitude, position.longitude);
       },
     );
@@ -60,10 +60,11 @@ class _GMapsHomeOfflineState extends State<GMapsHomeOffline> {
   void initState() {
     setCustomMarker();
     super.initState();
+    _getCurrentLocation();
     Geolocator.getPositionStream().listen(
-      (p) {
+          (p) {
         setState(
-          () {
+              () {
             _position = p;
           },
         );
@@ -81,7 +82,7 @@ class _GMapsHomeOfflineState extends State<GMapsHomeOffline> {
   void _onMapCreated(GoogleMapController controller) {
     _googleMapController = controller;
     setState(
-      () {
+          () {
         _marker.add(
           Marker(
             markerId: MarkerId('Driver'),
@@ -118,6 +119,18 @@ class _GMapsHomeOfflineState extends State<GMapsHomeOffline> {
               CameraUpdate.newCameraPosition(_initialCameraPosition),
             );
             await OpenGoogleMaps.openMap(25.533573, 84.855654);
+            // try {
+            //   final location = await context.read(locationProvider.future);
+            //   LocationData userLocation = await location.getLocation();
+            //   // driverCoordinates =
+            //   //     Coordinates(userLocation.latitude, userLocation.longitude);
+            // } catch (e) {
+            //   ScaffoldMessenger.of(context).showSnackBar(
+            //     SnackBar(
+            //       content: Text('error'),
+            //     ),
+            //   );
+            // }
           },
           child: Icon(
             Icons.near_me_outlined,
@@ -131,13 +144,22 @@ class _GMapsHomeOfflineState extends State<GMapsHomeOffline> {
         zoomControlsEnabled: false,
         initialCameraPosition: CameraPosition(
           target: LatLng(
-            _position?.latitude ?? 0,
-            _position?.longitude ?? 0,
+            _currentposition.latitude,
+            _currentposition.longitude,
           ),
           zoom: 14,
         ),
         onMapCreated: _onMapCreated,
-        markers: _marker,
+        markers: {
+          Marker(
+            markerId: MarkerId('driver'),
+            position: LatLng(
+              _currentposition.latitude,
+              _currentposition.longitude,
+            ),
+          )
+        },
+        // polylines: {},
       ),
     );
   }
