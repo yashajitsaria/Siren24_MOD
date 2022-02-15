@@ -165,8 +165,8 @@ class ApiCaller {
       Uri.parse('http://$ip:4000/api/profile/view'),
       headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
-        // "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
-        "authtoken": authToken,
+        "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
+        // "authtoken": authToken,
       },
     );
     handleError(res);
@@ -222,10 +222,10 @@ class ApiCaller {
         "gender": updategender,
         "profile_img": updateimg,
         "age": updateage,
-        "aadhar_card": "Update your addhar card",
-        "voter_id": "Update your voter id",
-        "pan_card": "Update your pan card",
-        "driving_licence": "Update your driving licence",
+        "aadhar_card": aadhar_card,
+        "voter_id": voter_id,
+        "pan_card": pan_card,
+        "driving_licence": driving_license,
       }),
     );
     handleError(res);
