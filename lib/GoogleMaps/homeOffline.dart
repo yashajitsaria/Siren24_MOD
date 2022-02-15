@@ -203,21 +203,43 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 // crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('Total Amount: ₹ 20'),
-                                  SizedBox(
-                                    height: 10,
+                                  Text(
+                                    'Total Amount: ₹ 20',
+                                    style: TextStyle(
+                                      fontSize: 18.sp,
+                                    ),
                                   ),
-                                  Text('Amount already Paid: ₹ 20'),
                                   SizedBox(
-                                    height: 10,
+                                    height: 12.h,
                                   ),
-                                  Text('Mode of Payment - ' + (modeOfPayment = isCash ? 'Cash' : 'Online')),
-                                  SizedBox(
-                                    height: 10,
+                                  Text(
+                                    'Amount already Paid: ₹ 20',
+                                    style: TextStyle(
+                                      fontSize: 18.sp,
+                                    ),
                                   ),
-                                  Text('Amount to be Paid: ₹ 0'),
                                   SizedBox(
-                                    height: 10,
+                                    height: 12.h,
+                                  ),
+                                  Text(
+                                    'Mode of Payment - ' +
+                                        (modeOfPayment =
+                                            isCash ? 'Cash' : 'Online'),
+                                    style: TextStyle(
+                                      fontSize: 18.sp,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 12.h,
+                                  ),
+                                  Text(
+                                    'Amount to be Paid: ₹ 0',
+                                    style: TextStyle(
+                                      fontSize: 18.sp,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 12.h,
                                   ),
                                 ],
                               ),

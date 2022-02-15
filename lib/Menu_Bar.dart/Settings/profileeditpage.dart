@@ -22,6 +22,11 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
   DateTime? sel = DateTime.tryParse("1995-02-22T00:00:00.000Z");
   // String profileimg = userdata["profile_img"] ;
   // int age = userdata["age"] ==  ? " " : userdata["age"];
+  String? driverGenderSelect;
+  List<String> driverGender = [
+    'Female',
+    'Male',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -144,45 +149,81 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(5),
-                                child: TextField(
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    height: 1.5,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  onChanged: (value) {
-                                    setState(
-                                      () {
-                                        gender = value;
+                                child: Container(
+                                  // decoration: BoxDecoration(
+                                  //   border: BoxBorder(RoundedRectangleBorder()),
+                                  // ),
+                                  child: DropdownButton<String>(
+                                    borderRadius: BorderRadius.circular(10),
+                                    hint: Text('Select your Gender'),
+                                    isExpanded: true,
+                                    underline: SizedBox(),
+                                    value: driverGenderSelect,
+                                    icon: const Icon(
+                                      Icons.keyboard_arrow_down,
+                                      color: Color(0xFFBEC2CE),
+                                    ),
+                                    iconSize: 24,
+                                    elevation: 16,
+                                    onChanged: (newValue) {
+                                      setState(
+                                        () {
+                                          driverGenderSelect = newValue;
+                                        },
+                                      );
+                                    },
+                                    items: driverGender.map<DropdownMenuItem<String>>(
+                                      (String value) {
+                                        return DropdownMenuItem<String>(
+                                          value: value,
+                                          child: Text(value),
+                                        );
                                       },
-                                    );
-                                  },
-                                  cursorColor: const Color(0xffFFD428),
-                                  decoration: InputDecoration(
-                                    // contentPadding: EdgeInsets.only(left: 30,right: 20, top: 20, bottom: 20),
-                                    hintText: gender,
-                                    hintStyle: const TextStyle(
-                                      // fontSize: 20,
-                                      fontWeight: FontWeight.normal,
-                                      color: Color(0xffBEC2CE),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide: const BorderSide(
-                                        width: 2,
-                                        color: Color(0xffEFEFF4),
-                                      ),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide: const BorderSide(
-                                        width: 2,
-                                        color: Color(0xffEFEFF4),
-                                      ),
-                                    ),
+                                    ).toList(),
                                   ),
                                 ),
                               ),
+                              // Padding(
+                              //   padding: const EdgeInsets.all(5),
+                              //   child: TextField(
+                              //     style: TextStyle(
+                              //       fontSize: 20,
+                              //       height: 1.5,
+                              //       fontWeight: FontWeight.bold,
+                              //     ),
+                              //     onChanged: (value) {
+                              //       setState(
+                              //         () {
+                              //           gender = value;
+                              //         },
+                              //       );
+                              //     },
+                              //     cursorColor: const Color(0xffFFD428),
+                              //     decoration: InputDecoration(
+                              //       // contentPadding: EdgeInsets.only(left: 30,right: 20, top: 20, bottom: 20),
+                              //       hintText: gender,
+                              //       hintStyle: const TextStyle(
+                              //         // fontSize: 20,
+                              //         fontWeight: FontWeight.normal,
+                              //         color: Color(0xffBEC2CE),
+                              //       ),
+                              //       enabledBorder: OutlineInputBorder(
+                              //         borderRadius: BorderRadius.circular(10),
+                              //         borderSide: const BorderSide(
+                              //           width: 2,
+                              //           color: Color(0xffEFEFF4),
+                              //         ),
+                              //       ),
+                              //       focusedBorder: OutlineInputBorder(
+                              //         borderRadius: BorderRadius.circular(10),
+                              //         borderSide: const BorderSide(
+                              //           width: 2,
+                              //           color: Color(0xffEFEFF4),
+                              //         ),
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
                             ],
                           ),
                         ),
