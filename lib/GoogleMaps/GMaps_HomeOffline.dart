@@ -21,7 +21,7 @@ class _GMapsHomeOfflineState extends State<GMapsHomeOffline> {
   final Set<Marker> _marker = {};
   late BitmapDescriptor mapMarker;
 
-  late LatLng _currentposition;
+  LatLng? _currentposition;
   Position? _position;
 
   void _getCurrentLocation() async {
@@ -31,9 +31,15 @@ class _GMapsHomeOfflineState extends State<GMapsHomeOffline> {
     print(position);
 
     setState(
-          () {
+      () {
         _currentposition = LatLng(position.latitude, position.longitude);
       },
+    );
+    _googleMapController.moveCamera(
+      CameraUpdate.newCameraPosition(CameraPosition(
+        target: _currentposition!,
+        zoom: 16,
+      )),
     );
   }
 
@@ -62,9 +68,9 @@ class _GMapsHomeOfflineState extends State<GMapsHomeOffline> {
     super.initState();
     _getCurrentLocation();
     Geolocator.getPositionStream().listen(
-          (p) {
+      (p) {
         setState(
-              () {
+          () {
             _position = p;
           },
         );
@@ -82,7 +88,7 @@ class _GMapsHomeOfflineState extends State<GMapsHomeOffline> {
   void _onMapCreated(GoogleMapController controller) {
     _googleMapController = controller;
     setState(
-          () {
+      () {
         _marker.add(
           Marker(
             markerId: MarkerId('Driver'),
@@ -144,8 +150,8 @@ class _GMapsHomeOfflineState extends State<GMapsHomeOffline> {
         zoomControlsEnabled: false,
         initialCameraPosition: CameraPosition(
           target: LatLng(
-            _currentposition.latitude,
-            _currentposition.longitude,
+            _currentposition?.latitude ?? 0,
+            _currentposition?.longitude ?? 0,
           ),
           zoom: 14,
         ),
@@ -154,8 +160,8 @@ class _GMapsHomeOfflineState extends State<GMapsHomeOffline> {
           Marker(
             markerId: MarkerId('driver'),
             position: LatLng(
-              _currentposition.latitude,
-              _currentposition.longitude,
+              _currentposition?.latitude ?? 0,
+              _currentposition?.longitude ?? 0,
             ),
           )
         },
