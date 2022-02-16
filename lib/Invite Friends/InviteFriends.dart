@@ -107,7 +107,7 @@ class _InviteFriendsState extends State<InviteFriends> {
                         ),
                       ),
                       Text(
-                        'Earn up to \$150 a day',
+                        'Earn up to ₹150 a day',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 36.sp,

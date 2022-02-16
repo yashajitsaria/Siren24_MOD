@@ -76,7 +76,7 @@ class _HomeOfflineState extends State<HomeOffline> {
                       onToggle: (val) {
                         isOnline = !isOnline;
                         setState(
-                              () {
+                          () {
                             status = val;
                             driverStatus = isOnline
                                 ? driverStatus = 'ONLINE'
@@ -212,7 +212,9 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                                   SizedBox(
                                     height: 10,
                                   ),
-                                  Text('Mode of Payment - ' + (modeOfPayment = isCash ? 'Cash' : 'Online')),
+                                  Text('Mode of Payment - ' +
+                                      (modeOfPayment =
+                                          isCash ? 'Cash' : 'Online')),
                                   SizedBox(
                                     height: 10,
                                   ),
@@ -226,8 +228,8 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                             TextButton(
                               style: ButtonStyle(
                                 backgroundColor:
-                                MaterialStateProperty.resolveWith(
-                                      (states) => Color(0xFFFFD428),
+                                    MaterialStateProperty.resolveWith(
+                                  (states) => Color(0xFFFFD428),
                                 ),
                               ),
                               onPressed: () => Navigator.pop(context, 'OK'),
@@ -243,14 +245,23 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                       );
                     },
                     child: GestureDetector(
-                      onTap: (){
-                        Navigator.pushReplacementNamed(context, BookingDetailsAfter.id);
+                      onTap: () {
+                        Navigator.pushReplacementNamed(
+                            context, BookingDetailsAfter.id);
                       },
-                      child: Text(
-                        'Earned',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16.sp,
+                      child: Container(
+                        width: 30.w,
+                        height: 30.h,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFFFD428),
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                        ),
+                        child: Text(
+                          'Earned',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16.sp,
+                          ),
                         ),
                       ),
                     ),

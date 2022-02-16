@@ -27,6 +27,21 @@ class _OtpVerificationState extends State<OtpVerification> {
   String _currentText = "";
 
   double width = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseMessaging.onMessage.listen((RemoteMessage event) {
+      print("message recieved");
+      print(event.notification!.body);
+    });
+    FirebaseMessaging.onMessageOpenedApp.listen((message) {
+      print('Message clicked!');
+    });
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     width = MediaQuery.of(context).size.width;
@@ -187,6 +202,18 @@ class _OtpVerificationState extends State<OtpVerification> {
                                         // print("2") ;
                                         // FirebaseMessaging.onMessageOpenedApp.toString();
                                         // print("token:"+ firebasetoken + " message:" + y ) ;
+                                        print(phonenumber);
+                                        FirebaseMessaging.instance.subscribeToTopic(phonenumber);
+                                      //   Firebase.messaging.subscribeToTopic("weather")
+                                      //       .addOnCompleteListener { task ->
+                                      // var msg = getString(R.string.msg_subscribed)
+                                      // if (!task.isSuccessful) {
+                                      // msg = getString(R.string.msg_subscribe_failed)
+                                      // }
+                                      // Log.d(TAG, msg)
+                                      // Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                                      // }
+                                        print("work");
                                         Navigator.pushReplacementNamed(context, SetupGPSLocations.id) ;
                                       } else {
 

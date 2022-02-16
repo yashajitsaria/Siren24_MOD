@@ -311,6 +311,7 @@ class _ImageSelectorState extends State<ImageSelector> {
                                     // print(x["url"]) ;
                                     if ( documentType == 'Adhaar Card')
                                       {
+                                        documents[0]["image"] = _image ;
                                         print(stringfordata['url'],);
                                         String x = await ApiCaller().editProfile(
                                           userdata['name'],
@@ -327,6 +328,7 @@ class _ImageSelectorState extends State<ImageSelector> {
                                       }
                                     else if(documentType == 'Voter ID Card')
                                       {
+                                        documents[0]["image"] = _image ;
                                         print(stringfordata['url'],);
                                         String x = await ApiCaller().editProfile(
                                           userdata['name'],
@@ -343,6 +345,7 @@ class _ImageSelectorState extends State<ImageSelector> {
                                       }
                                     else if(documentType == 'Pan Card')
                                       {
+                                        documents[0]["image"] = _image ;
                                         print(stringfordata['url'],);
                                         String x = await ApiCaller().editProfile(
                                           userdata['name'],
@@ -359,6 +362,7 @@ class _ImageSelectorState extends State<ImageSelector> {
                                       }
                                     else
                                       {
+                                        documents[0]["image"] = _image ;
                                         print(stringfordata['url'],);
                                         String x = await ApiCaller().editProfile(
                                           userdata['name'],
@@ -373,7 +377,7 @@ class _ImageSelectorState extends State<ImageSelector> {
                                         );
                                         userdata = await ApiCaller().user_profile();
                                       }
-                                    history_data = await ApiCaller().historydata() ;
+                                    // history_data = await ApiCaller().historydata() ;
                                     ambulance_details = await ApiCaller().get_ambulance();
 
                                     if (firsttimechecker == 0) {

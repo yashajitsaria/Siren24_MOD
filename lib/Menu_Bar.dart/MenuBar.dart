@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, file_names
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -140,7 +141,7 @@ class _MenuBarState extends State<MenuBar> {
                                 color: Colors.black,
                               ),
                               Text(
-                                '10.2',
+                                '0',
                                 style: TextStyle(
                                   fontSize: 15.sp,
                                   fontWeight: FontWeight.bold,
@@ -176,7 +177,7 @@ class _MenuBarState extends State<MenuBar> {
                                 color: Colors.black,
                               ),
                               Text(
-                                '30 KM',
+                                '0 KM',
                                 style: TextStyle(
                                   fontSize: 15.sp,
                                   fontWeight: FontWeight.bold,
@@ -212,7 +213,7 @@ class _MenuBarState extends State<MenuBar> {
                                 color: Colors.black,
                               ),
                               Text(
-                                '20',
+                                '0',
                                 style: TextStyle(
                                   fontSize: 15.sp,
                                   fontWeight: FontWeight.bold,
@@ -337,7 +338,7 @@ class _MenuBarState extends State<MenuBar> {
                     onTap: () async {
 
                       setState(() async{
-                        print(history_data) ;
+                        // print(history_data) ;
                         history_data = await ApiCaller().historydata() ;
                         print(history_data);
                         Navigator.pushReplacementNamed(context, History.id);
@@ -540,6 +541,7 @@ class _MenuBarState extends State<MenuBar> {
                       ],
                     ),
                     onTap: () async {
+                      FirebaseMessaging.instance.unsubscribeFromTopic(phonenumber);
                       String x = await ApiCaller().logout() ;
                       setState(() {
                         firsttimechecker = 0;

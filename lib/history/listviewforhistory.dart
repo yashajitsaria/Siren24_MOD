@@ -17,7 +17,7 @@ class _ListViewHistoryState extends State<ListViewHistory> {
     return Padding(
       padding: EdgeInsets.only(top: 15.h),
       child: Container(
-        height: 600.h,
+        height: 620.h,
         color: const Color(0xffF7F8FA),
         child: ListView.builder(
           itemCount: history_data.length,

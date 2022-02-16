@@ -165,8 +165,8 @@ class ApiCaller {
       Uri.parse('http://$ip:4000/api/profile/view'),
       headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
-        "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
-        // "authtoken": authToken,
+        // "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
+        "authtoken": authToken,
       },
     );
     handleError(res);
@@ -213,8 +213,8 @@ class ApiCaller {
       Uri.parse('http://$ip:4000/api/profile/edit'),
       headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
-        "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
-        // "authtoken": authToken,
+        // "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
+        "authtoken": authToken,
       },
       body: jsonEncode({
         "name": updatename ,
@@ -243,8 +243,8 @@ class ApiCaller {
       Uri.parse('http://$ip:4000/api/order/user/get'),
       headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
-        "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
-        // "authtoken": authToken,
+        // "authtoken": "B6gMxyAqFF6n4Pepmb16TeqLBoJQHJShTLKho4CWLmwU",
+        "authtoken": authToken,
       },
     );
     handleError(res) ;
@@ -328,8 +328,8 @@ class ApiCaller {
     var res = await post(Uri.parse('http://65.2.132.175:4000/api/push_notification/update/registration_token'),
       headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
-        // "authtoken": authToken ,
-        "authtoken": "EVuSACB5AchWPbj2hsaPKPK9XWnPiyHqxxocUMTKJ7N9" ,
+        "authtoken": authToken ,
+        // "authtoken": "EVuSACB5AchWPbj2hsaPKPK9XWnPiyHqxxocUMTKJ7N9" ,
       },
       body: jsonEncode({
         "registrationToken": firebasetoken ,

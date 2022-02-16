@@ -249,9 +249,9 @@ class _DocumentsUploadState extends State<DocumentsUpload> {
                                 child: Container(
                                   height: 210.h,
                                   width: double.infinity,
-                                  child: Image.network(userdata['aadhar_card']),
+                                  child: documents[0]['image'].runtimeType == String ? Image.network(documents[0]['image']):Image.file(documents[0]["image"]) ,
                                   decoration: const BoxDecoration(
-                                    color: Colors.red,
+                                    color: Colors.white,
                                     borderRadius: BorderRadius.vertical(
                                       top: Radius.circular(10),
                                     ),
@@ -281,21 +281,7 @@ class _DocumentsUploadState extends State<DocumentsUpload> {
                                         color: Color(0xff242E42),
                                       ),
                                     ),
-                                    GestureDetector(
-                                      child: Text(
-                                        'Edit',
-                                        style: TextStyle(
-                                          fontSize: 17.sp,
-                                          color: Color(0xff242E42),
-                                        ),
-                                      ),
-                                      onTap: () {
-                                        setState(() {
-                                          documentnumber = 1 ;
-                                          Navigator.pushReplacementNamed(context, ImageSelector.id);
-                                        });
-                                      },
-                                    ),
+
                                   ],
                                 ),
                               ),
@@ -322,9 +308,9 @@ class _DocumentsUploadState extends State<DocumentsUpload> {
                                 child: Container(
                                   height: 210.h,
                                   width: double.infinity,
-                                  child: Image.network(userdata['voter_id']),
+                                  child: documents[1]['image'].runtimeType == String ? Image.network(documents[1]['image']):Image.file(documents[1]["image"]) ,
                                   decoration: const BoxDecoration(
-                                    color: Colors.red,
+                                    color: Colors.white,
                                     borderRadius: BorderRadius.vertical(
                                       top: Radius.circular(10),
                                     ),
@@ -354,16 +340,6 @@ class _DocumentsUploadState extends State<DocumentsUpload> {
                                         color: Color(0xff242E42),
                                       ),
                                     ),
-                                    GestureDetector(
-                                      child: Text(
-                                        'Edit',
-                                        style: TextStyle(
-                                          fontSize: 17.sp,
-                                          color: Color(0xff242E42),
-                                        ),
-                                      ),
-                                      onTap: () {},
-                                    ),
                                   ],
                                 ),
                               ),
@@ -390,10 +366,9 @@ class _DocumentsUploadState extends State<DocumentsUpload> {
                                 child: Container(
                                   height: 210.h,
                                   width: double.infinity,
-                                  child: Image.network(userdata['driving_licence'],
-                                  fit: BoxFit.fill,) ,
+                                  child: documents[2]['image'].runtimeType == String ? Image.network(documents[2]['image']):Image.file(documents[2]["image"]) ,
                                   decoration: const BoxDecoration(
-                                    color: Colors.red,
+                                    color: Colors.white,
                                     borderRadius: BorderRadius.vertical(
                                       top: Radius.circular(10),
                                     ),
@@ -423,16 +398,6 @@ class _DocumentsUploadState extends State<DocumentsUpload> {
                                         color: Color(0xff242E42),
                                       ),
                                     ),
-                                    GestureDetector(
-                                      child: Text(
-                                        'Edit',
-                                        style: TextStyle(
-                                          fontSize: 17.sp,
-                                          color: Color(0xff242E42),
-                                        ),
-                                      ),
-                                      onTap: () {},
-                                    ),
                                   ],
                                 ),
                               ),
@@ -459,9 +424,9 @@ class _DocumentsUploadState extends State<DocumentsUpload> {
                                 child: Container(
                                   height: 210.h,
                                   width: double.infinity,
-                                  child: Image.network(userdata['pan_card']),
+                                  child: documents[3]['image'].runtimeType == String ? Image.network(documents[3]['image']):Image.file(documents[3]["image"]) ,
                                   decoration: const BoxDecoration(
-                                    color: Colors.red,
+                                    color: Colors.white,
                                     borderRadius: BorderRadius.vertical(
                                       top: Radius.circular(10),
                                     ),
@@ -490,16 +455,6 @@ class _DocumentsUploadState extends State<DocumentsUpload> {
                                         fontSize: 17.sp,
                                         color: Color(0xff242E42),
                                       ),
-                                    ),
-                                    GestureDetector(
-                                      child: Text(
-                                        'Edit',
-                                        style: TextStyle(
-                                          fontSize: 17.sp,
-                                          color: Color(0xff242E42),
-                                        ),
-                                      ),
-                                      onTap: () {},
                                     ),
                                   ],
                                 ),

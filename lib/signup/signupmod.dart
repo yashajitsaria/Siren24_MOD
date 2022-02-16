@@ -271,13 +271,17 @@ class _SignupPageState extends State<SignupPage> {
                                               () {
                                                 var pnumber =
                                                     int.parse(_phoneNumber);
-                                                ApiCaller()
-                                                    .sendOtpToPhone(pnumber, 2);
-                                                firsttimechecker = 0;
-                                                Navigator.pushReplacementNamed(
-                                                  context,
-                                                  OtpVerification.id,
-                                                );
+                                                if ( _phoneNumber.length == 10 )
+                                                  {
+                                                    ApiCaller()
+                                                        .sendOtpToPhone(pnumber, 2);
+                                                    firsttimechecker = 0;
+                                                    Navigator.pushReplacementNamed(
+                                                      context,
+                                                      OtpVerification.id,
+                                                    );
+                                                  }
+
                                               },
                                             );
                                           },
