@@ -328,7 +328,7 @@ class _ImageSelectorState extends State<ImageSelector> {
                                       }
                                     else if(documentType == 'Voter ID Card')
                                       {
-                                        documents[0]["image"] = _image ;
+                                        documents[1]["image"] = _image ;
                                         print(stringfordata['url'],);
                                         String x = await ApiCaller().editProfile(
                                           userdata['name'],
@@ -345,7 +345,7 @@ class _ImageSelectorState extends State<ImageSelector> {
                                       }
                                     else if(documentType == 'Pan Card')
                                       {
-                                        documents[0]["image"] = _image ;
+                                        documents[2]["image"] = _image ;
                                         print(stringfordata['url'],);
                                         String x = await ApiCaller().editProfile(
                                           userdata['name'],
@@ -362,7 +362,7 @@ class _ImageSelectorState extends State<ImageSelector> {
                                       }
                                     else
                                       {
-                                        documents[0]["image"] = _image ;
+                                        documents[3]["image"] = _image ;
                                         print(stringfordata['url'],);
                                         String x = await ApiCaller().editProfile(
                                           userdata['name'],

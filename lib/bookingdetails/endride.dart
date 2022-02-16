@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:siren24/ForAPI/apicalling.dart';
 import 'package:siren24/GoogleMaps/homeOffline.dart';
+import 'package:siren24/Menu_Bar.dart/MenuBar.dart';
 import 'package:siren24/bookingdetails/bookingdetailsafter.dart';
 import 'package:siren24/bookingdetails/bookingdetailsbefore.dart';
 import 'package:siren24/global/globalvariables.dart';
@@ -25,7 +26,9 @@ class _EndRideState extends State<EndRide> {
       designSize: const Size(375, 812),
       builder: () => SafeArea(
         child: Scaffold(
+          drawer: MenuBar(),
           appBar: AppBar(
+            iconTheme: IconThemeData(color: Color(0xFFFFD428), size: 24.sp),
             toolbarHeight: 56.h,
             elevation: 0,
             backgroundColor: Colors.white,

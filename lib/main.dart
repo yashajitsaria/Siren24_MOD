@@ -27,6 +27,7 @@ import 'package:siren24/history/HistoryDetails.dart';
 import 'package:siren24/optverification/otpverification.dart';
 import 'package:siren24/signup/signin.dart';
 import 'package:siren24/vehicle_management/addvehiclebutton.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:siren24/signup/signup.dart';
 // import 'package:siren24/vehicle_management/addvehicle.dart';
 import 'package:siren24/vehicle_management/addvehiclepage.dart';
@@ -45,10 +46,16 @@ void main() async {
   runApp(Siren24());
 }
 
-class Siren24 extends StatelessWidget {
+class Siren24 extends StatefulWidget {
   const Siren24({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  @override
+  State<Siren24> createState() => _Siren24State();
+}
+
+class _Siren24State extends State<Siren24> {
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -89,3 +96,6 @@ class Siren24 extends StatelessWidget {
     );
   }
 }
+
+
+

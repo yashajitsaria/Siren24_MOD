@@ -5,6 +5,7 @@ Map userdata = {} ;
 List ambulance_details = [] ;
 late List history_data  ;
 int firsttimechecker = 0 ;
+int install = 0 ;
 List documentname = ['Adhaar Card',
   'Voter ID Card',
   'Driving License',

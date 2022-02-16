@@ -250,17 +250,19 @@ class SlidingPanelHomeOffline extends StatelessWidget {
                             context, BookingDetailsAfter.id);
                       },
                       child: Container(
-                        width: 30.w,
+                        width: 80.w,
                         height: 30.h,
                         decoration: BoxDecoration(
                           color: Color(0xFFFFD428),
                           borderRadius: BorderRadius.all(Radius.circular(15)),
                         ),
-                        child: Text(
-                          'Earned',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16.sp,
+                        child: Center(
+                          child: Text(
+                            'Earned',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16.sp,
+                            ),
                           ),
                         ),
                       ),

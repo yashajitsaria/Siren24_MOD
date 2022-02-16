@@ -3,9 +3,14 @@ import 'dart:async';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:is_first_run/is_first_run.dart';
+import 'package:siren24/GoogleMaps/homeOffline.dart';
 import 'package:siren24/Onboarding%20Screens/OnboardingScreens.dart';
 import 'package:siren24/global/globalvariables.dart';
 import 'package:siren24/signup/signin.dart';
+import 'package:siren24/signup/signupmod.dart';
+
+import '../main.dart';
 
 class SplashScreen extends StatefulWidget {
   static String id = 'Splash_Screen';
@@ -15,22 +20,34 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
 
+
+
   startTime() async {
     var _duration = new Duration(seconds: 3);
     return Timer(_duration, navigationPage);
   }
 
+
   void navigationPage() async{
-    if (firsttimechecker == 0) {
+    bool firstcall = await IsFirstRun.isFirstRun() ;
+    if (firstcall == true) {
 
       Navigator.pushReplacementNamed(context, OnboardingScreens.id);
 
 
     } else {
-      Navigator.pushReplacementNamed(
-        context,
-        SignIn.id,
-      );
+      if(firsttimechecker == 1 )
+        {
+          Navigator.pushReplacementNamed(context, HomeOffline.id) ;
+        }
+      else
+        {
+          Navigator.pushReplacementNamed(
+            context,
+            SignupPage.id,
+          );
+        }
+
     }
 
   }

@@ -3,11 +3,13 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:siren24/GoogleMaps/homeOffline.dart';
 // import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:siren24/Onboarding%20Screens/SetupGPSLocations.dart';
 import 'package:siren24/global/globalvariables.dart';
 import 'package:siren24/ForAPI/apicalling.dart';
 import 'package:siren24/history/history.dart';
+import 'package:siren24/signup/signin.dart';
 import 'package:siren24/signup/signupmod.dart';
 import 'package:siren24/vehicle_management/vehicle_management.dart';
 
@@ -105,15 +107,17 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                                String? token = await FirebaseMessaging.instance.getToken();
                                print(token!) ;
                               //  String response  = await ApiCaller().registrationtoken(token!) ;
-                              setState(
-                                () {
-                                //  print(response) ;
-                                  Navigator.pushReplacementNamed(
-                                    context,
-                                    SignupPage.id,
-                                  );
-                                },
-                              );
+                               if(firsttimechecker == 1 )
+                               {
+                                 Navigator.pushReplacementNamed(context, HomeOffline.id) ;
+                               }
+                               else
+                               {
+                                 Navigator.pushReplacementNamed(
+                                   context,
+                                   SignupPage.id,
+                                 );
+                               }
                               // history_data = await ApiCaller().historydata() ;
                               // print(history_data) ;
                               // setState(() {
@@ -171,14 +175,17 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                               String? token = await FirebaseMessaging.instance.getToken();
                               print(token!) ;
                               // String response  = await ApiCaller().registrationtoken(token!) ;
-                              setState(
-                                () {
-                                  Navigator.pushReplacementNamed(
-                                    context,
-                                    SignupPage.id,
-                                  );
-                                },
-                              );
+                              if(firsttimechecker == 1 )
+                              {
+                                Navigator.pushReplacementNamed(context, HomeOffline.id) ;
+                              }
+                              else
+                              {
+                                Navigator.pushReplacementNamed(
+                                  context,
+                                  SignupPage.id,
+                                );
+                              }
                             },
                             child: Text(
                               'Skip',
@@ -234,18 +241,17 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                               String? token = await FirebaseMessaging.instance.getToken();
                               print(token!) ;
                               // String response  = await ApiCaller().registrationtoken(token!) ;
-                              setState(
-                                () {
-                                  // Navigator.pushReplacementNamed(
-                                  //   context,
-                                  //   VehicleManagement.id,
-                                  // );
-                                  Navigator.pushReplacementNamed(
-                                    context,
-                                    SignupPage.id,
-                                  );
-                                },
-                              );
+                              if(firsttimechecker == 1 )
+                              {
+                                Navigator.pushReplacementNamed(context, HomeOffline.id) ;
+                              }
+                              else
+                              {
+                                Navigator.pushReplacementNamed(
+                                  context,
+                                  SignupPage.id,
+                                );
+                              }
                             },
                             child: Container(
                               margin: EdgeInsets.symmetric(horizontal: 92),
