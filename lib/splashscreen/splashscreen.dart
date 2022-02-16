@@ -9,6 +9,8 @@ import 'package:siren24/Onboarding%20Screens/OnboardingScreens.dart';
 import 'package:siren24/global/globalvariables.dart';
 import 'package:siren24/signup/signin.dart';
 import 'package:siren24/signup/signupmod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 import '../main.dart';
 
@@ -18,13 +20,14 @@ class SplashScreen extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
 
+class _SplashScreenState extends State<SplashScreen> {
 
 
   startTime() async {
     var _duration = new Duration(seconds: 3);
     return Timer(_duration, navigationPage);
+
   }
 
 

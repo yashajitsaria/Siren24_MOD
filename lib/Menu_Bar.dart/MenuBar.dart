@@ -270,7 +270,9 @@ class _MenuBarState extends State<MenuBar> {
                         ),
                       ],
                     ),
-                    onTap: () {
+                    onTap: () async{
+
+                      userdata = await ApiCaller().user_profile() ;
                       setState(
                         () {
                           Navigator.push(

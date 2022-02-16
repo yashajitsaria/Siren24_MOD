@@ -390,7 +390,6 @@ class _ImageSelectorState extends State<ImageSelector> {
                                         );
                                       });
 
-                                      firsttimechecker = 1;
                                     } else {
                                       Navigator.pushReplacementNamed(
                                         context,

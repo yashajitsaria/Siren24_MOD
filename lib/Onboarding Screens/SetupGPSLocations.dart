@@ -195,7 +195,8 @@ class _SetupGPSLocationsState extends State<SetupGPSLocations> {
                         color: Color(0xFFBEC2CE),
                       ),
                     ),
-                    onPressed: () {
+                    onPressed: () async{
+
                       setState(
                         () async{
                           if (firsttimechecker == 0) {
