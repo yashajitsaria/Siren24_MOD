@@ -214,6 +214,8 @@ class _OtpVerificationState extends State<OtpVerification> {
                                       // Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                                       // }
                                         print("work");
+                                        userdata = await ApiCaller().user_profile() ;
+
                                         Navigator.pushReplacementNamed(context, SetupGPSLocations.id) ;
                                       } else {
 

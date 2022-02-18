@@ -1,11 +1,14 @@
 // ignore_for_file: prefer_const_constructors, unused_field, prefer_const_literals_to_create_immutables, unused_local_variable
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
 import 'package:siren24/ForAPI/apicalling.dart';
 import 'package:siren24/GoogleMaps/homeOffline.dart';
 import 'package:siren24/Menu_Bar.dart/MenuBar.dart';
+import 'package:siren24/documents/imageselector.dart';
 import 'package:siren24/global/globalvariables.dart';
 import 'package:siren24/vehicle_management/vehicle_management.dart';
 
@@ -381,12 +384,28 @@ class _AddVehiclePageState extends State<AddVehiclePage> {
                     ambulance_details = await ApiCaller().get_ambulance() ;
                     print("c");
                     setState(
-                          () {
-                            print(x) ;
-                        Navigator.pushReplacementNamed(
-                          context,
-                          VehicleManagement.id,
-                        );
+                          () async{
+                        //     print(x) ;
+                        // Navigator.pushReplacementNamed(
+                        //   context,
+                        //   VehicleManagement.id,
+                        // );
+                            ambulance_details = await ApiCaller().get_ambulance();
+                            if (firsttimechecker == 0) {
+
+                              Timer(Duration(seconds: 3), () {
+                                Navigator.pushReplacementNamed(
+                                  context,
+                                  ImageSelector.id,
+                                );
+                              });
+
+                            } else {
+                              Navigator.pushReplacementNamed(
+                                context,
+                                VehicleManagement.id,
+                              );
+                            }
                       },
                     );
                   },

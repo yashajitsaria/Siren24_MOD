@@ -249,7 +249,7 @@ class _DocumentsUploadState extends State<DocumentsUpload> {
                                 child: Container(
                                   height: 210.h,
                                   width: double.infinity,
-                                  child: documents[0]['image'].runtimeType == String ? Image.network(documents[0]['image']):Image.file(documents[0]["image"]) ,
+                                  child: Image.network(userdata['aadhar_card'],) ,
                                   decoration: const BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.vertical(
@@ -308,7 +308,7 @@ class _DocumentsUploadState extends State<DocumentsUpload> {
                                 child: Container(
                                   height: 210.h,
                                   width: double.infinity,
-                                  child: documents[1]['image'].runtimeType == String ? Image.network(documents[1]['image']):Image.file(documents[1]["image"]) ,
+                                  child: Image.network(userdata['voter_id'],) ,
                                   decoration: const BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.vertical(
@@ -366,7 +366,7 @@ class _DocumentsUploadState extends State<DocumentsUpload> {
                                 child: Container(
                                   height: 210.h,
                                   width: double.infinity,
-                                  child: documents[2]['image'].runtimeType == String ? Image.network(documents[2]['image']):Image.file(documents[2]["image"]) ,
+                                  child: Image.network(userdata['pan_card'],) ,
                                   decoration: const BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.vertical(
@@ -392,7 +392,7 @@ class _DocumentsUploadState extends State<DocumentsUpload> {
                                   MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Driving License",
+                                  "Pan Card",
                                       style: TextStyle(
                                         fontSize: 17.sp,
                                         color: Color(0xff242E42),
@@ -424,7 +424,7 @@ class _DocumentsUploadState extends State<DocumentsUpload> {
                                 child: Container(
                                   height: 210.h,
                                   width: double.infinity,
-                                  child: documents[3]['image'].runtimeType == String ? Image.network(documents[3]['image']):Image.file(documents[3]["image"]) ,
+                                  child: Image.network(userdata['driving_licence'],) ,
                                   decoration: const BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.vertical(
@@ -450,7 +450,7 @@ class _DocumentsUploadState extends State<DocumentsUpload> {
                                   MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Pan Card",
+                                      "Driving License",
                                       style: TextStyle(
                                         fontSize: 17.sp,
                                         color: Color(0xff242E42),

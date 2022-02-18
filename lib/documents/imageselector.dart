@@ -51,8 +51,8 @@ class _ImageSelectorState extends State<ImageSelector> {
     'Pan Card',
   ];
 
-  SnackBar registrationdone = SnackBar(content: Text('Your registration is complete. Verification in progress.'),
-  duration: Duration(seconds: 5),);
+  SnackBar registrationdone = SnackBar(content: Text('Uploading Document.'),
+  duration: Duration(seconds: 7),);
 
   @override
   Widget build(BuildContext context) {
@@ -306,7 +306,8 @@ class _ImageSelectorState extends State<ImageSelector> {
                                     mapfordata = {};
                                     print(filename!) ;
                                     print(_image!.path) ;
-
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(registrationdone) ;
                                     stringfordata = await ApiCaller().fileUploader(filename!,_image!,extension!) ;
                                     // print(x["url"]) ;
                                     if ( documentType == 'Adhaar Card')
@@ -347,6 +348,20 @@ class _ImageSelectorState extends State<ImageSelector> {
                                       {
                                         documents[2]["image"] = _image ;
                                         print(stringfordata['url'],);
+                                        // Timer(Duration(minutes: 3), (){
+                                        //   ApiCaller().editProfile(
+                                        //     userdata['name'],
+                                        //     userdata['dob'],
+                                        //     userdata['gender'],
+                                        //     userdata['profile_img'],
+                                        //     userdata['aadhar_card'],
+                                        //     userdata['voter_id'],
+                                        //     stringfordata['url'],
+                                        //     userdata['driving_licence'],
+                                        //     20,
+                                        //   );
+                                        //   print("DONEEEEEEe") ;
+                                        // });
                                         String x = await ApiCaller().editProfile(
                                           userdata['name'],
                                           userdata['dob'],
@@ -381,8 +396,7 @@ class _ImageSelectorState extends State<ImageSelector> {
                                     ambulance_details = await ApiCaller().get_ambulance();
 
                                     if (firsttimechecker == 0) {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(registrationdone) ;
+
                                       Timer(Duration(seconds: 3), () {
                                         Navigator.pushReplacementNamed(
                                           context,

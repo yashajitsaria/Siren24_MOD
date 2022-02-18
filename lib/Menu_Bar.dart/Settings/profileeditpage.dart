@@ -8,6 +8,7 @@ import 'package:siren24/documents/documentpage.dart';
 import 'package:siren24/documents/imageselector.dart';
 import 'package:siren24/global/globalvariables.dart';
 import 'package:date_field/date_field.dart';
+import 'package:siren24/vehicle_management/addvehiclepage.dart';
 
 class ProfileEditPage extends StatefulWidget {
   const ProfileEditPage({Key? key}) : super(key: key);
@@ -313,15 +314,19 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                       child: GestureDetector(
                         onTap: () async {
                           print(name + dob + gender);
+                          String adhar = userdata['aadhar_card'] == "Update your aadhar card" ? "https://cdn-icons-png.flaticon.com/512/21/21104.png" : userdata['aadhar_card'] ;
+                          String voter = userdata['voter_id'] == "Update your voter id" ? "https://cdn-icons-png.flaticon.com/512/21/21104.png" : userdata['voter_id'] ;
+                          String pan = userdata['pan_card'] == "Update your pan card" ? "https://cdn-icons-png.flaticon.com/512/21/21104.png" : userdata['pan_card'] ;
+                          String driving = userdata['driving_licence'] == "Update your driving licence" ? "https://cdn-icons-png.flaticon.com/512/21/21104.png" : userdata['driving_licence'] ;
                           String x = await ApiCaller().editProfile(
                             name,
                             dob,
                             gender,
-                            "https://cdn-icons-png.flaticon.com/512/21/21104.png",
-                            "https://cdn-icons-png.flaticon.com/512/21/21104.png",
-                            "https://cdn-icons-png.flaticon.com/512/21/21104.png",
-                            "https://cdn-icons-png.flaticon.com/512/21/21104.png",
-                            "https://cdn-icons-png.flaticon.com/512/21/21104.png",
+                            userdata['profile_img'],
+                            adhar,
+                            voter,
+                            pan,
+                            driving,
                             20,
                           );
                           userdata = await ApiCaller().user_profile();
@@ -333,7 +338,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
 
                                   Navigator.pushReplacementNamed(
                                     context,
-                                    ImageSelector.id,
+                                    AddVehiclePage.id,
                                   );
 
 

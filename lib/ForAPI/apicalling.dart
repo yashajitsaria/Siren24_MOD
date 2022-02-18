@@ -12,7 +12,7 @@ import 'otpverify.dart';
 String otpToken = " ";
 String authToken = " ";
 String userid = " ";
-String ip = "65.2.132.175";
+String ip = "3.109.161.225";
 
 class ApiCaller {
   // late int otp;
